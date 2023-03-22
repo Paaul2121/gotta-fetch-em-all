@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 export default function ShowLocation(props){
 
     const [[pokemon,image], setPokemon] = useState([null,null])
-
+    const [startBattle, setStartBattle] = useState(false)
+ 
     useEffect(() => {
         fetch(`${props.location.results[props.locationIndex].url}`)
         .then(result => result.json())
@@ -28,16 +29,23 @@ export default function ShowLocation(props){
 
         
     }, [])
+
+    const startBattleEvt = (e) =>{
+        setStartBattle(true)
+        e.target.style.visibility = "hidden"
+    }
     
   
     return(
         <div>
-       {pokemon && image &&
+       {pokemon && image && startBattle &&
        <>
         <p>{pokemon}</p>
         <img src={image}/>
        </>
        }
+       <button onClick={startBattleEvt}>START BATTLE</button>
+       <button onClick={props.backToMap}>BACK</button>
        </div>
     )
 }

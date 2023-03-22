@@ -1,8 +1,10 @@
 export default function Locations(props) {
     
     return (
-        <div>
-        {props.locations.results.map((location,index) => <button onClick={props.locationHandler} id={index} key={index}>{location.name}</button>)}
-    </div>
+        <button onClick={props.locationHandler} id={props.id}>{props.location.name}</button>
+    //     <div>
+
+    //     {/* {props.locations.results.map((location,index) => <button onClick={props.locationHandler} id={index} key={index}>{location.name}</button>)} */}
+    // </div>
     )
 }
