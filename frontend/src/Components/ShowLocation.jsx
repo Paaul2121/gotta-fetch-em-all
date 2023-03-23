@@ -38,12 +38,12 @@ export default function ShowLocation(props){
     
   
     return(
-        <div>
+        <div id="battleGround">
        {enemyPokemon && startBattle &&
-       <>
-        <p>{enemyPokemon.name}</p>
-        <img src={enemyPokemon.sprites.other.dream_world.front_default}/>
-       </>
+       <div id="enemyPokemonHolder">
+        <p id="enemyPokemonName" className="center">{enemyPokemon.name[0].toUpperCase() + enemyPokemon.name.slice(1,enemyPokemon.name.length)}</p>
+        <img id="enemyPokemonImage" src={enemyPokemon.sprites.other.dream_world.front_default}/>
+       </div>
        }
        
        <button onClick={startBattleEvt}>START BATTLE</button>

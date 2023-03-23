@@ -1,42 +1,46 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body{
+  /* height: 95.5vh;
+  width: 97vw; */
+  /* margin: 0px !important; */
+  margin : 0px;
+  
+ 
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
 
-.card {
-  padding: 2em;
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+#battleGround{
+  position: absolute;
+  top:0px;
+  background-image: url("https://mobimg.b-cdn.net/v3/fetch/1f/1fbbb5b85d58abbca627026e1fe5426b.jpeg");
+  background-size: cover;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+#enemyPokemonHolder{
+  width: 400px;
+  height: 400px;
+}
+
+#enemyPokemonImage{
+  scale: 0.5;
+
 }
