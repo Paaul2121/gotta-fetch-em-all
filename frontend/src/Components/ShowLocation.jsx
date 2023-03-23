@@ -44,6 +44,11 @@ export default function ShowLocation(props){
        <div id="enemyPokemonHolder">
         <p id="enemyPokemonName" className="center">{enemyPokemon.name[0].toUpperCase() + enemyPokemon.name.slice(1,enemyPokemon.name.length)}</p>
         <img id="enemyPokemonImage" src={enemyPokemon.sprites.other.home.front_default}/>
+        <div class="health-bar">
+            <div class="health-bar-glass">
+            <div class="health-bar-fluid anim-width"></div>
+        </div>
+        </div>
        </div>
        }
 
