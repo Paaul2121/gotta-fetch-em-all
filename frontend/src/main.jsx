@@ -47,14 +47,15 @@ loader.load("./lobby/scene.gltf", function (gltf) {
   scene.add(model);
   //wasd movement
   const keyboard = {};
-  camera.position.y += 0.02;
   // Add event listeners for key presses and releases
   document.addEventListener("keydown", (event) => {
     keyboard[event.key] = true;
+     keyboard[event.keyCode] = true;
   });
 
   document.addEventListener("keyup", (event) => {
     keyboard[event.key] = false;
+     keyboard[event.keyCode] = false;
   });
 
   // Define a function to update the camera position based on the keyboard state
@@ -84,6 +85,7 @@ loader.load("./lobby/scene.gltf", function (gltf) {
     );
     if (keyboard["a"]) {
       MapCoord();
+      console.log("hei")
       camera.position.add(perpendicularDirection.multiplyScalar(-speed));
     } else if (keyboard["d"]) {
       MapCoord();
@@ -91,11 +93,11 @@ loader.load("./lobby/scene.gltf", function (gltf) {
     }
 
     // Move the camera up or down
-    if (keyboard["t"]) {
+    if (keyboard[32]) {
       MapCoord();
       // Spacebar
       camera.position.y += speed;
-    } else if (keyboard["f"]) {
+    } else if (keyboard[16]) {
       // Shift
       camera.position.y -= speed;
       MapCoord();
@@ -137,4 +139,4 @@ loader.load("./lobby/scene.gltf", function (gltf) {
   animate();
 });
 const controls = new PointerLockControls(camera, renderer.domElement);
-document.addEventListener("click", () => controls.lock());
+document.addEventListener("keypress", () => controls.lock());
