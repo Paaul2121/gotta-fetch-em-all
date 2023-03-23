@@ -6,10 +6,10 @@ export default function ShowLocation(props) {
     const [startBattle, setStartBattle] = useState(false)
 
     useEffect(() => {
-        fetch(`${props.location.results[props.locationIndex].url}`)
+        fetch(`${props.location.results[props.locationIndex.split("-")[1]].url}`)
             .then(result => result.json())
             .then(selectedLocation => {
-                console.log(selectedLocation)
+                console.log("select",selectedLocation)
                 fetch(`https://pokeapi.co/api/v2/location-area/${selectedLocation.id}/`)
                     .then(result => result.json())
                     .then(area => {

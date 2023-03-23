@@ -13,7 +13,10 @@ body{
  
 }
 
-
+#mapLoc{
+  background-image: url("../public/images/pokemonMap.jpg");
+  height: 100vh;
+}
 
 .center{
   display: flex;
@@ -77,3 +80,117 @@ body{
   bottom: 3%;
   width: 100%;
 }
+
+
+
+/* //////////////////   POSITIONS */
+
+.locBtn{
+  position: absolute;
+}
+
+
+#loc-0{
+  top: 67%;
+ left: 30%;
+}
+
+#loc-1{
+  top: 47%;
+ left: 35%;
+}
+
+#loc-2{
+  top: 70%;
+ left: 42%;
+}
+
+#loc-3{
+  top: 46%;
+ left: 62%;
+}
+
+#loc-4{
+  top: 17%;
+ left: 30%;
+}
+
+#loc-5{
+  top: 16%;
+ left: 63%;
+}
+
+#loc-6{
+  top: 60%;
+ left: 60%;
+}
+
+#loc-7{
+  top: 43%;
+ left: 13%;
+}
+
+#loc-8{
+  top: 27%;
+ left: 30%;
+}
+
+#loc-9{
+  top: 82%;
+ left: 65%;
+}
+
+#loc-10{
+  top: 24%;
+ left: 75%;
+}
+
+#loc-11{
+  top: 95%;
+ left: 32%;
+}
+
+#loc-12{
+  top: 85%;
+ left: 50%;
+}
+
+#loc-13{
+  top: 50%;
+ left: 50%;
+}
+
+#loc-14{
+  top: 35%;
+ left: 49%;
+}
+
+#loc-15{
+  top: 5%;
+ left:75%;
+}
+
+#loc-16{
+  top: 63%;
+ left: 50%;
+}
+
+#loc-17{
+  top: 10%;
+ left: 59%;
+}
+
+#loc-18{
+  top: 10%;
+  left: 66%;
+}
+
+#loc-19{
+  top: 5%;
+  left: 20%;
+}
+
+
+
+
+/* //////////////////   POSITIONS */
