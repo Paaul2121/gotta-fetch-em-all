@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-
+import wall2 from '../public/images/wall2.jpg'
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
@@ -36,7 +36,9 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
 directionalLight.position.set(0, 3, 0);
 scene.add(directionalLight);
 
-renderer.setClearColor(new THREE.Color("grey"));
+// renderer.setClearColor(new THREE.Color("grey"));
+const textureLoader = new THREE.TextureLoader();
+scene.background= textureLoader.load(wall2)
 const loader = new GLTFLoader();
 let model;
 
