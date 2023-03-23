@@ -42,7 +42,7 @@ export default function ShowLocation(props){
        {enemyPokemon && startBattle &&
        <div id="enemyPokemonHolder">
         <p id="enemyPokemonName" className="center">{enemyPokemon.name[0].toUpperCase() + enemyPokemon.name.slice(1,enemyPokemon.name.length)}</p>
-        <img id="enemyPokemonImage" src={enemyPokemon.sprites.other.dream_world.front_default}/>
+        <img id="enemyPokemonImage" src={enemyPokemon.sprites.other.home.front_default}/>
        </div>
        }
        
