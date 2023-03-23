@@ -16,6 +16,8 @@ body{
 #mapLoc{
   background-image: url("../public/images/pokemonMap.jpg");
   height: 100vh;
+  width: 100vw;
+  visibility: hidden;
 }
 
 .center{
