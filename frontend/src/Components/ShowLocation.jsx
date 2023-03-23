@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 export default function ShowLocation(props){
 
-    const [[pokemon,image], setPokemon] = useState([null,null])
+    const [enemyPokemon, setEnemyPokemon] = useState(null)
     const [startBattle, setStartBattle] = useState(false)
  
     useEffect(() => {
@@ -21,7 +21,8 @@ export default function ShowLocation(props){
                 .then(result => result.json())
                 .then( pokemon => {
                     console.log(pokemon);
-                    setPokemon([pokemon.name, pokemon.sprites.other.dream_world.front_default])
+                    setEnemyPokemon(pokemon)
+                    // setPokemon([pokemon.name, pokemon.sprites.other.dream_world.front_default])
                 })
             })
            
@@ -38,12 +39,13 @@ export default function ShowLocation(props){
   
     return(
         <div>
-       {pokemon && image && startBattle &&
+       {enemyPokemon && startBattle &&
        <>
-        <p>{pokemon}</p>
-        <img src={image}/>
+        <p>{enemyPokemon.name}</p>
+        <img src={enemyPokemon.sprites.other.dream_world.front_default}/>
        </>
        }
+       
        <button onClick={startBattleEvt}>START BATTLE</button>
        <button onClick={props.backToMap}>BACK</button>
        </div>

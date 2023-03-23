@@ -31,6 +31,5 @@ function App() {
   )
 }
 
-{/* <Locations locations={locations} locationHandler={locationHandler} /> */}
 
 export default App
