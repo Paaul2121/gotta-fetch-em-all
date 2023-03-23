@@ -61,6 +61,17 @@ body{
   font-size: x-large;
 }
 
+#enemyPokemonStats{
+  background-color: antiquewhite;
+  width: 100%;
+  height: 35px;
+  position: relative;
+  top:-120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 #backToMapButton{
   position: absolute;
   bottom: 3%;
