@@ -8,3 +8,117 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <App />
   </React.StrictMode>,
 )
+
+// ! scroll cube
+import * as THREE from "https://cdn.skypack.dev/three@0.134.0/build/three.module.js";
+import { PointerLockControls } from "https://cdn.skypack.dev/three@0.134.0/examples/jsm/controls/PointerLockControls.js";
+import { GLTFLoader } from "https://cdn.skypack.dev/three@0.134.0/examples/jsm/loaders/GLTFLoader.js";
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.001,
+  100
+);
+
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+camera.position.set(10, -5, 2);
+camera.lookAt(0, 0, 0);
+// Add ambient light to the scene
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
+// Add directional light to the scene
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.set(0, 3, 0);
+scene.add(directionalLight);
+
+renderer.setClearColor(new THREE.Color("grey"));
+const loader = new GLTFLoader();
+let model;
+loader.load("./lobby/scene.gltf", function (gltf) {
+  model = gltf.scene;
+  model.position.x = 10;
+  model.position.y = -10;
+  scene.add(model);
+  //wasd movement
+  const keyboard = {};
+  camera.position.y += 0.02;
+  // Add event listeners for key presses and releases
+  document.addEventListener("keydown", (event) => {
+    keyboard[event.key] = true;
+  });
+
+  document.addEventListener("keyup", (event) => {
+    keyboard[event.key] = false;
+  });
+
+  // Define a function to update the camera position based on the keyboard state
+  function updateCameraPosition() {
+    const speed = 0.1; // Set the speed of movement
+
+    // Move the camera forward or backward
+    if (keyboard["w"]) {
+      MapCoord();
+
+      camera.position.z -= speed;
+    } else if (keyboard["s"]) {
+      MapCoord();
+      camera.position.z += speed;
+    }
+
+    // Move the camera left or right
+    if (keyboard["a"]) {
+      MapCoord();
+      camera.position.x -= speed;
+    } else if (keyboard["d"]) {
+      MapCoord();
+      camera.position.x += speed;
+    }
+
+    // Move the camera up or down
+    if (keyboard["t"]) {
+      MapCoord();
+      // Spacebar
+      camera.position.y += speed;
+    } else if (keyboard["f"]) {
+      // Shift
+      camera.position.y -= speed;
+      MapCoord();
+    }
+    if (keyboard["c"]) {
+      console.log(camera.position.x, camera.position.y, camera.position.z);
+    }
+  }
+  let Map = document.querySelector(".mapBtn");
+
+  let MapCoord = () => {
+    console.log(camera.position);
+    if (
+      camera.position.x < 4.3 &&
+      camera.position.x > -3.8 &&
+      camera.position.y > -4.7 &&
+      camera.position.y < -3.9 &&
+      camera.position.z < 5.19 &&
+      camera.position.z > 4.4
+    ) {
+      Map.style.visibility = "visible";
+    } else {
+      Map.style.visibility = "hidden";
+    }
+  };
+  // Render the scene once the model has finished loading
+  function animate() {
+    requestAnimationFrame(animate);
+    updateCameraPosition();
+    // model.rotation.x += 0.005;
+    renderer.render(scene, camera);
+  }
+
+  animate();
+});
+const controls = new PointerLockControls(camera, renderer.domElement);
+document.addEventListener("click", () => controls.lock());

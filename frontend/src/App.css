@@ -174,3 +174,26 @@ body
 {
 	box-sizing: inherit;
 }
+
+:root {
+  background-color: #242424;
+  z-index: 1;
+}
+
+canvas{
+  position: absolute;
+  top:0px;
+  z-index: 0;
+
+
+}
+.App{
+  position:absolute;
+  z-index: 2;
+}
+.mapBtn{
+      position: absolute;
+    top: 905px;
+    left: 720px;
+    border-radius: 50%;
+}

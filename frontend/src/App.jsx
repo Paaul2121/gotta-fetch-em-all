@@ -24,9 +24,9 @@ function App() {
 
   return (
     <div className="App">
-       {locations && !enterLocation && [...locations.results].map((location,index) => <Locations key={index} id={index} location={location} locationHandler={locationHandler}/>)}
-       {locations && enterLocation && <ShowLocation location={locations} locationIndex={whichLocation} backToMap={backToMap}/>}
-      
+       {/* {locations && !enterLocation && [...locations.results].map((location,index) => <Locations key={index} id={index} location={location} locationHandler={locationHandler}/>)}
+       {locations && enterLocation && <ShowLocation location={locations} locationIndex={whichLocation} backToMap={backToMap}/>} */}
+       <button className ="mapBtn">PRESS M</button>
     </div>
   )
 }
