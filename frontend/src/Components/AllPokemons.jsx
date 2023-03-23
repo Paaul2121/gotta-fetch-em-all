@@ -16,20 +16,26 @@ export default function AllPokemons() {
                 setCounter(counter + 1);
             }
         };
-
-        if (counter <= 649) {
+        //649
+        if (counter <= 30) {
             loader();
         }
     }, [counter]);
 
+    const hideEvent = (e) =>{
+        document.getElementById("pokedex").style.visibility = "hidden"
+    }
+
     return (
-        <div>
+        <>
+            {/* <button onClick={hideEvent} id="hideBtn">Hide</button> */}
            {allpokemons?.map( pokemon =>
-             <div>
+             <div className="pokemonCard">
                 <p>{ pokemon.id}</p>
-                <img src={`${pokemon.sprites.other.dream_world.front_default}`} />
+                <div className="imgHolder center"><img src={`${pokemon.sprites.other.dream_world.front_default}`} /></div>
            </div>
            )}
-        </div>
+           
+        </>
     )
 }

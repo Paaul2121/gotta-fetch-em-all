@@ -9,8 +9,12 @@ body{
   width: 97vw; */
   /* margin: 0px !important; */
   margin : 0px;
-  
- 
+  overflow-x: hidden;
+}
+
+#hideBtn{
+  z-index: 10;
+  cursor: pointer;
 }
 
 #mapLoc{
@@ -18,6 +22,48 @@ body{
   height: 100vh;
   width: 100vw;
   visibility: hidden;
+}
+
+#pokedex{
+  position: absolute;
+  top:0px;
+  background-color: black;
+  color: aliceblue;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 300px 300px 300px 300px 300px 300px;
+  margin-right: 200px;
+}
+
+#pokedex::-webkit-scrollbar{
+  visibility: hidden;
+  background: transparent;
+}
+
+.pokemonCard{
+  border: white solid;
+  margin:10px;
+  margin-left: 15%;
+  border-radius: 10px;
+  width: 300px;
+  height: 300px;
+  
+}
+
+.imgHolder > img{
+  max-width: 120px;
+  
+}
+
+.imgHolder{
+  height: 100px;
+  width: 100px;
+  background-color: aliceblue;
+  left: 40%;
+  position: relative;
 }
 
 .center{
