@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Locations from './Components/Locations'
 import './App.css'
 import ShowLocation from './Components/ShowLocation'
+import AllPokemons from './Components/AllPokemons'
 
 function App() {
   const [locations, setLocations] = useState(null)
@@ -24,12 +25,12 @@ function App() {
 
   return (
     <div className="App">
-       {locations && !enterLocation && [...locations.results].map((location,index) => <Locations key={index} id={index} location={location} locationHandler={locationHandler}/>)}
+      <div id="mapLoc"> {locations && !enterLocation && [...locations.results].map((location,index) => <Locations key={index} id={index} location={location} locationHandler={locationHandler}/>)}</div>
        {locations && enterLocation && <ShowLocation location={locations} locationIndex={whichLocation} backToMap={backToMap}/>}
-      
+     <> <AllPokemons/> </>
+      <button className='mapBtn'>PRESS M</button>
     </div>
   )
 }
 
-
-export default App
+export default App;

@@ -9,11 +9,75 @@ body{
   width: 97vw; */
   /* margin: 0px !important; */
   margin : 0px;
-  
- 
+  overflow-y: hidden;
 }
 
+#hideBtn{
+  z-index: 10;
+  cursor: pointer;
+}
 
+#mapLoc{
+  background-image: url("../public/images/pokemonMap.jpg");
+  height: 100vh;
+  width: 100vw;
+  visibility: hidden;
+}
+
+#pokedex{
+  position: absolute;
+  top:10%;
+  background-color: black;
+  color: aliceblue;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns:auto auto auto auto;
+  margin-right: 200px;
+}
+
+#pokedexHeader{
+  background-color: rgb(20,20,20);
+  position: absolute;
+  top:0px;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly;
+  color:aliceblue;
+  font-size: x-large;
+}
+
+#pokedex::-webkit-scrollbar{
+  visibility: hidden;
+  background: transparent;
+}
+
+.pokemonCard{
+  border: white solid;
+  margin:10px;
+  margin-left: 15%;
+  border-radius: 10px;
+  width: 300px;
+  height: 300px;
+  
+}
+
+.imgHolder > img{
+  max-width: 120px;
+  
+}
+
+.imgHolder{
+  height: 100px;
+  width: 100px;
+  background-color: aliceblue;
+  left: 40%;
+  position: relative;
+}
 
 .center{
   display: flex;
@@ -61,8 +125,130 @@ body{
   font-size: x-large;
 }
 
+#enemyPokemonStats{
+  background-color: antiquewhite;
+  width: 100%;
+  height: 35px;
+  position: relative;
+  top:-120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 #backToMapButton{
   position: absolute;
   bottom: 3%;
   width: 100%;
 }
+
+
+
+/* //////////////////   POSITIONS */
+
+.locBtn{
+  position: absolute;
+}
+
+
+#loc-0{
+  top: 67%;
+ left: 30%;
+}
+
+#loc-1{
+  top: 47%;
+ left: 35%;
+}
+
+#loc-2{
+  top: 70%;
+ left: 42%;
+}
+
+#loc-3{
+  top: 46%;
+ left: 62%;
+}
+
+#loc-4{
+  top: 17%;
+ left: 30%;
+}
+
+#loc-5{
+  top: 16%;
+ left: 63%;
+}
+
+#loc-6{
+  top: 60%;
+ left: 60%;
+}
+
+#loc-7{
+  top: 43%;
+ left: 13%;
+}
+
+#loc-8{
+  top: 27%;
+ left: 30%;
+}
+
+#loc-9{
+  top: 82%;
+ left: 65%;
+}
+
+#loc-10{
+  top: 24%;
+ left: 75%;
+}
+
+#loc-11{
+  top: 95%;
+ left: 32%;
+}
+
+#loc-12{
+  top: 85%;
+ left: 50%;
+}
+
+#loc-13{
+  top: 50%;
+ left: 50%;
+}
+
+#loc-14{
+  top: 35%;
+ left: 49%;
+}
+
+#loc-15{
+  top: 5%;
+ left:75%;
+}
+
+#loc-16{
+  top: 63%;
+ left: 50%;
+}
+
+#loc-17{
+  top: 10%;
+ left: 59%;
+}
+
+#loc-18{
+  top: 10%;
+  left: 66%;
+}
+
+#loc-19{
+  top: 5%;
+  left: 20%;
+}
+
+/* //////////////////   POSITIONS */
