@@ -1,13 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
 
 // ! scroll cube
 import * as THREE from "https://cdn.skypack.dev/three@0.134.0/build/three.module.js";
@@ -32,13 +32,14 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
 
 // Add directional light to the scene
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
 directionalLight.position.set(0, 3, 0);
 scene.add(directionalLight);
 
 renderer.setClearColor(new THREE.Color("grey"));
 const loader = new GLTFLoader();
 let model;
+
 loader.load("./lobby/scene.gltf", function (gltf) {
   model = gltf.scene;
   model.position.x = 10;
@@ -60,23 +61,33 @@ loader.load("./lobby/scene.gltf", function (gltf) {
   function updateCameraPosition() {
     const speed = 0.1; // Set the speed of movement
 
-    // Move the camera forward or backward
+    // Get the direction the camera is facing
+    const direction = camera.getWorldDirection(new THREE.Vector3());
+
+    // Move the camera forward or backward in the direction it's facing
     if (keyboard["w"]) {
       MapCoord();
 
-      camera.position.z -= speed;
+      camera.position.add(direction.multiplyScalar(speed));
     } else if (keyboard["s"]) {
       MapCoord();
-      camera.position.z += speed;
+      camera.position.add(direction.multiplyScalar(-speed));
     }
 
-    // Move the camera left or right
+    let mapLoc = document.querySelector("#mapLoc");
+    mapLoc.style.visibility = "hidden";
+
+    const perpendicularDirection = new THREE.Vector3(
+      -direction.z,
+      0,
+      direction.x
+    );
     if (keyboard["a"]) {
       MapCoord();
-      camera.position.x -= speed;
+      camera.position.add(perpendicularDirection.multiplyScalar(-speed));
     } else if (keyboard["d"]) {
       MapCoord();
-      camera.position.x += speed;
+      camera.position.add(perpendicularDirection.multiplyScalar(speed));
     }
 
     // Move the camera up or down
@@ -89,14 +100,19 @@ loader.load("./lobby/scene.gltf", function (gltf) {
       camera.position.y -= speed;
       MapCoord();
     }
+
     if (keyboard["c"]) {
       console.log(camera.position.x, camera.position.y, camera.position.z);
     }
+    if (keyboard["m"]) {
+      mapLoc.style.visibility = "visible";
+    }
   }
+
   let Map = document.querySelector(".mapBtn");
+  Map.style.visibility = "hidden";
 
   let MapCoord = () => {
-    console.log(camera.position);
     if (
       camera.position.x < 4.3 &&
       camera.position.x > -3.8 &&
