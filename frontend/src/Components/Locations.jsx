@@ -1,6 +1,6 @@
 export default function Locations(props) {
     
     return (
-        <button onClick={props.locationHandler} id={props.id}>{props.location.name}</button>
+        <button className="locBtn" onClick={props.locationHandler} id={"loc-"+props.id}>{props.location.name}</button>
     )
 }
