@@ -30,7 +30,6 @@ body{
   top:0px;
   background-image: url("https://mobimg.b-cdn.net/v3/fetch/1f/1fbbb5b85d58abbca627026e1fe5426b.jpeg");
   background-size: cover;
-
   width: 100vw;
   height: 100vh;
 }
@@ -38,9 +37,32 @@ body{
 #enemyPokemonHolder{
   width: 400px;
   height: 400px;
+  background-color: rgba(0,0,0,0.2);
+  position: absolute;
+  right: 10%;
+}
+
+#frendlyPokemonHolder{
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0,0,0,0.2);
+  position: absolute;
+  left: 10%;
 }
 
 #enemyPokemonImage{
-  scale: 0.5;
+  scale: 0.7;
+  width: 100%;
+  position: relative;
+  top: -60px;
+}
 
+#enemyPokemonName{
+  font-size: x-large;
+}
+
+#backToMapButton{
+  position: absolute;
+  bottom: 3%;
+  width: 100%;
 }

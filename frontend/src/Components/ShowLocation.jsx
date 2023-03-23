@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 export default function ShowLocation(props){
 
     const [enemyPokemon, setEnemyPokemon] = useState(null)
+    const [enemyPokemonHP, setEnemyPokemonHP] = useState(null)
     const [startBattle, setStartBattle] = useState(false)
  
     useEffect(() => {
@@ -22,7 +23,7 @@ export default function ShowLocation(props){
                 .then( pokemon => {
                     console.log(pokemon);
                     setEnemyPokemon(pokemon)
-                    // setPokemon([pokemon.name, pokemon.sprites.other.dream_world.front_default])
+                    
                 })
             })
            
@@ -45,9 +46,11 @@ export default function ShowLocation(props){
         <img id="enemyPokemonImage" src={enemyPokemon.sprites.other.home.front_default}/>
        </div>
        }
+
+       <div id="frendlyPokemonHolder"></div>
        
        <button onClick={startBattleEvt}>START BATTLE</button>
-       <button onClick={props.backToMap}>BACK</button>
+      <div id="backToMapButton" className="center"> <button onClick={props.backToMap}>BACK</button> </div>
        </div>
     )
 }
