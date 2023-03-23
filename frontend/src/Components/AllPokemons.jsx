@@ -17,25 +17,31 @@ export default function AllPokemons() {
             }
         };
         //649
-        if (counter <= 30) {
+        if (counter <= 20) {
             loader();
         }
     }, [counter]);
 
-    const hideEvent = (e) =>{
-        document.getElementById("pokedex").style.visibility = "hidden"
+    const hideEvent = (e) => {
+        document.getElementById("pokedexMenu").style.visibility = "hidden"
     }
 
     return (
-        <>
-            {/* <button onClick={hideEvent} id="hideBtn">Hide</button> */}
-           {allpokemons?.map( pokemon =>
-             <div className="pokemonCard">
-                <p>{ pokemon.id}</p>
-                <div className="imgHolder center"><img src={`${pokemon.sprites.other.dream_world.front_default}`} /></div>
-           </div>
-           )}
-           
-        </>
+        <div id="pokedexMenu">
+            <div id="pokedexHeader">
+                <button onClick={hideEvent} id="hideBtn">Hide</button>
+                <div><label>Search for a Pokemon </label><input /></div>
+            </div>
+
+            <div id="pokedex">
+                {allpokemons?.map(pokemon =>
+                    <div className="pokemonCard">
+                        <p>{pokemon.id}</p>
+                        <div className="imgHolder center"><img src={`${pokemon.sprites.other.dream_world.front_default}`} /></div>
+                    </div>
+                )}
+
+            </div>
+        </div>
     )
 }

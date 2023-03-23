@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <div id="mapLoc"> {locations && !enterLocation && [...locations.results].map((location,index) => <Locations key={index} id={index} location={location} locationHandler={locationHandler}/>)}</div>
        {locations && enterLocation && <ShowLocation location={locations} locationIndex={whichLocation} backToMap={backToMap}/>}
-     <div id="pokedex"> <AllPokemons/> </div>
+     <> <AllPokemons/> </>
       <button className='mapBtn'>PRESS M</button>
     </div>
   )
