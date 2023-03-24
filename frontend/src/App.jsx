@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Locations from './Components/Locations'
 import './App.css'
 import ShowLocation from './Components/ShowLocation'
+import PokemonCard from './Components/PokemonCard'
 import AllPokemons from './Components/AllPokemons'
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
     <div className="App">
       <div id="mapLoc"> {locations && !enterLocation && [...locations.results].map((location,index) => <Locations key={index} id={index} location={location} locationHandler={locationHandler}/>)}</div>
        {locations && enterLocation && <ShowLocation location={locations} locationIndex={whichLocation} backToMap={backToMap}/>}
-     <> <AllPokemons/> </>
+        <AllPokemons/> 
+        <PokemonCard />
       <button className='mapBtn'>PRESS M</button>
     </div>
   )
