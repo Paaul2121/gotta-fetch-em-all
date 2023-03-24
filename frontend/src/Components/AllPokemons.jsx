@@ -46,7 +46,7 @@ export default function AllPokemons() {
 
             <div id="pokedex">
 
-            {filterInput == "" && allpokemons?.map(pokemon =>
+            {filterInput == "" && loading && allpokemons?.map(pokemon =>
                    <PokemonCard pokemon={pokemon} />
                 )}
 {/* 
