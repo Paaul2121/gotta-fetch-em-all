@@ -2,32 +2,48 @@ import { useState, useEffect } from "react"
 import PokemonCard from "./PokemonCard";
 
 
+let gatheringPokemons = [];
+
+for(let  i=1 ; i<650; i++){
+    fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+    .then(res => res.json())
+    .then( res => gatheringPokemons.push(res) )
+    console.log(i)
+}
+
+
 export default function AllPokemons() {
-    const [allpokemons, setAllPokemons] = useState([])
+    const [allpokemons, setAllPokemons] = useState(null)
     const [loading, setLoadig] = useState(false)
     const [counter, setCounter] = useState(1)
     const [filterInput, setFilterInput] = useState("")
     const [selectedPokemons, setSelectPokemons] = useState([])
     const [maxSelectedPokemons, setMaxSelectedPokemons] = useState(0);
 
-    useEffect(() => {
-        const loader = async () => {
-            const req = await fetch(
-                `https://pokeapi.co/api/v2/pokemon/${counter}`
-            );
-            if (req.ok) {
-                const res = await req.json();
-                setAllPokemons([...allpokemons, res]);
-                setCounter(counter + 1);
-            }
-        };
-        //649
-        if (counter <= 20) {
-            loader();
-        }else{
-            setLoadig(true)
-        }
-    }, [counter]);
+    // useEffect(() => {
+    //     const loader = async () => {
+    //         const req = await fetch(
+    //             `https://pokeapi.co/api/v2/pokemon/${counter}`
+    //         );
+    //         if (req.ok) {
+    //             const res = await req.json();
+    //             setAllPokemons([...allpokemons, res]);
+    //             setCounter(counter + 1);
+    //         }
+    //     };
+    //     //649
+    //     if (counter <= 20) {
+    //         loader();
+    //     }else{
+    //         setLoadig(true)
+    //     }
+    // }, [counter]);
+   
+    setTimeout(() => {
+        setAllPokemons(gatheringPokemons);
+        setLoadig(true)
+        console.log(gatheringPokemons.length)
+    }, 1000);
 
     const hideEvent = (e) => {
         document.getElementById("pokedexMenu").style.visibility = "hidden"
@@ -67,9 +83,9 @@ export default function AllPokemons() {
             </div>
 
 
-            <div id="pokedex">
+           { allpokemons && <div id="pokedex">
 
-            {filterInput == "" && loading && allpokemons?.map((pokemon,index) =>
+            {filterInput == "" && loading && [...allpokemons].map((pokemon,index) =>
                    <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} />
                 )}
 {/* 
@@ -90,7 +106,7 @@ export default function AllPokemons() {
                 { !loading && <div id="loadingScreen"><img src="../../public/images/B6F.gif"/></div>}
               
 
-            </div>
+            </div>}
         </div>
     )
 }
