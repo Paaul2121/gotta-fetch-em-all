@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import PokemonCard from "./PokemonCard";
 
 
 export default function AllPokemons() {
@@ -19,7 +20,7 @@ export default function AllPokemons() {
             }
         };
         //649
-        if (counter <= 50) {
+        if (counter <= 100) {
             loader();
             console.log(allpokemons)
         }else{
@@ -39,20 +40,14 @@ export default function AllPokemons() {
         <div id="pokedexMenu">
             <div id="pokedexHeader">
                 <button onClick={hideEvent} id="hideBtn">Hide</button>
-                <div><label>Search for a Pokemon </label><input onInput={filterInputEvent} /></div>
+                <div><label>Search for a Pokemon </label><input className="input" name="text" type="text" onInput={filterInputEvent} /></div>
             </div>
-
 
 
             <div id="pokedex">
 
-        {/* //loading all pokemons */}
-
-            {filterInput == "" && loading && allpokemons?.map(pokemon =>
-                    <div className="pokemonCard">
-                        <p>{pokemon.id}</p>
-                        <div className="imgHolder center"><img src={`${pokemon.sprites.other.dream_world.front_default}`} /></div>
-                    </div>
+            {filterInput == "" && allpokemons?.map(pokemon =>
+                   <PokemonCard pokemon={pokemon} />
                 )}
 {/* 
                 //loading pokemons by filter */}
@@ -61,11 +56,8 @@ export default function AllPokemons() {
                     filterInput != "" && loading && allpokemons?.map(pokemon => {
                         if (pokemon.name.includes(filterInput)) {
                             return (
-                                <div className="pokemonCard">
-                                    <p>{pokemon.id}</p>
-                                    <div className="imgHolder center"><img src={`${pokemon.sprites.other.dream_world.front_default}`} /></div>
-                                </div>)
-                        }
+                                <PokemonCard pokemon={pokemon} />
+                    )}
                     })
 
                 }
