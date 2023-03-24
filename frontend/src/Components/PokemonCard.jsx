@@ -21,7 +21,7 @@ export default function PokemonCard({pokemon, pokemonCardEvent}) {
         </g>
         </svg>
         <p className="pokemonName"> {pokemon && pokemon.name} </p>
-        <img className="pokemonImage" src= {pokemon && `${pokemon.sprites.other.dream_world.front_default}` }/>
+        <img className="pokemonImage" src= {pokemon && `${pokemon.sprites.other.home.front_default}` }/>
       </div>
     </div>
     <div className="front">
