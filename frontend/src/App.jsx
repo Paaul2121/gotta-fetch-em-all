@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Locations from './Components/Locations'
 import './App.css'
 import ShowLocation from './Components/ShowLocation'
+import PokemonCard from './Components/PokemonCard'
 import AllPokemons from './Components/AllPokemons'
 
 function App() {
