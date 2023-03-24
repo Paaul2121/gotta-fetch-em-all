@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 
 export default function AllPokemons() {
     const [allpokemons, setAllPokemons] = useState([])
+    const [loading, setLoadig] = useState(false)
     const [counter, setCounter] = useState(1)
     const [filterInput, setFilterInput] = useState("")
 
@@ -21,6 +22,8 @@ export default function AllPokemons() {
         if (counter <= 50) {
             loader();
             console.log(allpokemons)
+        }else{
+            setLoadig(true)
         }
     }, [counter]);
 
@@ -43,15 +46,19 @@ export default function AllPokemons() {
 
             <div id="pokedex">
 
-            {filterInput == "" && allpokemons?.map(pokemon =>
+        {/* //loading all pokemons */}
+
+            {filterInput == "" && loading && allpokemons?.map(pokemon =>
                     <div className="pokemonCard">
                         <p>{pokemon.id}</p>
                         <div className="imgHolder center"><img src={`${pokemon.sprites.other.dream_world.front_default}`} /></div>
                     </div>
                 )}
+{/* 
+                //loading pokemons by filter */}
 
                 {
-                    filterInput != "" && allpokemons?.map(pokemon => {
+                    filterInput != "" && loading && allpokemons?.map(pokemon => {
                         if (pokemon.name.includes(filterInput)) {
                             return (
                                 <div className="pokemonCard">
@@ -62,6 +69,10 @@ export default function AllPokemons() {
                     })
 
                 }
+
+                {/* //  loading screen */}
+
+                { !loading && <div id="loadingScreen"><img src="../../public/images/B6F.gif"/></div>}
               
 
             </div>
