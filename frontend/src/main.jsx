@@ -85,7 +85,6 @@ loader.load("./lobby/scene.gltf", function (gltf) {
     );
     if (keyboard["a"]) {
       MapCoord();
-      console.log("hei")
       camera.position.add(perpendicularDirection.multiplyScalar(-speed));
     } else if (keyboard["d"]) {
       MapCoord();
