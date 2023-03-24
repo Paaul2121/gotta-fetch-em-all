@@ -272,14 +272,13 @@ body{
       background-color: #000;
       border: none;
       font-size: 18px;
-      
+    
       /* overflow: hidden; */
       transition: 500ms;
     }
     
   .mapButton span {
       color: gray;
-      position: relative;
       transition: 500ms;
       transition-delay: 500ms;
       font-size: 16px;
