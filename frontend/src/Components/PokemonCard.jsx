@@ -1,13 +1,14 @@
 import { useState } from "react";
 
-export default function PokemonCard({pokemon, pokemonCardEvent}) {
+export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons}) {
 
     return(
         <div  className="card">
 
   <div className="content">
           <div onClick={pokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}></div>  
-    <div className="back">
+    <div className={`back ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""}`} >
+    {/* ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""} */}
 
       {/* event Taker */}
   {/* <div className='cardEventTaker' id={JSON.stringify(pokemon)}></div>   */}
@@ -20,7 +21,7 @@ export default function PokemonCard({pokemon, pokemonCardEvent}) {
         <g id="SVGRepo_iconCarrier">
         </g>
         </svg>
-        <p className="pokemonName"> {pokemon && pokemon.name} </p>
+        <p className="pokemonName"> {pokemon && pokemon.name[0].toUpperCase()+pokemon.name.split(1,pokemon.name.length)} </p>
         <img className="pokemonImage" src= {pokemon && `${pokemon.sprites.other.home.front_default}` }/>
       </div>
     </div>
