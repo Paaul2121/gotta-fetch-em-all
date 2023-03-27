@@ -52,7 +52,7 @@ export default function AllPokemons() {
 
         if (!e.target.nextSibling.classList.value.includes('selectedPokemon')) {
 
-            if (selectedPokemons.length < 3) {
+            if (SelectedPokemons.length < 3) {
                 // e.target.nextSibling.classList.includes('selectedPokemon')
                 //setSelectedPokemons(prev => [...prev, JSON.parse(e.target.id)]);
                  SelectedPokemons.push(JSON.parse(e.target.id));
