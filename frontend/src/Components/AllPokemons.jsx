@@ -3,9 +3,6 @@ import PokemonCard from "./PokemonCard";
 import { useAtom } from "jotai"
 import state from "./AtomStates";
 
-
-
-
 let SelectedPokemons = [];
 
 export default function AllPokemons() {

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import {useAtom} from "jotai"
 import state from "./AtomStates"
+import PokemonCard from "./PokemonCard"
+import FriendlyPokemonCard from "./FriendlyPokemonCard"
  
 export default function ShowLocation(props) {
 
@@ -32,9 +34,11 @@ export default function ShowLocation(props) {
                     })
             })
 
-            
-
     }, [])
+
+    const pokemonSelect = () => {
+        console.log("asdsad");
+    }
 
     const startBattleEvt = (e) => {
         setStartBattle(true)
@@ -56,9 +60,12 @@ export default function ShowLocation(props) {
                 </div>
             }
 
-            <div id="frendlyPokemonHolder"></div>
+            <div id="friendlyPokemonHolder">{[...selectedPokemons].map((pokemon) => 
+                <FriendlyPokemonCard pokemon={pokemon} />
+            )}
+            </div>
 
-            <button onClick={startBattleEvt}>START BATTLE</button>
+            <button id="battleButton" onClick={startBattleEvt}>START BATTLE</button>
             <div id="backToMapButton" className="center"> <button onClick={props.backToMap}>BACK</button> </div>
         </div>
     )
