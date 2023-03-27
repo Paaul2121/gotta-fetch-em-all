@@ -126,12 +126,15 @@ body{
   right: 10%;
 }
 
+
 #friendlyPokemonHolder{
-  width: 400px;
-  height: 400px;
-  background-color: rgba(0,0,0,0.2);
+  align-items: center;
+  width: 250px;
+  height: 100vh;
+  background-color: rgba(0,0,0,0);
   position: absolute;
-  left: 10%;
+  top: 1%;
+  left: 0%;
 }
 
 #enemyPokemonImage{
@@ -151,6 +154,11 @@ body{
   height: 220px;
   padding: 10px;
   margin-left: 10%;
+}
+
+.friendlyPokemonCard:hover .content {
+  transform: rotateY(180deg);
+
 }
 
 
