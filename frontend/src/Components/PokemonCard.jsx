@@ -44,22 +44,23 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
 
       <div className="front-content">
         <div className="stats">
-          {pokemon.stats[0].stat.name.slice(0,1).toUpperCase() + pokemon.stats[0].stat.name.slice(1)}:
+          {pokemon.stats[0].stat.name.slice(0,1).toUpperCase() + pokemon.stats[0].stat.name.slice(1)}
+          <img id="healthPhoto" src="https://cdn2.iconfinder.com/data/icons/game-1-2/512/Healing_potion_2-512.png" />
           <div className="rightStats">{pokemon.stats[0].base_stat} p</div>
         </div>
-        <div className="stats">{pokemon.stats[1].stat.name.slice(0,1).toUpperCase() + pokemon.stats[1].stat.name.slice(1)}:
+        <div className="stats">
+          {pokemon.stats[1].stat.name.slice(0,1).toUpperCase() + pokemon.stats[1].stat.name.slice(1)}
+          <img id="attackPhoto" src="https://cdn3.iconfinder.com/data/icons/role-playing-game-5/340/ability_skill_swords_game_attack_knight-512.png" />
           <div className="rightStats">{pokemon.stats[1].base_stat} p</div>
         </div>
-        <div className="stats">{pokemon.stats[2].stat.name.slice(0,1).toUpperCase() + pokemon.stats[2].stat.name.slice(1)}:
+        <div className="stats">
+          {pokemon.stats[2].stat.name.slice(0,1).toUpperCase() + pokemon.stats[2].stat.name.slice(1)}
+          <img id="defensePhoto" src="https://cdn4.iconfinder.com/data/icons/game-ui-2-flat-filled-line/64/shield_defense_security_game_safety_protection-512.png" />
           <div className="rightStats">{pokemon.stats[2].base_stat} p</div>
         </div>
-        <div className="stats">{pokemon.stats[3].stat.name.slice(0,1).toUpperCase() + pokemon.stats[3].stat.name.slice(1)}:
-          <div className="rightStats">{pokemon.stats[3].base_stat} p</div>
-        </div>
-        <div className="stats">{pokemon.stats[4].stat.name.slice(0,1).toUpperCase() + pokemon.stats[4].stat.name.slice(1)}:
-          <div className="rightStats">{pokemon.stats[4].base_stat} p</div>
-        </div>
-        <div className="stats">{pokemon.stats[5].stat.name.slice(0,1).toUpperCase() + pokemon.stats[5].stat.name.slice(1)}:
+        <div className="stats">
+          {pokemon.stats[5].stat.name.slice(0,1).toUpperCase() + pokemon.stats[5].stat.name.slice(1)}
+          <img id="speedPhoto" src="https://cdn0.iconfinder.com/data/icons/crime-and-protection-icons/110/Lightning-512.png" />
           <div className="rightStats">{pokemon.stats[5].base_stat} p</div>
         </div>
       </div>

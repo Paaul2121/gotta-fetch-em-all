@@ -501,7 +501,7 @@ input {
 
 .stats {
   text-align: left;
-  top: 1%;
+  top: -5%;
   position: relative;
   width: 20vw;
   height: 35px;
@@ -512,8 +512,39 @@ input {
 }
 
 .rightStats {
-  right: 20%;
+  right: 47%;
   position: absolute;
   height: 35px;
   color: white;
+}
+
+
+#attackPhoto {
+  width: 20px;
+  height: 20px;
+  left: 15%;
+  position: absolute;
+  /* background: white; */
+
+}
+
+#defensePhoto {
+  width: 20px;
+  height: 20px;
+  left: 19%;
+  position: absolute;
+}
+
+#healthPhoto {
+  width: 20px;
+  height: 20px;
+  left: 8%;
+  position: absolute;
+}
+
+#speedPhoto {
+  width: 20px;
+  height: 20px;
+  left: 14%;
+  position: absolute;
 }
