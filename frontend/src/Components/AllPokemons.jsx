@@ -45,6 +45,7 @@ export default function AllPokemons() {
 
         setTimeout(() => {
         setAllPokemons(gatheringPokemons);
+        console.log(gatheringPokemons);
         setLoadig(true)
         console.log(gatheringPokemons.length)
     }, 1000);
