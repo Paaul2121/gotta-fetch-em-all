@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
 import PokemonCard from "./PokemonCard";
+import {useAtom} from "jotai"
+import state from "./AtomStates";
 
 
 
@@ -10,6 +12,8 @@ export default function AllPokemons() {
     const [allpokemons, setAllPokemons] = useState(null)
     const [loading, setLoadig] = useState(false)
     const [filterInput, setFilterInput] = useState("")
+    const [selectedPokemons, setSelectedPokemons] = useAtom(state.selectedPokemons)
+    console.log(selectedPokemons)
     // const [counter, setCounter] = useState(1)
     // const [selectedPokemons, setSelectPokemons] = useState([])
     // const [maxSelectedPokemons, setMaxSelectedPokemons] = useState(0);
@@ -37,7 +41,7 @@ export default function AllPokemons() {
     useEffect(() => {
         let gatheringPokemons = [];
 
-        for (let i = 1; i <30; i++) {
+        for (let i = 1; i <20; i++) {
             fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
                 .then(res => res.json())
                 .then(res => gatheringPokemons.push(res))
@@ -66,7 +70,7 @@ export default function AllPokemons() {
 
             if (SelectedPokemons.length < 3) {
                 // e.target.nextSibling.classList.includes('selectedPokemon')
-                // setSelectPokemons(prev => [...prev, JSON.parse(e.target.id)]);
+              //   setSelectedPokemons(prev => [...prev, JSON.parse(e.target.id)]);
                 // setMaxSelectedPokemons(maxSelectedPokemons + 1);
                 SelectedPokemons.push(JSON.parse(e.target.id));
                 console.log(SelectedPokemons)
@@ -79,8 +83,9 @@ export default function AllPokemons() {
             e.target.nextSibling.classList.remove("selectedPokemon")
             console.log(JSON.parse(e.target.id).name)
             SelectedPokemons = SelectedPokemons.filter( elem => elem.id != JSON.parse(e.target.id).id)
-            console.log(SelectedPokemons)
-            // setSelectPokemons((prev) => [...prev].filter(elem => elem.id != JSON.parse(e.target.id).id))
+            console.log(SelectedPokemons);
+          
+           // setSelectedPokemons((prev) => [...prev].filter(elem => elem.id != JSON.parse(e.target.id).id))
             // setMaxSelectedPokemons(maxSelectedPokemons - 1)
            
         }
@@ -122,3 +127,4 @@ export default function AllPokemons() {
         </div>
     )
 }
+export {SelectedPokemons};
