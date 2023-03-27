@@ -1,24 +1,35 @@
 import { useState } from "react";
 
-export default function PokemonCard({pokemon}) {
-    {pokemon && console.log("1",pokemon.sprites.other.dream_world.front_default)}
+export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons}) {
+
     return(
-        <div className="card">
+        <div  className="card">
+
   <div className="content">
-    <div className="back">
+          <div onClick={pokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}></div>  
+    <div className={`back ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""}`} >
+    {/* ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""} */}
+
+      {/* event Taker */}
+  {/* <div className='cardEventTaker' id={JSON.stringify(pokemon)}></div>   */}
       <div className="back-content">
+
+
         <svg stroke="#ffffff" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" height="50px" width="50px" fill="#ffffff">
         <g strokeWidth="0" id="SVGRepo_bgCarrier"></g>
         <g strokeLinejoin="round" strokeLinecap="round" id="SVGRepo_tracerCarrier"></g>
         <g id="SVGRepo_iconCarrier">
         </g>
         </svg>
-        <p class="pokemonName"> {pokemon && pokemon.name} </p>
-        <img className="pokemonImage" src= {pokemon && `${pokemon.sprites.other.dream_world.front_default}` }/>
+        <p className="pokemonName"> {pokemon && pokemon.name[0].toUpperCase()+pokemon.name.split(1,pokemon.name.length)} </p>
+        <img className="pokemonImage" src= {pokemon && `${pokemon.sprites.other.home.front_default}` }/>
       </div>
     </div>
     <div className="front">
       
+ {/* event Taker */}
+ {/* <div onClick={pokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}></div>   */}
+
       <div className="img">
         <div className="circle">
         </div>
