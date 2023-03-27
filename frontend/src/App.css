@@ -126,7 +126,7 @@ body{
   right: 10%;
 }
 
-#frendlyPokemonHolder{
+#friendlyPokemonHolder{
   width: 400px;
   height: 400px;
   background-color: rgba(0,0,0,0.2);
@@ -145,6 +145,13 @@ body{
   font-size: x-large;
 }
 
+.friendlyPokemonCard {
+  overflow: visible;
+  width: 190px;
+  height: 220px;
+  padding: 10px;
+  margin-left: 10%;
+}
 #enemyPokemonStats{
   background-color: antiquewhite;
   width: 100%;
