@@ -102,8 +102,9 @@ body{
 #battleGround{
   position: absolute;
   top:0px;
-  background-image: url("https://mobimg.b-cdn.net/v3/fetch/1f/1fbbb5b85d58abbca627026e1fe5426b.jpeg");
+  background-image: url("https://s3.amazonaws.com/prod-media.gameinformer.com/styles/full/s3/2018/12/02/6a13488e/trainer_battles_arena.jpg");
   background-size: cover;
+
   width: 100vw;
   height: 100vh;
 }

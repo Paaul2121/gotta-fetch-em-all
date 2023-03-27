@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import PokemonCard from "./PokemonCard";
-import {useAtom} from "jotai"
+import { useAtom } from "jotai"
 import state from "./AtomStates";
 
 
@@ -13,51 +13,35 @@ export default function AllPokemons() {
     const [loading, setLoadig] = useState(false)
     const [filterInput, setFilterInput] = useState("")
     const [selectedPokemons, setSelectedPokemons] = useAtom(state.selectedPokemons)
-    console.log(selectedPokemons)
-    // const [counter, setCounter] = useState(1)
+
+
     // const [selectedPokemons, setSelectPokemons] = useState([])
-    // const [maxSelectedPokemons, setMaxSelectedPokemons] = useState(0);
 
 
-    // useEffect(() => {
-    //     const loader = async () => {
-    //         const req = await fetch(
-    //             `https://pokeapi.co/api/v2/pokemon/${counter}`
-    //         );
-    //         if (req.ok) {
-    //             const res = await req.json();
-    //             setAllPokemons([...allpokemons, res]);
-    //             setCounter(counter + 1);
-    //         }
-    //     };
-    //     //649
-    //     if (counter <= 20) {
-    //         loader();
-    //     }else{
-    //         setLoadig(true)
-    //     }
-    // }, [counter]);
+
+
 
     useEffect(() => {
         let gatheringPokemons = [];
 
-        for (let i = 1; i <20; i++) {
+        for (let i = 1; i < 20; i++) {
             fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
                 .then(res => res.json())
                 .then(res => gatheringPokemons.push(res))
         }
 
         setTimeout(() => {
-        setAllPokemons(gatheringPokemons);
-        setLoadig(true)
-        console.log(gatheringPokemons.length)
-    }, 1000);
+            setAllPokemons(gatheringPokemons);
+            setLoadig(true)
+            console.log(gatheringPokemons.length)
+        }, 1000);
     }, [])
 
-    
+
 
     const hideEvent = (e) => {
         document.getElementById("pokedexMenu").style.visibility = "hidden"
+        setSelectedPokemons(SelectedPokemons)
     }
 
     const filterInputEvent = (e) => {
@@ -68,15 +52,14 @@ export default function AllPokemons() {
 
         if (!e.target.nextSibling.classList.value.includes('selectedPokemon')) {
 
-            if (SelectedPokemons.length < 3) {
+            if (selectedPokemons.length < 3) {
                 // e.target.nextSibling.classList.includes('selectedPokemon')
-              //   setSelectedPokemons(prev => [...prev, JSON.parse(e.target.id)]);
-                // setMaxSelectedPokemons(maxSelectedPokemons + 1);
-                SelectedPokemons.push(JSON.parse(e.target.id));
+                //setSelectedPokemons(prev => [...prev, JSON.parse(e.target.id)]);
+                 SelectedPokemons.push(JSON.parse(e.target.id));
                 console.log(SelectedPokemons)
                 console.log(e.target.nextSibling)
                 e.target.nextSibling.classList.add("selectedPokemon")
-                
+
             }
 
         } else {
@@ -84,10 +67,10 @@ export default function AllPokemons() {
             console.log(JSON.parse(e.target.id).name)
             SelectedPokemons = SelectedPokemons.filter( elem => elem.id != JSON.parse(e.target.id).id)
             console.log(SelectedPokemons);
-          
+
            // setSelectedPokemons((prev) => [...prev].filter(elem => elem.id != JSON.parse(e.target.id).id))
-            // setMaxSelectedPokemons(maxSelectedPokemons - 1)
            
+
         }
     }
 
@@ -99,10 +82,10 @@ export default function AllPokemons() {
             </div>
 
 
-             <div id="pokedex">
+            <div id="pokedex">
 
                 {filterInput == "" && loading && [...allpokemons].map((pokemon, index) =>
-                    <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons}/>
+                    <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={selectedPokemons} />
                 )}
                 {/* 
                 //loading pokemons by filter */}
@@ -111,7 +94,7 @@ export default function AllPokemons() {
                     filterInput != "" && loading && allpokemons?.map((pokemon, index) => {
                         if (pokemon.name.includes(filterInput)) {
                             return (
-                                <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} />
+                                <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={selectedPokemons} />
                             )
                         }
                     })
@@ -127,4 +110,3 @@ export default function AllPokemons() {
         </div>
     )
 }
-export {SelectedPokemons};
