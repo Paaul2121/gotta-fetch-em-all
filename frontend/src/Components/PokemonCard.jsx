@@ -21,7 +21,7 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
         <g id="SVGRepo_iconCarrier">
         </g>
         </svg>
-        <p className="pokemonName"> {pokemon && pokemon.name[0].toUpperCase()+pokemon.name.slice(1,pokemon.name.length)} </p>
+        <p className="pokemonName"> {pokemon && pokemon.name[0].toUpperCase()+pokemon.name.slice(1)} </p>
         <img className="pokemonImage" src= {pokemon && `${pokemon.sprites.other.home.front_default}` }/>
       </div>
     </div>
@@ -32,25 +32,35 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
 
       <div className="img">
         <div className="circle">
+          <img id="firstCircle" src="https://freepngimg.com/thumb/pokemon/20708-7-pokeball-hd.png" />
         </div>
         <div className="circle" id="right">
+          <img id="secondCircle" src="https://freepngimg.com/thumb/pokemon/20708-7-pokeball-hd.png" />
         </div>
         <div className="circle" id="bottom">
+          <img id="thirdCircle" src="https://freepngimg.com/thumb/pokemon/20708-7-pokeball-hd.png" />
         </div>
       </div>
 
       <div className="front-content">
-        <small className="badge">Pasta</small>
-        <div className="description">
-          <div className="title">
-            <p className="title">
-              <strong>Spaguetti Bolognese</strong>
-            </p>
-            <svg fillRule="nonzero" height="15px" width="15px" viewBox="0,0,256,256" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g textAnchor="none" fontSize="none" fontWeight="none" fontFamily="none" strokeDashoffset="0" strokeDasharray="" strokeMiterlimit="10" strokeLinejoin="miter" strokeLinecap="butt" strokeWidth="1" stroke="none" fillRule="nonzero" fill="#20c997"><g transform="scale(8,8)"><path d="M25,27l-9,-6.75l-9,6.75v-23h18z"></path></g></g></svg>
-          </div>
-          <p className="card-footer">
-            30 Mins &nbsp; | &nbsp; 1 Serving
-          </p>
+        <div className="stats">
+          {pokemon.stats[0].stat.name.slice(0,1).toUpperCase() + pokemon.stats[0].stat.name.slice(1)}:
+          <div className="rightStats">{pokemon.stats[0].base_stat} p</div>
+        </div>
+        <div className="stats">{pokemon.stats[1].stat.name.slice(0,1).toUpperCase() + pokemon.stats[1].stat.name.slice(1)}:
+          <div className="rightStats">{pokemon.stats[1].base_stat} p</div>
+        </div>
+        <div className="stats">{pokemon.stats[2].stat.name.slice(0,1).toUpperCase() + pokemon.stats[2].stat.name.slice(1)}:
+          <div className="rightStats">{pokemon.stats[2].base_stat} p</div>
+        </div>
+        <div className="stats">{pokemon.stats[3].stat.name.slice(0,1).toUpperCase() + pokemon.stats[3].stat.name.slice(1)}:
+          <div className="rightStats">{pokemon.stats[3].base_stat} p</div>
+        </div>
+        <div className="stats">{pokemon.stats[4].stat.name.slice(0,1).toUpperCase() + pokemon.stats[4].stat.name.slice(1)}:
+          <div className="rightStats">{pokemon.stats[4].base_stat} p</div>
+        </div>
+        <div className="stats">{pokemon.stats[5].stat.name.slice(0,1).toUpperCase() + pokemon.stats[5].stat.name.slice(1)}:
+          <div className="rightStats">{pokemon.stats[5].base_stat} p</div>
         </div>
       </div>
     </div>
