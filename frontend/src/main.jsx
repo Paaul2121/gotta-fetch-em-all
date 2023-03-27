@@ -144,8 +144,6 @@ loader.load("./lobby/scene.gltf", function (gltf) {
 });
 const controls = new PointerLockControls(camera, renderer.domElement);
 document.addEventListener("keypress", () => {
-  if (keyboard['']) {
-    
-  }
+  
   controls.lock();
 });
