@@ -23,14 +23,20 @@ function App() {
   const backToMap = () =>{
     setWhichLocation([false,-1]);
   }
+  let mapHideEvent = ()=> {
+    document.querySelector("#mapLoc").style.visibility = "hidden";
+  }
 
   return (
     <div className="App">
-      <div id="mapLoc"> {locations && !enterLocation && [...locations.results].map((location,index) => <Locations key={index} id={index} location={location} locationHandler={locationHandler}/>)}</div>
+      <div id="mapLoc"> {locations && !enterLocation && [...locations.results].map((location, index) => <Locations key={index} id={index} location={location} locationHandler={locationHandler} />)}
+       <button className = "hideMap" onClick={mapHideEvent}>CLICK MEEEE</button>
+      </div>
        {locations && enterLocation && <ShowLocation location={locations} locationIndex={whichLocation} backToMap={backToMap}/>}
      <> <AllPokemons/> </>
      
-      <button className='mapBtn'>PRESS M</button>
+      <button className='mapBtn'>OPEN MAP</button>
+      <button className="pokedexBtn"> OPEN POKEDEX </button>
     </div>
   )
 }

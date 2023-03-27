@@ -40,7 +40,7 @@ export default function AllPokemons() {
 
 
     const hideEvent = (e) => {
-        // document.getElementById("pokedexMenu").style.visibility = "visible !important"
+        document.querySelector("#pokedexMenu").style.visibility = "hidden";
         console.log("working");
         setSelectedPokemons(SelectedPokemons)
     }

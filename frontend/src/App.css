@@ -16,12 +16,20 @@ body{
   z-index: 10;
   cursor: pointer;
 }
+#pokedexMenu{
+  visibility: hidden;
+}
 
 #mapLoc{
   background-image: url("../public/images/pokemonMap.jpg");
   height: 100vh;
   width: 100vw;
   visibility: hidden;
+}
+
+.pokedexBtn{
+  position: absolute;
+  bottom: 20px;
 }
 
 #pokedex{
@@ -35,6 +43,7 @@ body{
   overflow-x: hidden;
   display: grid;
   grid-template-columns:auto auto auto auto auto auto;
+  visibility: inherit;
 }
 
 #pokedexHeader{
@@ -504,8 +513,8 @@ input {
   text-align: left;
   top: -5%;
   position: relative;
-  width: 20vw;
-  height: 35px;
+  width: 100%;
+  height: fit-content;
   background-color: rgba(0,0,0,0.3);
   color: white;
   display: flex;
@@ -547,5 +556,8 @@ input {
   width: 20px;
   height: 20px;
   left: 14%;
+  position: absolute;
+}
+.hideMap{
   position: absolute;
 }
