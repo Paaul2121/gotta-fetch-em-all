@@ -81,7 +81,10 @@ loader.load("./lobby/scene.gltf", function (gltf) {
     }
 
     let mapLoc = document.querySelector("#mapLoc");
+  
     mapLoc.style.visibility = "hidden";
+    let pokedex = document.querySelector("#pokedexMenu");
+    pokedex.style.visibility = "hidden";
 
     const perpendicularDirection = new THREE.Vector3(
       -direction.z,
@@ -112,6 +115,9 @@ loader.load("./lobby/scene.gltf", function (gltf) {
     }
     if (keyboard["m"]) {
       mapLoc.style.visibility = "visible";
+    }
+    if (keyboard["i"]) {
+      pokedex.style.visibility = "visible";
     }
   }
 
@@ -144,6 +150,5 @@ loader.load("./lobby/scene.gltf", function (gltf) {
 });
 const controls = new PointerLockControls(camera, renderer.domElement);
 document.addEventListener("keypress", () => {
-  
   controls.lock();
 });

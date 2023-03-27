@@ -40,7 +40,8 @@ export default function AllPokemons() {
 
 
     const hideEvent = (e) => {
-        document.getElementById("pokedexMenu").style.visibility = "hidden"
+        // document.getElementById("pokedexMenu").style.visibility = "visible !important"
+        console.log("working");
         setSelectedPokemons(SelectedPokemons)
     }
 
@@ -52,7 +53,7 @@ export default function AllPokemons() {
 
         if (!e.target.nextSibling.classList.value.includes('selectedPokemon')) {
 
-            if (selectedPokemons.length < 3) {
+            if (SelectedPokemons.length < 3) {
                 // e.target.nextSibling.classList.includes('selectedPokemon')
                 //setSelectedPokemons(prev => [...prev, JSON.parse(e.target.id)]);
                  SelectedPokemons.push(JSON.parse(e.target.id));
