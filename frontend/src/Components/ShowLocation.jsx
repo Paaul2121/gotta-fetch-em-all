@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react"
-
+import {useAtom} from "jotai"
+import state from "./AtomStates"
+ 
 export default function ShowLocation(props) {
 
     const [enemyPokemon, setEnemyPokemon] = useState(null)
     const [startBattle, setStartBattle] = useState(false)
+    const [selectedPokemons,setSelectedPokemons] = useAtom(state.selectedPokemons)
+    console.log(selectedPokemons)
+    
 
     useEffect(() => {
         fetch(`${props.location.results[props.locationIndex.split("-")[1]].url}`)
