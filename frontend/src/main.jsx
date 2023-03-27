@@ -9,7 +9,18 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </React.StrictMode>
 );
 
-// ! scroll cube
+// ! start lobby
+
+let keyboard = {};
+ document.addEventListener("keydown", (event) => {
+    keyboard[event.key] = true;
+     keyboard[event.keyCode] = true;
+  });
+
+  document.addEventListener("keyup", (event) => {
+    keyboard[event.key] = false;
+     keyboard[event.keyCode] = false;
+  });
 import * as THREE from "https://cdn.skypack.dev/three@0.134.0/build/three.module.js";
 import { PointerLockControls } from "https://cdn.skypack.dev/three@0.134.0/examples/jsm/controls/PointerLockControls.js";
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.134.0/examples/jsm/loaders/GLTFLoader.js";
@@ -48,17 +59,9 @@ loader.load("./lobby/scene.gltf", function (gltf) {
   model.position.y = -10;
   scene.add(model);
   //wasd movement
-  const keyboard = {};
+   
   // Add event listeners for key presses and releases
-  document.addEventListener("keydown", (event) => {
-    keyboard[event.key] = true;
-     keyboard[event.keyCode] = true;
-  });
-
-  document.addEventListener("keyup", (event) => {
-    keyboard[event.key] = false;
-     keyboard[event.keyCode] = false;
-  });
+ 
 
   // Define a function to update the camera position based on the keyboard state
   function updateCameraPosition() {
@@ -140,4 +143,9 @@ loader.load("./lobby/scene.gltf", function (gltf) {
   animate();
 });
 const controls = new PointerLockControls(camera, renderer.domElement);
-document.addEventListener("keypress", () => controls.lock());
+document.addEventListener("keypress", () => {
+  if (keyboard['']) {
+    
+  }
+  controls.lock();
+});
