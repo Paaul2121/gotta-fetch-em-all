@@ -152,6 +152,8 @@ body{
   padding: 10px;
   margin-left: 10%;
 }
+
+
 #enemyPokemonStats{
   background-color: antiquewhite;
   width: 100%;
@@ -168,6 +170,7 @@ body{
   bottom: 3%;
   width: 100%;
 }
+
 
 
 
