@@ -21,7 +21,7 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
         <g id="SVGRepo_iconCarrier">
         </g>
         </svg>
-        <p className="pokemonName"> {pokemon && pokemon.name[0].toUpperCase()+pokemon.name.split(1,pokemon.name.length)} </p>
+        <p className="pokemonName"> {pokemon && pokemon.name[0].toUpperCase()+pokemon.name.slice(1,pokemon.name.length)} </p>
         <img className="pokemonImage" src= {pokemon && `${pokemon.sprites.other.home.front_default}` }/>
       </div>
     </div>
