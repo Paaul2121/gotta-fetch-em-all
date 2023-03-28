@@ -171,7 +171,7 @@ body{
 }
 
 
-#enemyPokemonStats{
+.battle-Pokemon-Stats{
   background-color: antiquewhite;
   width: 100%;
   height: 35px;
@@ -323,7 +323,10 @@ input {
 
 
   
-
+#dead{
+  width: 100%;
+  height: 100%;
+}
 
 .card {
   overflow: visible;
@@ -339,6 +342,8 @@ input {
   z-index: 1;
   position: absolute;
   top: 0px;
+
+
 }
 
 .content {
@@ -369,9 +374,18 @@ input {
   align-items: center;
   overflow: hidden;
   /* background: linear-gradient(90deg, transparent, rgb(0, 255, 255), rgb(0, 255, 255), rgb(0, 255, 255), rgb(0, 255, 255), transparent); */
-  
+ 
   /* background: linear-gradient(90deg, transparent, rgb(172, 252, 2),rgb(172, 252, 2), rgb(172, 252, 2), rgb(172, 252, 2), transparent); */
 
+}
+.backClone{
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: red;
 }
 
 .back::before {
