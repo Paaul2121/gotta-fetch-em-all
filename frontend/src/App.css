@@ -117,7 +117,9 @@ body{
 #battleGround{
   position: absolute;
   top:0px;
-  background-image: url("https://s3.amazonaws.com/prod-media.gameinformer.com/styles/full/s3/2018/12/02/6a13488e/trainer_battles_arena.jpg");
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-image: url("https://t4.ftcdn.net/jpg/01/38/81/53/360_F_138815333_nxZVxnha49hAHSHeyIzcfz58c8s8ZRHC.jpg");
   background-size: cover;
 
   width: 100vw;
@@ -127,9 +129,10 @@ body{
 #enemyPokemonHolder{
   width: 400px;
   height: 400px;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0);
   position: absolute;
   right: 10%;
+  bottom: -5%;
 }
 
 
@@ -181,7 +184,8 @@ body{
 
 #backToMapButton{
   position: absolute;
-  bottom: 3%;
+  bottom: 90%;
+  left: 45%;
   width: 100%;
 }
 
@@ -546,7 +550,7 @@ input {
 }
 
 .rightStats {
-  right: 47%;
+  right: 30px;
   position: absolute;
   height: 35px;
   color: white;
@@ -556,7 +560,7 @@ input {
 #attackPhoto {
   width: 20px;
   height: 20px;
-  left: 15%;
+  left: 47px;
   position: absolute;
   /* background: white; */
 
@@ -565,21 +569,21 @@ input {
 #defensePhoto {
   width: 20px;
   height: 20px;
-  left: 19%;
+  left: 55px;
   position: absolute;
 }
 
 #healthPhoto {
   width: 20px;
   height: 20px;
-  left: 8%;
+  left: 20px;
   position: absolute;
 }
 
 #speedPhoto {
   width: 20px;
   height: 20px;
-  left: 14%;
+  left: 40px;
   position: absolute;
 }
 .hideMap{
@@ -722,4 +726,57 @@ input {
   100% {
     transform: rotate(0);
   }
+}
+
+#friendlyAttackPhoto {
+  width: 20px;
+  height: 20px;
+  left: 23%;
+  position: absolute;
+  /* background: white; */
+
+}
+
+#friendlyDefensePhoto {
+  width: 20px;
+  height: 20px;
+  left: 28%;
+  position: absolute;
+}
+
+#friendlyHealthPhoto {
+  width: 20px;
+  height: 20px;
+  left: 9%;
+  position: absolute;
+}
+
+#friendlySpeedPhoto {
+  width: 20px;
+  height: 20px;
+  left: 20%;
+  position: absolute;
+}
+
+.friendlyRightStats {
+  right: 10%;
+  position: absolute;
+  height: 35px;
+  color: white;
+}
+
+.friendly_Pokemon_Fighter {
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0,0,0,0);
+  position: absolute;
+  left: 16%;
+  bottom: -5%;
+}
+
+#friendly_Pokemon_Fighter_Image {
+  scale: 0.7;
+  width: 100%;
+  position: relative;
+  top: -60px;
 }
