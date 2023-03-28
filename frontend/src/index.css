@@ -16,7 +16,5 @@ canvas{
 }
 .mapBtn{
       position: absolute;
-    top: 905px;
-    left: 720px;
-    border-radius: 50%;
+      bottom: 20px;
 }

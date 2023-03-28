@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons}) {
-
     return(
         <div  className="card">
 
@@ -11,7 +10,6 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
     {/* ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""} */}
 
       {/* event Taker */}
-  {/* <div className='cardEventTaker' id={JSON.stringify(pokemon)}></div>   */}
       <div className="back-content">
 
 

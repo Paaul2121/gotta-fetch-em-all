@@ -2,14 +2,25 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-
+import wall2 from "../public/images/wall2.jpg";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
 
-// ! scroll cube
+// ! start lobby
+
+let keyboard = {};
+document.addEventListener("keydown", (event) => {
+  keyboard[event.key] = true;
+  keyboard[event.keyCode] = true;
+});
+
+document.addEventListener("keyup", (event) => {
+  keyboard[event.key] = false;
+  keyboard[event.keyCode] = false;
+});
 import * as THREE from "https://cdn.skypack.dev/three@0.134.0/build/three.module.js";
 import { PointerLockControls } from "https://cdn.skypack.dev/three@0.134.0/examples/jsm/controls/PointerLockControls.js";
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.134.0/examples/jsm/loaders/GLTFLoader.js";
@@ -36,7 +47,9 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
 directionalLight.position.set(0, 3, 0);
 scene.add(directionalLight);
 
-renderer.setClearColor(new THREE.Color("grey"));
+// renderer.setClearColor(new THREE.Color("grey"));
+const textureLoader = new THREE.TextureLoader();
+scene.background = textureLoader.load(wall2);
 const loader = new GLTFLoader();
 let model;
 
@@ -46,43 +59,23 @@ loader.load("./lobby/scene.gltf", function (gltf) {
   model.position.y = -10;
   scene.add(model);
   //wasd movement
-  const keyboard = {};
-  // Add event listeners for key presses and releases
-  document.addEventListener("keydown", (event) => {
-    keyboard[event.key] = true;
-     keyboard[event.keyCode] = true;
-  });
-
-  document.addEventListener("keyup", (event) => {
-    keyboard[event.key] = false;
-     keyboard[event.keyCode] = false;
-  });
-
-  // Define a function to update the camera position based on the keyboard state
   function updateCameraPosition() {
     const speed = 0.1; // Set the speed of movement
-
-    // Get the direction the camera is facing
     const direction = camera.getWorldDirection(new THREE.Vector3());
-
-    // Move the camera forward or backward in the direction it's facing
-    if (keyboard["w"]) {
-      MapCoord();
-
-      camera.position.add(direction.multiplyScalar(speed));
-    } else if (keyboard["s"]) {
-      MapCoord();
-      camera.position.add(direction.multiplyScalar(-speed));
-    }
-
     let mapLoc = document.querySelector("#mapLoc");
-    mapLoc.style.visibility = "hidden";
-
     const perpendicularDirection = new THREE.Vector3(
       -direction.z,
       0,
       direction.x
     );
+  
+    if (keyboard["w"]) {
+      MapCoord();
+      camera.position.add(direction.multiplyScalar(speed));
+    } else if (keyboard["s"]) {
+      MapCoord();
+      camera.position.add(direction.multiplyScalar(-speed));
+    }
     if (keyboard["a"]) {
       MapCoord();
       camera.position.add(perpendicularDirection.multiplyScalar(-speed));
@@ -90,7 +83,6 @@ loader.load("./lobby/scene.gltf", function (gltf) {
       MapCoord();
       camera.position.add(perpendicularDirection.multiplyScalar(speed));
     }
-
     // Move the camera up or down
     if (keyboard[32]) {
       MapCoord();
@@ -105,14 +97,23 @@ loader.load("./lobby/scene.gltf", function (gltf) {
     if (keyboard["c"]) {
       console.log(camera.position.x, camera.position.y, camera.position.z);
     }
-    if (keyboard["m"]) {
-      mapLoc.style.visibility = "visible";
-    }
+    
   }
-
+  
+  let pokedex22 = document.querySelector("#pokedexMenu");
+  pokedex22.style.visibility="hidden";
   let Map = document.querySelector(".mapBtn");
   Map.style.visibility = "hidden";
-
+  Map.addEventListener("click", () => { 
+    mapLoc.style.visibility = "visible";
+    MapCoord();
+  });
+  let pokedexBTN = document.querySelector(".pokedexBtn");
+  pokedexBTN.style.visibility= "hidden";
+  pokedexBTN.addEventListener("click", () => {
+    pokedex22.style.visibility = "visible";
+    MapCoord();
+  });
   let MapCoord = () => {
     if (
       camera.position.x < 4.3 &&
@@ -120,12 +121,29 @@ loader.load("./lobby/scene.gltf", function (gltf) {
       camera.position.y > -4.7 &&
       camera.position.y < -3.9 &&
       camera.position.z < 5.19 &&
-      camera.position.z > 4.4
+      camera.position.z > 4.4 &&
+      Map.style.visibility == "hidden"
     ) {
       Map.style.visibility = "visible";
     } else {
       Map.style.visibility = "hidden";
     }
+
+    if (
+      camera.position.x < 11 &&
+      camera.position.x > 7.2 &&
+      camera.position.y > -5.70 &&
+      camera.position.y < -2.9 &&
+      camera.position.z < -0.8&&
+      camera.position.z > -4 &&
+      pokedex22.style.visibility === "hidden"
+    ) {
+      pokedexBTN.style.visibility = "visible";
+    } else {
+      pokedexBTN.style.visibility = "hidden";
+    }
+
+    
   };
   // Render the scene once the model has finished loading
   function animate() {
@@ -138,4 +156,6 @@ loader.load("./lobby/scene.gltf", function (gltf) {
   animate();
 });
 const controls = new PointerLockControls(camera, renderer.domElement);
-document.addEventListener("keypress", () => controls.lock());
+document.addEventListener("keypress", () => {
+  controls.lock();
+});

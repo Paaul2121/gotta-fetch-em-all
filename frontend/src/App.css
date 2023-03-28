@@ -16,12 +16,20 @@ body{
   z-index: 10;
   cursor: pointer;
 }
+#pokedexMenu{
+  visibility: hidden;
+}
 
 #mapLoc{
   background-image: url("../public/images/pokemonMap.jpg");
   height: 100vh;
   width: 100vw;
   visibility: hidden;
+}
+
+.pokedexBtn{
+  position: absolute;
+  bottom: 20px;
 }
 
 #pokedex{
@@ -35,6 +43,7 @@ body{
   overflow-x: hidden;
   display: grid;
   grid-template-columns:auto auto auto auto auto auto;
+  visibility: inherit;
 }
 
 #pokedexHeader{
@@ -101,8 +110,6 @@ body{
 
 #battleGround{
   position: absolute;
-  display: flex;
-  justify-content: center;
   top:0px;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -121,6 +128,7 @@ body{
   right: 10%;
   bottom: -5%;
 }
+
 
 #friendlyPokemonHolder{
   align-items: center;
@@ -143,6 +151,20 @@ body{
   font-size: x-large;
 }
 
+.friendlyPokemonCard {
+  overflow: visible;
+  width: 190px;
+  height: 220px;
+  padding: 10px;
+  margin-left: 10%;
+}
+
+.friendlyPokemonCard:hover .content {
+  transform: rotateY(180deg);
+
+}
+
+
 #enemyPokemonStats{
   background-color: antiquewhite;
   width: 100%;
@@ -160,6 +182,7 @@ body{
   left: 45%;
   width: 100%;
 }
+
 
 
 
@@ -240,6 +263,7 @@ body{
  left: 50%;
 }
 
+
 #loc-14{
   top: 35%;
  left: 49%;
@@ -300,14 +324,6 @@ input {
   overflow: visible;
   width: 190px;
   height: 254px;
-  padding: 10px;
-  margin-left: 10%;
-}
-
-.friendlyPokemonCard {
-  overflow: visible;
-  width: 190px;
-  height: 220px;
   padding: 10px;
   margin-left: 10%;
 }
@@ -375,11 +391,6 @@ input {
   justify-content: center;
   align-items: center;
   gap: 30px;
-}
-
-.friendlyPokemonCard:hover .content {
-  transform: rotateY(180deg);
-
 }
 
 .card:hover .content {
@@ -526,7 +537,7 @@ input {
   top: -5%;
   position: relative;
   width: 100%;
-  height: 35px;
+  height: fit-content;
   background-color: rgba(0,0,0,0.3);
   color: white;
   display: flex;
@@ -534,7 +545,7 @@ input {
 }
 
 .rightStats {
-  right: 18px;
+  right: 47%;
   position: absolute;
   height: 35px;
   color: white;
@@ -544,7 +555,7 @@ input {
 #attackPhoto {
   width: 20px;
   height: 20px;
-  left: 50px;
+  left: 15%;
   position: absolute;
   /* background: white; */
 
@@ -553,66 +564,23 @@ input {
 #defensePhoto {
   width: 20px;
   height: 20px;
-  left: 56px;
+  left: 19%;
   position: absolute;
 }
 
 #healthPhoto {
   width: 20px;
   height: 20px;
-  left: 20px;
+  left: 8%;
   position: absolute;
 }
 
 #speedPhoto {
   width: 20px;
   height: 20px;
-  left: 40px;
+  left: 14%;
   position: absolute;
 }
-
-#battleButton {
-  width: 100px;
-  height: 50px;
+.hideMap{
   position: absolute;
-}
-
-#friendlyPokemonImage {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-}
-
-.friendlyPokemonDiv {
-  top: 0;
-  left: 7%;
-  position: relative;
-  width: 200px;
-  height: 230px;
-  margin: 10px;
-  background-color: rgb(41, 39, 39);
-  border-radius: 5px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* gap: 30px; */
-}
-
-.friendlyPokemonDiv:hover {
-  color: yellow;
-  box-shadow: 0 15px 25px yellow;
-}
-
-#friendlyPokemonImage {
-  max-width: 100px;
-  max-height: 100px;
-  position: relative;
-}
-
-#friendlyPokemonName {
-  position: relative;
-  /* height: 30px; */
-  width: 100px; 
 }
