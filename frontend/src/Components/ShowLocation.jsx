@@ -51,7 +51,7 @@ export default function ShowLocation(props) {
 
             {enemyPokemon && startBattle &&
                 <div id="enemyPokemonHolder">
-                    <p id="enemyPokemonName" className="center">{enemyPokemon.name[0] + enemyPokemon.name.slice(1)}</p>
+                    <p id="enemyPokemonName" className="center"></p>
                     <img id="enemyPokemonImage" src={enemyPokemon.sprites.other.home.front_default} />
                     <div id="enemyPokemonStats">
                         <p>HP : {enemyPokemon.stats[0].base_stat}</p>

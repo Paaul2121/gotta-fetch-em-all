@@ -104,7 +104,9 @@ body{
   display: flex;
   justify-content: center;
   top:0px;
-  background-image: url("https://s3.amazonaws.com/prod-media.gameinformer.com/styles/full/s3/2018/12/02/6a13488e/trainer_battles_arena.jpg");
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-image: url("https://t4.ftcdn.net/jpg/01/38/81/53/360_F_138815333_nxZVxnha49hAHSHeyIzcfz58c8s8ZRHC.jpg");
   background-size: cover;
 
   width: 100vw;
@@ -114,9 +116,10 @@ body{
 #enemyPokemonHolder{
   width: 400px;
   height: 400px;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,0);
   position: absolute;
   right: 10%;
+  bottom: -5%;
 }
 
 #friendlyPokemonHolder{
@@ -153,7 +156,8 @@ body{
 
 #backToMapButton{
   position: absolute;
-  bottom: 3%;
+  bottom: 90%;
+  left: 45%;
   width: 100%;
 }
 
