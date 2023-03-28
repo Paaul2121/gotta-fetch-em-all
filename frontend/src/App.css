@@ -19,6 +19,9 @@ body{
 #pokedexMenu{
   visibility: hidden;
 }
+.mapBtn{
+  visibility: hidden;
+}
 
 #mapLoc{
   background-image: url("../public/images/pokemonMap.jpg");
@@ -30,6 +33,7 @@ body{
 .pokedexBtn{
   position: absolute;
   bottom: 20px;
+  visibility: hidden;
 }
 
 #pokedex{
