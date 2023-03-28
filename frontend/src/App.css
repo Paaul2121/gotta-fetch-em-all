@@ -21,6 +21,8 @@ body{
 }
 .mapBtn{
   visibility: hidden;
+  position: absolute;
+  bottom: 10%;
 }
 
 #mapLoc{
@@ -31,7 +33,8 @@ body{
 }
 
  .pokedexBtn{
-
+  position: absolute;
+  bottom: 10%;
   visibility: hidden;
 } 
 
@@ -581,6 +584,9 @@ input {
 }
 .hideMap{
   position: absolute;
+  top: 10px;
+  background-color: rgb(105, 213, 105) !important;
+  border: rgb(11, 11, 34) solid 3px !important;
 }
 
 
@@ -596,8 +602,6 @@ input {
 
 
 .mainButton {
-  position: absolute;
-  bottom: 10%;
   padding: 15px 45px;
   background: #da7127;
   font-size: 17px;
@@ -606,6 +610,8 @@ input {
   border: 3px solid #ddae8d;
   border-radius: 8px;
   filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, .2));
+
+  right: 45%;
 }
 
 .mainButton:hover {

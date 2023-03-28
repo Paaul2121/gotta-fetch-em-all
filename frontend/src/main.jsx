@@ -100,7 +100,6 @@ loader.load("./lobby/scene.gltf", function (gltf) {
       camera.position.y -= speed;
       MapCoord();
     }
-    console.log(everythinghidden)
     if (keyboard["c"]) {
       console.log(camera.position.x, camera.position.y, camera.position.z);
     }
