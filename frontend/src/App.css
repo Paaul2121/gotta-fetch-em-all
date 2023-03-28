@@ -545,7 +545,7 @@ input {
 }
 
 .rightStats {
-  right: 47%;
+  right: 30px;
   position: absolute;
   height: 35px;
   color: white;
@@ -555,7 +555,7 @@ input {
 #attackPhoto {
   width: 20px;
   height: 20px;
-  left: 15%;
+  left: 47px;
   position: absolute;
   /* background: white; */
 
@@ -564,23 +564,76 @@ input {
 #defensePhoto {
   width: 20px;
   height: 20px;
-  left: 19%;
+  left: 55px;
   position: absolute;
 }
 
 #healthPhoto {
   width: 20px;
   height: 20px;
-  left: 8%;
+  left: 20px;
   position: absolute;
 }
 
 #speedPhoto {
   width: 20px;
   height: 20px;
-  left: 14%;
+  left: 40px;
   position: absolute;
 }
 .hideMap{
   position: absolute;
+}
+
+#friendlyAttackPhoto {
+  width: 20px;
+  height: 20px;
+  left: 23%;
+  position: absolute;
+  /* background: white; */
+
+}
+
+#friendlyDefensePhoto {
+  width: 20px;
+  height: 20px;
+  left: 28%;
+  position: absolute;
+}
+
+#friendlyHealthPhoto {
+  width: 20px;
+  height: 20px;
+  left: 9%;
+  position: absolute;
+}
+
+#friendlySpeedPhoto {
+  width: 20px;
+  height: 20px;
+  left: 20%;
+  position: absolute;
+}
+
+.friendlyRightStats {
+  right: 10%;
+  position: absolute;
+  height: 35px;
+  color: white;
+}
+
+.friendly_Pokemon_Fighter {
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0,0,0,0);
+  position: absolute;
+  left: 16%;
+  bottom: -5%;
+}
+
+#friendly_Pokemon_Fighter_Image {
+  scale: 0.7;
+  width: 100%;
+  position: relative;
+  top: -60px;
 }

@@ -9,6 +9,7 @@ export default function ShowLocation(props) {
     const [enemyPokemon, setEnemyPokemon] = useState(null)
     const [startBattle, setStartBattle] = useState(false)
     const [selectedPokemons,setSelectedPokemons] = useAtom(state.selectedPokemons)
+    const [friendlySelectedPokemon, setFriendlySelectedPokemon] = useState(null);
     console.log(selectedPokemons)
     
 
@@ -36,6 +37,11 @@ export default function ShowLocation(props) {
 
     }, [])
 
+    const FriendlyPokemonCardEvent = (e) => {
+        setFriendlySelectedPokemon(JSON.parse(e.target.id));
+        console.log(JSON.parse(e.target.id));
+    }
+
     const pokemonSelect = () => {
         console.log("asdsad");
     }
@@ -51,7 +57,6 @@ export default function ShowLocation(props) {
 
             {enemyPokemon && startBattle &&
                 <div id="enemyPokemonHolder">
-                    <p id="enemyPokemonName" className="center"></p>
                     <img id="enemyPokemonImage" src={enemyPokemon.sprites.other.home.front_default} />
                     <div id="enemyPokemonStats">
                         <p>HP : {enemyPokemon.stats[0].base_stat}</p>
@@ -61,9 +66,17 @@ export default function ShowLocation(props) {
             }
 
             <div id="friendlyPokemonHolder">{[...selectedPokemons].map((pokemon) => 
-                <FriendlyPokemonCard pokemon={pokemon} />
+                <FriendlyPokemonCard FriendlyPokemonCardEvent={FriendlyPokemonCardEvent} pokemon={pokemon} />
             )}
             </div>
+            <div class="friendly_Pokemon_Fighter">
+                <img id="friendly_Pokemon_Fighter_Image" src={friendlySelectedPokemon && friendlySelectedPokemon.sprites.other.home.front_default} />
+                    <div id="friendly_Pokemon_Fighter_Stats">
+                        <p>HP</p>
+                        <p>ATTACK</p>
+                    </div>
+            </div>
+             
 
             <button id="battleButton" onClick={startBattleEvt}>START BATTLE</button>
             <div id="backToMapButton" className="center"> <button onClick={props.backToMap}>BACK</button> </div>

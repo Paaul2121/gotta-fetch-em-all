@@ -11,12 +11,7 @@ export default function AllPokemons() {
     const [filterInput, setFilterInput] = useState("")
     const [selectedPokemons, setSelectedPokemons] = useAtom(state.selectedPokemons)
 
-
     // const [selectedPokemons, setSelectPokemons] = useState([])
-
-
-
-
 
     useEffect(() => {
         let gatheringPokemons = [];
@@ -45,6 +40,7 @@ export default function AllPokemons() {
     const filterInputEvent = (e) => {
         setFilterInput(e.target.value);
     }
+
 
     const pokemonCardEvent = (e) => {
 
