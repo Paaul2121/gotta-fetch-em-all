@@ -802,7 +802,7 @@ input {
 .Win{
   height: 100vh;
   width: 100vw;
-  background-color: #e6dddd;
+  
   z-index: 2;
   /* background-image: url("../public/images/defead.jpg");
   background-size: "cover";
@@ -812,7 +812,7 @@ input {
 .Lose{
   height: 100vh;
   width: 100vw;
-  background-color: #832b2b;
+ 
   /* background-image: url("../public/images/defead.jpg");
   background-size: "cover";
   background-position: center; */
@@ -838,10 +838,12 @@ input {
 
 
 .box{
-  position: relative;
+  position: absolute;
   width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
+  top: 0%;
 }
 
 #fightVideo{
@@ -853,4 +855,26 @@ input {
   position: absolute;
   top: 10%;
 
+}
+
+.canvaVideo{
+  position: absolute;
+ top:0px;
+  width: 100vw;
+  height: 100vh;
+}
+
+#WinnerVideo{
+  outline: none;
+  position: absolute;
+  top:0px;
+  z-index: 10;
+  
+}
+
+#defeadVideo{
+  outline: none;
+  position: absolute;
+  top:0px;
+  z-index: 10;
 }

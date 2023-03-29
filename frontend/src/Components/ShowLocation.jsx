@@ -3,7 +3,10 @@ import {useAtom} from "jotai"
 import state from "./AtomStates"
 import WinOrLoseMSG from "./WinOrLoseMSG"
 import FriendlyPokemonCard from "./FriendlyPokemonCard"
-import FightIntro from "./FightIntro"
+import FightIntro from "./WinLoseFight/FightIntro"
+import WinnerVideo from "./WinLoseFight/WinnerVideo"
+import DefeadVideo from "./WinLoseFight/DefeadVideo"
+
 
  const bloodImg = ["https://o.remove.bg/downloads/ec99d8e8-3c55-492f-84f5-be5bf33079a1/png-transparent-blood-blood-miscellaneous-image-file-formats-text-thumbnail-removebg-preview.png","https://o.remove.bg/downloads/6433ad2a-572c-4c79-a329-2f1f49809f25/png-transparent-blood-blood-miscellaneous-hand-photography-removebg-preview.png","https://o.remove.bg/downloads/5a976ed4-737b-46b7-9990-6f83965fb212/png-transparent-splash-of-blood-bloodstain-pattern-analysis-blood-love-miscellaneous-text-removebg-preview.png","https://o.remove.bg/downloads/5c968aa5-f88f-4b16-8d51-97ebb2bd5ff9/png-transparent-blood-splash-blood-splash-of-red-blood-miscellaneous-ink-color-splash-removebg-preview.png"];
 
@@ -18,7 +21,10 @@ export default function ShowLocation(props) {
     const [friendlySelectedPokemon, setFriendlySelectedPokemon] = useState(null);
     const [winOrLose, setWinOrLose] = useState(null)
     const [deadEnemyPokemon, setDeadEnemyPokemon] = useState(false);
-    const [showFightVideo, setShowFightVideo] = useState(false)
+    const [showFightVideo, setShowFightVideo] = useState(false);
+    const [showWinnerVideo, setShowWinnerVideo] = useState(false);
+    const [showDefeadVideo, setShowDefeadVideo] = useState(false);
+
     
 
     useEffect(() => {
@@ -96,6 +102,7 @@ export default function ShowLocation(props) {
          if(dead_Pokemons_Number+1 == selectedPokemons.length){
             document.getElementById("backToMapButton").style.visibility = "visible";
             setWinOrLose(false)
+            setShowDefeadVideo(true)
          }
         }
         
@@ -103,6 +110,10 @@ export default function ShowLocation(props) {
             setWinOrLose(true);
             setDeadEnemyPokemon(true)
             document.getElementById("backToMapButton").style.visibility = "visible"
+            setShowWinnerVideo(true);
+            setInterval(() =>{
+                setShowWinnerVideo(false)
+            },10000)
         }
 
        
@@ -113,7 +124,7 @@ export default function ShowLocation(props) {
         setStartBattle(true)
         e.target.style.visibility = "hidden"
          document.getElementById("backToMapButton").style.visibility = "hidden"
-         
+
          setShowFightVideo(true)
          setInterval(()=>{
             setShowFightVideo(false)
@@ -161,6 +172,16 @@ export default function ShowLocation(props) {
 
              {showFightVideo && 
                 <FightIntro/>
+             }
+
+             {
+                showWinnerVideo &&
+                <WinnerVideo/>
+             }
+
+             {
+                showDefeadVideo &&
+                <DefeadVideo/>
              }
 
             <button id="battleButton" onClick={startBattleEvt}>START BATTLE</button>

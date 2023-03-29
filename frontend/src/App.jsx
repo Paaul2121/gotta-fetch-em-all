@@ -131,8 +131,8 @@ function App() {
         />
       )}
       <>
-        {" "}
-        <AllPokemons />{" "}
+        
+        <AllPokemons />
       </>
 
       {/* <button className='mapBtn mainButton'>OPEN MAP</button> */}
