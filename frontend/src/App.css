@@ -835,3 +835,22 @@ input {
   border-radius: 20px;
   z-index: 2;
 }
+
+
+.box{
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+#fightVideo{
+  outline: none;
+  position: absolute;
+}
+
+#canvaFight{
+  position: absolute;
+  top: 10%;
+
+}
