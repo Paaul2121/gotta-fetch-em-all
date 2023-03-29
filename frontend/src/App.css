@@ -127,12 +127,12 @@ body{
 }
 
 #enemyPokemonHolder{
-  width: 400px;
-  height: 400px;
+  width: 30%;
+  height: 30%;
   background-color: rgba(0,0,0,0);
   position: absolute;
   right: 10%;
-  bottom: -5%;
+  bottom: 18%;
 }
 
 
@@ -783,12 +783,12 @@ input {
 }
 
 .friendly_Pokemon_Fighter {
-  width: 400px;
-  height: 400px;
+  width: 30vw;
+  height: 30vh;
   background-color: rgba(0,0,0,0);
   position: absolute;
   left: 16%;
-  bottom: -5%;
+  bottom: 18%;
 }
 
 #friendly_Pokemon_Fighter_Image {
@@ -846,7 +846,7 @@ input {
 .dialogueBox{
   position: absolute;
   width: 100vw;
-  height: 540px;
+  height: 300px;
   /* background-image: url("../public/images/borderBack.png");
   background-repeat: no-repeat;
   background-size: 100% 100%; */
@@ -861,7 +861,7 @@ input {
   
 }
 .tutorialText{
-  font-size: 3.5em;
+  font-size: 2em;
   letter-spacing: 10px;
   color: #e6dddd;
   border-right: 5px solid;
