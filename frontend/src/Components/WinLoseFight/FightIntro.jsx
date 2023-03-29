@@ -31,7 +31,7 @@ export default function FightIntro(){
                 let r = frame.data[i];
                 let g = frame.data[i+1];
                 let b = frame.data[i+2];
-                if( r>=0 && r<= 60 && g>= 61 && g<= 230 && b>=0 && b<=50){
+                if( r>=0 && r<= 60 && g>= 61 && g<= 255 && b>=0 && b<=80){
                     frame.data[i+3] = 0
                 }
             }
@@ -49,7 +49,7 @@ export default function FightIntro(){
 
     return(
         <>
-        <video ref={videoRef} id="fightVideo" src="../../public/images/Fight.mp4" controls autoPlay width="700"></video>
+        <video ref={videoRef} id="fightVideo" src="../../public/images/Fight2.mp4" controls autoPlay width="700"></video>
         <div className="box" ref={boxRef}>
              <canvas id="canvaFight" ref={canvasRef} width="700"></canvas>
         </div>
