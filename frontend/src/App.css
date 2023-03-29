@@ -835,3 +835,76 @@ input {
   border-radius: 20px;
   z-index: 2;
 }
+
+.tutorial{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(24, 15, 15, 0.7);
+  position: absolute;
+  top: 0;
+}
+.dialogueBox{
+  position: absolute;
+  width: 100vw;
+  height: 540px;
+  /* background-image: url("../public/images/borderBack.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%; */
+ box-sizing: border-box;
+  --size : 90px;
+  padding: calc(var(--size)/2);
+  border-image: url("../public/images/borderBack.png") 100 100 round;
+  border-image-width: var(--size);
+  border-style: solid;
+ bottom: 5px;
+  left :0%;
+  
+}
+.tutorialText{
+  font-size: 3.5em;
+  letter-spacing: 10px;
+  color: #e6dddd;
+  border-right: 5px solid;
+border-color: #e6dddd;
+overflow: hidden;
+width: 100%;
+white-space: nowrap;
+animation: typing 2s steps(50),
+            cursor .4s step-end infinite alternate;
+}
+
+
+.textHolder{
+    top: 55px;
+    left: 120px;
+    position: absolute;
+    display: inline-block;
+}
+.tutorialPic{
+      position: absolute;
+    top: -881px;
+    left: -539px;
+    rotate: 60deg;
+}
+.tutorialPic2{
+      position: absolute;
+    top: -933px;
+    left: -480px;
+    scale: 0.4;
+}
+.nextEvent{
+      scale: 0.15;
+    position: absolute;
+    cursor: pointer;
+    right: -232px;
+    bottom: -170px;
+}
+
+
+
+@keyframes cursor{
+  50%{ border-color:transparent};
+}
+@keyframes typing{
+  from{width: 0}
+}

@@ -4,6 +4,7 @@ import './App.css'
 import ShowLocation from './Components/ShowLocation'
 import PokemonCard from './Components/PokemonCard'
 import AllPokemons from './Components/AllPokemons'
+import Tutorial from './Components/Tutorial'
 
 function App() {
   const [locations, setLocations] = useState(null)
@@ -28,9 +29,10 @@ function App() {
   }
 
   return (
+
     <div className="App">
+
       <div id="mapLoc">
-        {" "}
         {locations &&
           !enterLocation &&
           [...locations.results].map((location, index) => (
@@ -41,9 +43,7 @@ function App() {
               locationHandler={locationHandler}
             />
           ))}
-        {/* <button className="hideMap mainButton" onClick={mapHideEvent}>
-          HIDE MAP
-        </button> */}
+        
         <button onClick={mapHideEvent} className="hideMap mainButton">
           HIDE MAP
           <div className="icon-1">
@@ -122,6 +122,7 @@ function App() {
             </svg>
           </div>
         </button>
+        
       </div>
       {locations && enterLocation && (
         <ShowLocation
@@ -130,12 +131,12 @@ function App() {
           backToMap={backToMap}
         />
       )}
+
       <>
-        {" "}
-        <AllPokemons />{" "}
+        <AllPokemons />
       </>
 
-      {/* <button className='mapBtn mainButton'>OPEN MAP</button> */}
+      <Tutorial />
 
       <button className="mapBtn mainButton">
         OPEN MAP
