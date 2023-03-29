@@ -48,7 +48,8 @@ export default function ShowLocation(props) {
 
     const startBattleEvt = (e) => {
         setStartBattle(true)
-        e.target.style.visibility = "hidden"
+        e.target.style.visibility = "hidden";
+        document.getElementById("friendlyPokemonHolder").style.visibility = "hidden";
     }
 
 
@@ -57,11 +58,15 @@ export default function ShowLocation(props) {
 
             {enemyPokemon && startBattle &&
                 <div id="enemyPokemonHolder">
-                    <img id="enemyPokemonImage" src={enemyPokemon.sprites.other.home.front_default} />
-                    <div id="enemyPokemonStats">
-                        <p>HP : {enemyPokemon.stats[0].base_stat}</p>
-                        <p>ATTACK : {enemyPokemon.stats[1].base_stat}</p>
+                    <div id="enemyHealthBar">
+                        <div id="health">
+                        </div>
+                        <div id="lost">
+                        </div>
+                        <div id="heal">
                     </div>
+                </div> 
+                <img id="enemyPokemonImage" src={enemyPokemon.sprites.other.home.front_default} />
                 </div>
             }
 
@@ -69,15 +74,21 @@ export default function ShowLocation(props) {
                 <FriendlyPokemonCard FriendlyPokemonCardEvent={FriendlyPokemonCardEvent} pokemon={pokemon} />
             )}
             </div>
-            <div class="friendly_Pokemon_Fighter">
-                <img id="friendly_Pokemon_Fighter_Image" src={friendlySelectedPokemon && friendlySelectedPokemon.sprites.other.home.front_default} />
-                    <div id="friendly_Pokemon_Fighter_Stats">
-                        <p>HP</p>
-                        <p>ATTACK</p>
+            <div className="friendly_Pokemon_Fighter">
+              {
+              startBattle && 
+              <div id="friendlyHealthBar">
+                    <div id="health">
                     </div>
+                    <div id="lost">
+                    </div>
+                    <div id="heal">
+                    </div>
+                </div> 
+                }  
+                <img id="friendly_Pokemon_Fighter_Image" src={friendlySelectedPokemon && friendlySelectedPokemon.sprites.other.home.front_default} />
             </div>
              
-
             <button id="battleButton" onClick={startBattleEvt}>START BATTLE</button>
             <div id="backToMapButton" className="center"> <button onClick={props.backToMap}>BACK</button> </div>
         </div>

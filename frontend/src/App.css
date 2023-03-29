@@ -126,7 +126,7 @@ body{
   background-color: rgba(0,0,0,0);
   position: absolute;
   right: 10%;
-  bottom: -5%;
+  bottom: -15%;
 }
 
 
@@ -627,8 +627,8 @@ input {
   height: 400px;
   background-color: rgba(0,0,0,0);
   position: absolute;
-  left: 16%;
-  bottom: -5%;
+  left: 10%;
+  bottom: -15%;
 }
 
 #friendly_Pokemon_Fighter_Image {
@@ -636,4 +636,107 @@ input {
   width: 100%;
   position: relative;
   top: -60px;
+}
+
+
+
+
+/*     HEALTH BAR     */
+
+
+:root {
+  --barheight: 10px;
+  --initialhealth: 100%;
+  --damagedhealth: 40%;
+
+  --initialR: calc(255 / 50 * (100 - var(--initialhealth)));
+  --damagedR: calc(255 / 50 * (100 - var(--damagedhealth)));
+  --initialG: calc(255 / 100 * var(--initialhealth));
+  --damagedG: calc(255 / 100 * var(--damagedhealth));
+}
+
+/* @keyframes damage_taken {
+  0% { width: 0; opacity: 1; }
+  20% { width: 0; }
+  22.5% { width: calc(var(--initialhealth) - var(--damagedhealth)); }
+  35% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; width: calc(var(--initialhealth) - var(--damagedhealth)); }
+}
+
+@keyframes healing_taken {
+  0% { width: 0; opacity: 1; }
+  70% { width: 0; }
+  72.5% { width: calc(var(--initialhealth) - var(--damagedhealth)); }
+  85% { opacity: 1; }
+  90% { opacity: 0; }
+  100% { opacity: 0; width: calc(var(--initialhealth) - var(--damagedhealth)); }
+}
+
+@keyframes health {
+  0% { width: var(--initialhealth); background: rgba(var(--initialR), var(--initialG), 0, 1); }
+  20% { width: var(--initialhealth); background: rgba(var(--initialR), var(--initialG), 0, 1); }
+  22.5% { width: var(--damagedhealth); background: rgba(var(--damagedR), var(--damagedG), 0, 1); }
+  70% { width: var(--damagedhealth); background: rgba(var(--damagedR), var(--damagedG), 0, 1); }
+  72.5% { width: var(--initialhealth); background: rgba(var(--initialR), var(--initialG), 0, 1); }
+  100% { width: var(--initialhealth); background: rgba(var(--initialR), var(--initialG), 0, 1); }
+} */
+
+#friendlyHealthBar {
+  border: 1px solid #000;
+  height: var(--barheight);
+  position: absolute;
+  left: -30%;
+  top: 30%;
+  width: 300px;
+  background: red;
+
+  -webkit-transform: rotate(90deg); 
+  -moz-transform: rotate(90deg); 
+  -o-transform: rotate(90deg); 
+  -ms-transform: rotate(90deg); 
+  transform: rotate(90deg);
+}
+
+#enemyHealthBar {
+  border: 1px solid #000;
+  height: var(--barheight);
+  position: absolute;
+  left: 55%;
+  top: 30%;
+  width: 300px;
+  background: red;
+
+  -webkit-transform: rotate(90deg); 
+  -moz-transform: rotate(90deg); 
+  -o-transform: rotate(90deg); 
+  -ms-transform: rotate(90deg); 
+  transform: rotate(90deg);
+}
+
+#health {
+  /* animation: health 8s infinite; */
+  height: var(--barheight);
+  background: #080;
+  position: absolute;
+  box-shadow: 0 0 4px 0 #050;
+}
+
+#lost {
+  /* animation: damage_taken 8s infinite; */
+  position: absolute;
+  height: var(--barheight);
+  right: calc(100% - var(--initialhealth));
+  background: #f00;
+  box-shadow: 0 0 20px #f00, 0 0 5px #f00;
+  transition: width 0.5s;
+  opacity: 1;
+}
+
+#heal {
+  /* animation: healing_taken 8s infinite; */
+  position: absolute;
+  left: var(--damagedhealth);
+  height: var(--barheight);
+  background: rgba;
 }
