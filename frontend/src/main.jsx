@@ -52,68 +52,78 @@ const textureLoader = new THREE.TextureLoader();
 scene.background = textureLoader.load(wall2);
 const loader = new GLTFLoader();
 let model;
-
+ let everythinghidden;
 loader.load("./lobby/scene.gltf", function (gltf) {
   model = gltf.scene;
   model.position.x = 10;
   model.position.y = -10;
   scene.add(model);
-  //wasd movement
+  let mapLoc = document.querySelector("#mapLoc");
+  let pokedex22 = document.querySelector("#pokedexMenu");
+  let pokedexBTN = document.querySelector(".pokedexBtn");
+  let Map = document.querySelector(".mapBtn");
+  everythinghidden = true;
+  
+
   function updateCameraPosition() {
-    const speed = 0.1; // Set the speed of movement
+    //wasd movement
+    const speed = 0.1;
     const direction = camera.getWorldDirection(new THREE.Vector3());
-    let mapLoc = document.querySelector("#mapLoc");
+
     const perpendicularDirection = new THREE.Vector3(
       -direction.z,
       0,
       direction.x
     );
-  
-    if (keyboard["w"]) {
+
+    if (keyboard["w"] && everythinghidden) {
       MapCoord();
       camera.position.add(direction.multiplyScalar(speed));
-    } else if (keyboard["s"]) {
+    } else if (keyboard["s"] && everythinghidden) {
       MapCoord();
       camera.position.add(direction.multiplyScalar(-speed));
     }
-    if (keyboard["a"]) {
+    if (keyboard["a"] && everythinghidden) {
       MapCoord();
       camera.position.add(perpendicularDirection.multiplyScalar(-speed));
-    } else if (keyboard["d"]) {
+    } else if (keyboard["d"] && everythinghidden) {
       MapCoord();
       camera.position.add(perpendicularDirection.multiplyScalar(speed));
     }
     // Move the camera up or down
-    if (keyboard[32]) {
+    if (keyboard[32] && everythinghidden) {
       MapCoord();
       // Spacebar
       camera.position.y += speed;
-    } else if (keyboard[16]) {
+    } else if (keyboard[16] && everythinghidden) {
       // Shift
       camera.position.y -= speed;
       MapCoord();
     }
-
     if (keyboard["c"]) {
       console.log(camera.position.x, camera.position.y, camera.position.z);
     }
-    
   }
-  
-  let pokedex22 = document.querySelector("#pokedexMenu");
-  pokedex22.style.visibility="hidden";
-  let Map = document.querySelector(".mapBtn");
-  Map.style.visibility = "hidden";
   Map.addEventListener("click", () => { 
     mapLoc.style.visibility = "visible";
     MapCoord();
+    everythinghidden = false;
   });
-  let pokedexBTN = document.querySelector(".pokedexBtn");
-  pokedexBTN.style.visibility= "hidden";
   pokedexBTN.addEventListener("click", () => {
     pokedex22.style.visibility = "visible";
     MapCoord();
+    everythinghidden = false;
   });
+  let hideMap = document.querySelector(".hideMap");
+  let hidePokedex = document.querySelector("#hideBtn");
+  hideMap.addEventListener("click", () => {
+    everythinghidden = true;
+  });
+  hidePokedex.addEventListener("click", () => {
+    everythinghidden = true;
+  });
+
+  
   let MapCoord = () => {
     if (
       camera.position.x < 4.3 &&
@@ -123,6 +133,7 @@ loader.load("./lobby/scene.gltf", function (gltf) {
       camera.position.z < 5.19 &&
       camera.position.z > 4.4 &&
       Map.style.visibility == "hidden"
+      
     ) {
       Map.style.visibility = "visible";
     } else {
@@ -136,20 +147,19 @@ loader.load("./lobby/scene.gltf", function (gltf) {
       camera.position.y < -2.9 &&
       camera.position.z < -0.8&&
       camera.position.z > -4 &&
-      pokedex22.style.visibility === "hidden"
+      pokedexBTN.style.visibility == "hidden"
     ) {
       pokedexBTN.style.visibility = "visible";
     } else {
       pokedexBTN.style.visibility = "hidden";
     }
-
+    
     
   };
   // Render the scene once the model has finished loading
   function animate() {
     requestAnimationFrame(animate);
     updateCameraPosition();
-    // model.rotation.x += 0.005;
     renderer.render(scene, camera);
   }
 
@@ -157,5 +167,8 @@ loader.load("./lobby/scene.gltf", function (gltf) {
 });
 const controls = new PointerLockControls(camera, renderer.domElement);
 document.addEventListener("keypress", () => {
-  controls.lock();
+  if (everythinghidden) {
+    controls.lock();
+  } 
+    
 });
