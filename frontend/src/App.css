@@ -950,3 +950,28 @@ animation: typing 2s steps(50),
   top:0px;
   z-index: 10;
 }
+
+.undiscoveredPokemon{
+  filter:  brightness(0) ; 
+   top:25%;
+  scale: 38%;
+  }
+
+  .undiscoveredCardBack{
+    width: 100%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: rgb(180, 161, 161);
+  position: absolute;
+  }
+
+  .undiscoveredCardFront{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family:"fantasy";
+    font-size:x-large
+  }

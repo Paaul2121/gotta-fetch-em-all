@@ -17,6 +17,7 @@ export default function ShowLocation(props) {
     const [enemyPokemon, setEnemyPokemon] = useState(null)
     const [startBattle, setStartBattle] = useState(false)
     const [selectedPokemons,setSelectedPokemons] = useAtom(state.selectedPokemons)
+    const [playerExperience, setPlayerExperience] = useAtom(state.playerExperience)
     const [dead_Pokemons_Number, setDead_Pokemons_Number] = useState(0)
     const [friendlySelectedPokemon, setFriendlySelectedPokemon] = useState(null);
     const [winOrLose, setWinOrLose] = useState(null)
@@ -109,11 +110,15 @@ export default function ShowLocation(props) {
         if(enemyPokemon.stats[0].base_stat <= 0 ){
             setWinOrLose(true);
             setDeadEnemyPokemon(true)
-            document.getElementById("backToMapButton").style.visibility = "visible"
+            document.getElementById("backToMapButton").style.visibility = "visible";
+
             setShowWinnerVideo(true);
             setInterval(() =>{
                 setShowWinnerVideo(false)
-            },10000)
+            },10000);
+
+            setPlayerExperience(playerExperience + Math.floor(enemyPokemon.base_experience/2))
+            console.log(playerExperience)
         }
 
        
