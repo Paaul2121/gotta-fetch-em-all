@@ -84,7 +84,13 @@ export default function ShowLocation(props) {
         let friendlyP = {...friendlySelectedPokemon};
         enemyP.stats[0].base_stat = enemyP.stats[0].base_stat - Math.floor(((((2/5+2)* friendlyP.stats[1].base_stat *100/ enemyP.stats[2].base_stat )/50)+2) * Math.floor( Math.random() * (255 - 217) + 217)/255)
         setEnemyPokemon(enemyP);
-        
+        if(friendlySelectedPokemon.stats[0].base_stat <= 0){
+            document.getElementById("friendlyHealthRemained").style.width = `${0}%`
+            document.getElementById("friendlyShadowHP").style.width=`${0}%`;
+        }else{
+            friendlyCurrentHP-=( Math.floor(((((2/5+2)* enemyP.stats[1].base_stat *100/ friendlyP.stats[2].base_stat )/50)+2) * Math.floor( Math.random() * (255 - 217) + 217)/255) / fullHPfriendly) * 100;
+            document.getElementById("friendlyHealthRemained").style.width = `${friendlyCurrentHP}%`
+        }
         enemyCurrentHP-=( Math.floor(((((2/5+2)* enemyP.stats[1].base_stat *100/ enemyP.stats[2].base_stat )/50)+2) * Math.floor( Math.random() * (255 - 217) + 217)/255) / fullHPenemy) * 100;
         document.getElementById("enemyHealthRemained").style.width = `${enemyCurrentHP}%`
         if(document.getElementById("enemyShadowHP")){
@@ -93,11 +99,14 @@ export default function ShowLocation(props) {
             clearInterval(main);
             },700)
         }
-
+        document.getElementById("attack").style.visibility="hidden"
         setTimeout(() => {
+            if(friendlySelectedPokemon.stats[0].base_stat <= 0){
+                document.getElementById("attack").style.visibility="hidden";
+            }else{
+                  document.getElementById("attack").style.visibility="visible";
+            }
             friendlyP.stats[0].base_stat =  friendlyP.stats[0].base_stat - Math.floor(((((2/5+2)* enemyP.stats[1].base_stat *100/ friendlyP.stats[2].base_stat )/50)+2) * Math.floor( Math.random() * (255 - 217) + 217)/255);
-        friendlyCurrentHP-=( Math.floor(((((2/5+2)* enemyP.stats[1].base_stat *100/ friendlyP.stats[2].base_stat )/50)+2) * Math.floor( Math.random() * (255 - 217) + 217)/255) / fullHPfriendly) * 100;
-        document.getElementById("friendlyHealthRemained").style.width = `${friendlyCurrentHP}%`
         if(document.getElementById("friendlyShadowHP")){
 
           let main= setInterval(()=>{
@@ -105,7 +114,7 @@ export default function ShowLocation(props) {
             clearInterval(main);
         },700)
     }
-        }, 2000)
+        }, 500)
         
             
        
@@ -123,6 +132,7 @@ export default function ShowLocation(props) {
 
 
         if(friendlySelectedPokemon.stats[0].base_stat <= 0){
+            document.getElementById("attack").style.visibility="hidden";
             friendlySelectedPokemon.stats[0].base_stat = 0
             document.getElementById("friendlyPokemonHolder").style.visibility="visible";
           //  e.target.style.backgroundImage = `url(${Math.floor(Math.random() * bloodImg.length)})`

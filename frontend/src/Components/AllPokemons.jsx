@@ -18,7 +18,7 @@ export default function AllPokemons() {
     useEffect(() => {
         let gatheringPokemons = [];
 
-        for (let i = 1; i <30; i++) {
+        for (let i = 1; i <500; i++) {
             fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
                 .then(res => res.json())
                 .then(res => gatheringPokemons.push(res))
