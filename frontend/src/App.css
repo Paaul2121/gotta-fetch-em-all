@@ -607,7 +607,7 @@ input {
   position: absolute;
   top: 10px;
   background-color: rgb(105, 213, 105) !important;
-  border: rgb(11, 11, 34) solid 3px !important;
+  border: rgb(11, 11, 34) solid 3px !important; 
 }
 
 
@@ -842,65 +842,6 @@ input {
   100% { width: var(--initialhealth); background: rgba(var(--initialR), var(--initialG), 0, 1); }
 } */
 
-#friendlyHealthBar {
-  border: 1px solid #000;
-  height: var(--barheight);
-  position: absolute;
-  left: -30%;
-  top: 30%;
-  width: 300px;
-  background: red;
-
-  -webkit-transform: rotate(90deg); 
-  -moz-transform: rotate(90deg); 
-  -o-transform: rotate(90deg); 
-  -ms-transform: rotate(90deg); 
-  transform: rotate(90deg);
-}
-
-#enemyHealthBar {
-  border: 1px solid #000;
-  height: var(--barheight);
-  position: absolute;
-  left: 55%;
-  top: 30%;
-  width: 300px;
-  background: red;
-
-  -webkit-transform: rotate(90deg); 
-  -moz-transform: rotate(90deg); 
-  -o-transform: rotate(90deg); 
-  -ms-transform: rotate(90deg); 
-  transform: rotate(90deg);
-}
-
-#health {
-  /* animation: health 8s infinite; */
-  height: var(--barheight);
-  background: #080;
-  position: absolute;
-  box-shadow: 0 0 4px 0 #050;
-}
-
-#lost {
-  /* animation: damage_taken 8s infinite; */
-  position: absolute;
-  height: var(--barheight);
-  right: calc(100% - var(--initialhealth));
-  background: #f00;
-  box-shadow: 0 0 20px #f00, 0 0 5px #f00;
-  transition: width 0.5s;
-  opacity: 1;
-}
-
-#heal {
-  /* animation: healing_taken 8s infinite; */
-  position: absolute;
-  left: var(--damagedhealth);
-  height: var(--barheight);
-  background: rgba;
-}
-
 .Win{
   height: 100vh;
   width: 100vw;
@@ -936,4 +877,128 @@ input {
   font-size: x-large;
   border-radius: 20px;
   z-index: 2;
+}
+
+#friendlyPokemonHealth {
+  height: 10px;
+  width: 300px;
+  position: absolute;
+  left: -30%;
+  bottom:70%;
+  transform: rotate(-90deg);
+  background-color: transparent;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 2px solid;
+}
+
+#friendlyHealthRemained{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgb(52, 237, 9);
+  transition: 1s;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+#friendlyShadowHP{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgb(246, 95, 7);
+  transition: 1s;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+
+#enemyPokemonHealth {
+  height: 10px;
+  width: 300px;
+  position: absolute;
+  right: -30%;
+  bottom:70%;
+  transform: rotate(-90deg);
+  background-color: transparent;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  
+  /* background: rgb(52,237,9);
+background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, rgba(255,51,0,1) 93%); */
+  border: 2px solid;
+}
+
+#enemyHealthRemained{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgb(52, 237, 9);
+  transition: 1s;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+/* background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, rgba(255,51,0,1) 93%);  */
+}
+
+#enemyShadowHP{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgb(246, 95, 7);
+  transition: 1s;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.mapButtons {
+  --hover-bg: rgba(105, 213, 105, 0.6);
+  --hover-text: black;
+  color: black;
+  border: 1px solid var(--bg);
+  font-size: 0px;
+  border-radius: 4px;
+  /* padding: 0.8em 2em; */
+  background: transparent;
+  width: 50px;
+  height: 50px;
+  transition: 0.2s;
+  border-radius: 50%;
+  background-image: url("https://purepng.com/public/uploads/large/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-17015278258617bdog.png");
+  background-size: cover;
+}
+
+.mapButtons:hover {
+  color: var(--hover-text);
+  font-size: 15px;
+  width: 200px;
+  border-radius: 0;
+  transform: translate(-0.25rem,-0.25rem);
+  background: rgba(120, 220, 120, 0.8);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+  border: 0px;
+  z-index: 2;
+}
+
+.mapButtons:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+
+#locationBattlePhoto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
