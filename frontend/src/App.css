@@ -846,7 +846,7 @@ input {
 .dialogueBox{
   position: absolute;
   width: 100vw;
-  height: 540px;
+  height: 30vh; 
   /* background-image: url("../public/images/borderBack.png");
   background-repeat: no-repeat;
   background-size: 100% 100%; */
@@ -861,7 +861,7 @@ input {
   
 }
 .tutorialText{
-  font-size: 3.5em;
+  font-size: 4vh;
   letter-spacing: 10px;
   color: #e6dddd;
   border-right: 5px solid;
