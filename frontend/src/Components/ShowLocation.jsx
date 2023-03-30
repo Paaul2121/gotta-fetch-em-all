@@ -7,11 +7,13 @@ import FightIntro from "./WinLoseFight/FightIntro"
 import WinnerVideo from "./WinLoseFight/WinnerVideo"
 import DefeadVideo from "./WinLoseFight/DefeadVideo"
 
+import FriendlyHealthBar from "./PokemonsHealthBars/FriendlyHealthBar"
+import EnemyHealth from "./PokemonsHealthBars/EnemyHealth"
 
  const bloodImg = ["https://o.remove.bg/downloads/ec99d8e8-3c55-492f-84f5-be5bf33079a1/png-transparent-blood-blood-miscellaneous-image-file-formats-text-thumbnail-removebg-preview.png","https://o.remove.bg/downloads/6433ad2a-572c-4c79-a329-2f1f49809f25/png-transparent-blood-blood-miscellaneous-hand-photography-removebg-preview.png","https://o.remove.bg/downloads/5a976ed4-737b-46b7-9990-6f83965fb212/png-transparent-splash-of-blood-bloodstain-pattern-analysis-blood-love-miscellaneous-text-removebg-preview.png","https://o.remove.bg/downloads/5c968aa5-f88f-4b16-8d51-97ebb2bd5ff9/png-transparent-blood-splash-blood-splash-of-red-blood-miscellaneous-ink-color-splash-removebg-preview.png"];
 
 
-
+let friendlyCurrentHP,fullHPfriendly, enemyCurrentHP, fullHPenemy;;
 export default function ShowLocation(props) {
 
     const [enemyPokemon, setEnemyPokemon] = useState(null)
@@ -52,23 +54,61 @@ export default function ShowLocation(props) {
 
     }, [])
  
+
     const FriendlyPokemonCardEvent = (e) => {
             setFriendlySelectedPokemon(JSON.parse(e.target.id));
             console.log(JSON.parse(e.target.id));
-             if(document.getElementById("attack")) document.getElementById("attack").style.visibility = "visible"
-    }
+            if(document.getElementById("attack")){
+                //  document.getElementById("friendlyHealthRemained").style.width = "100%"
+            document.getElementById("attack").style.visibility = "visible"
+        }
+    //   testHP= JSON.parse(e.target.id).stats[0].base_stat;
+    friendlyCurrentHP=100;
+    fullHPfriendly= JSON.parse(e.target.id).stats[0].base_stat;
+    
+    document.getElementById("friendlyHealthRemained").style.width = `${friendlyCurrentHP}%`
+    document.getElementById("friendlyShadowHP").style.width = `${friendlyCurrentHP}%`
+
+                
+      }
+    
+
+   
 
     const attackEvent = (e) => {
 
         ////////DEALING THE DAMAGE
-
+        
         // e.target.style.visibility = "hidden"
         let enemyP = {...enemyPokemon};
         let friendlyP = {...friendlySelectedPokemon};
         enemyP.stats[0].base_stat = enemyP.stats[0].base_stat - Math.floor(((((2/5+2)* friendlyP.stats[1].base_stat *100/ enemyP.stats[2].base_stat )/50)+2) * Math.floor( Math.random() * (255 - 217) + 217)/255)
         setEnemyPokemon(enemyP);
+        
+        enemyCurrentHP-=( Math.floor(((((2/5+2)* enemyP.stats[1].base_stat *100/ enemyP.stats[2].base_stat )/50)+2) * Math.floor( Math.random() * (255 - 217) + 217)/255) / fullHPenemy) * 100;
+        document.getElementById("enemyHealthRemained").style.width = `${enemyCurrentHP}%`
+        if(document.getElementById("enemyShadowHP")){
+            let main= setInterval(()=>{
+            document.getElementById("enemyShadowHP").style.width=`${enemyCurrentHP}%`;
+            clearInterval(main);
+            },700)
+        }
 
-        friendlyP.stats[0].base_stat =  friendlyP.stats[0].base_stat - Math.floor(((((2/5+2)* enemyP.stats[1].base_stat *100/ friendlyP.stats[2].base_stat )/50)+2) * Math.floor( Math.random() * (255 - 217) + 217)/255);
+        setTimeout(() => {
+            friendlyP.stats[0].base_stat =  friendlyP.stats[0].base_stat - Math.floor(((((2/5+2)* enemyP.stats[1].base_stat *100/ friendlyP.stats[2].base_stat )/50)+2) * Math.floor( Math.random() * (255 - 217) + 217)/255);
+        friendlyCurrentHP-=( Math.floor(((((2/5+2)* enemyP.stats[1].base_stat *100/ friendlyP.stats[2].base_stat )/50)+2) * Math.floor( Math.random() * (255 - 217) + 217)/255) / fullHPfriendly) * 100;
+        document.getElementById("friendlyHealthRemained").style.width = `${friendlyCurrentHP}%`
+        if(document.getElementById("friendlyShadowHP")){
+
+          let main= setInterval(()=>{
+            document.getElementById("friendlyShadowHP").style.width=`${friendlyCurrentHP}%`;
+            clearInterval(main);
+        },700)
+    }
+        }, 2000)
+        
+            
+       
         console.log("done")
         setFriendlySelectedPokemon(friendlyP)
 
@@ -84,6 +124,7 @@ export default function ShowLocation(props) {
 
         if(friendlySelectedPokemon.stats[0].base_stat <= 0){
             friendlySelectedPokemon.stats[0].base_stat = 0
+            document.getElementById("friendlyPokemonHolder").style.visibility="visible";
           //  e.target.style.backgroundImage = `url(${Math.floor(Math.random() * bloodImg.length)})`
           let deadPokemon =  document.getElementById(JSON.stringify([...selectedPokemons].reduce( (acc,cur) => cur.name == friendlySelectedPokemon.name? cur : acc, selectedPokemons[0])))
           deadPokemon.style.backgroundImage = `url(${bloodImg[Math.floor(Math.random() * bloodImg.length)]})`
@@ -127,6 +168,8 @@ export default function ShowLocation(props) {
     const startBattleEvt = (e) => {
         if(friendlySelectedPokemon){
         setStartBattle(true)
+        e.target.style.visibility = "hidden";
+        document.getElementById("friendlyPokemonHolder").style.visibility = "hidden";
         e.target.style.visibility = "hidden"
          document.getElementById("backToMapButton").style.visibility = "hidden"
 
@@ -134,6 +177,11 @@ export default function ShowLocation(props) {
          setInterval(()=>{
             setShowFightVideo(false)
          },2300);
+         enemyCurrentHP=100;
+         fullHPenemy= enemyPokemon.stats[0].base_stat;
+         
+         document.getElementById("enemyHealthRemained").style.width = `${enemyCurrentHP}%`
+         document.getElementById("enemyShadowHP").style.width = `${enemyCurrentHP}%`
         }
     }
 
@@ -147,28 +195,36 @@ export default function ShowLocation(props) {
             {enemyPokemon && startBattle && dead_Pokemons_Number != selectedPokemons.length && !deadEnemyPokemon &&
             <>
                 <div id="enemyPokemonHolder">
-                    <img id="enemyPokemonImage" src={enemyPokemon.sprites.other.home.front_default} />
-                    <div id="enemyPokemonStats" className="battle-Pokemon-Stats">
-                        <p>HP : {enemyPokemon.stats[0].base_stat}</p>
-                        <p>ATTACK : {enemyPokemon.stats[1].base_stat}</p>
-                    </div>
+                <p style={{position: "absolute",left:"50%", top:"-20%", color:"white" }} >{enemyPokemon.stats[0].base_stat}</p>
+                <img id="enemyPokemonImage" src={enemyPokemon.sprites.other.home.front_default} />
+                <EnemyHealth/>
                 </div>
-                <button id="attack" onClick={attackEvent} >ATTACK</button>
+                <button id="attack" onClick={attackEvent} >ATTACK</button>  
              </>
             }
 
-            { dead_Pokemons_Number != selectedPokemons.length && !deadEnemyPokemon && <div id="friendlyPokemonHolder">{[...selectedPokemons].map((pokemon) => 
+            { 
+                dead_Pokemons_Number != selectedPokemons.length && !deadEnemyPokemon &&
+                 <div id="friendlyPokemonHolder">
+                    {[...selectedPokemons].map((pokemon) => 
                 <FriendlyPokemonCard FriendlyPokemonCardEvent={FriendlyPokemonCardEvent} pokemon={pokemon} />
-            )}
-            </div>}
+                )}
+        
+             </div>     
+            }
 
-           {friendlySelectedPokemon && dead_Pokemons_Number != selectedPokemons.length && !deadEnemyPokemon && <div className="friendly_Pokemon_Fighter">
+           {friendlySelectedPokemon && dead_Pokemons_Number != selectedPokemons.length && !deadEnemyPokemon &&
+            <div className="friendly_Pokemon_Fighter">
+                <p style={{position: "absolute",left:"50%", top:"-20%", color:"white" }} >{friendlySelectedPokemon.stats[0].base_stat}</p>
                 <img id="friendly_Pokemon_Fighter_Image" src={friendlySelectedPokemon && friendlySelectedPokemon.sprites.other.home.front_default} />
-                    <div id="friendly_Pokemon_Fighter_Stats" className="battle-Pokemon-Stats">
+                <FriendlyHealthBar />
+            </div>
+            }
+                    {/* <div id="friendly_Pokemon_Fighter_Stats" className="battle-Pokemon-Stats">
                     <p>HP : {friendlySelectedPokemon.stats[0].base_stat}</p>
                         <p>ATTACK : {friendlySelectedPokemon.stats[1].base_stat}</p>
                     </div>
-            </div>}
+            </div>} */}
 
             
              {dead_Pokemons_Number == selectedPokemons.length || deadEnemyPokemon ?
@@ -191,6 +247,6 @@ export default function ShowLocation(props) {
 
             <button id="battleButton" onClick={startBattleEvt}>START BATTLE</button>
             <div id="backToMapButton" className="center"> <button onClick={props.backToMap}>BACK</button> </div>
-        </div>
+         </div>
     )
-}
+            }

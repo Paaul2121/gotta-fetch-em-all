@@ -133,6 +133,7 @@ body{
   position: absolute;
   right: 10%;
   bottom: 18%;
+  /* bottom: -15%; */
 }
 
 
@@ -607,7 +608,7 @@ input {
   position: absolute;
   top: 10px;
   background-color: rgb(105, 213, 105) !important;
-  border: rgb(11, 11, 34) solid 3px !important;
+  border: rgb(11, 11, 34) solid 3px !important; 
 }
 
 
@@ -789,6 +790,8 @@ input {
   position: absolute;
   left: 16%;
   bottom: 18%;
+  /* left: 10%;
+  bottom: -15%; */
 }
 
 #friendly_Pokemon_Fighter_Image {
@@ -798,6 +801,49 @@ input {
   top: -60px;
 }
 
+
+
+
+/*     HEALTH BAR     */
+
+
+:root {
+  --barheight: 10px;
+  --initialhealth: 100%;
+  --damagedhealth: 40%;
+
+  --initialR: calc(255 / 50 * (100 - var(--initialhealth)));
+  --damagedR: calc(255 / 50 * (100 - var(--damagedhealth)));
+  --initialG: calc(255 / 100 * var(--initialhealth));
+  --damagedG: calc(255 / 100 * var(--damagedhealth));
+}
+
+/* @keyframes damage_taken {
+  0% { width: 0; opacity: 1; }
+  20% { width: 0; }
+  22.5% { width: calc(var(--initialhealth) - var(--damagedhealth)); }
+  35% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; width: calc(var(--initialhealth) - var(--damagedhealth)); }
+}
+
+@keyframes healing_taken {
+  0% { width: 0; opacity: 1; }
+  70% { width: 0; }
+  72.5% { width: calc(var(--initialhealth) - var(--damagedhealth)); }
+  85% { opacity: 1; }
+  90% { opacity: 0; }
+  100% { opacity: 0; width: calc(var(--initialhealth) - var(--damagedhealth)); }
+}
+
+@keyframes health {
+  0% { width: var(--initialhealth); background: rgba(var(--initialR), var(--initialG), 0, 1); }
+  20% { width: var(--initialhealth); background: rgba(var(--initialR), var(--initialG), 0, 1); }
+  22.5% { width: var(--damagedhealth); background: rgba(var(--damagedR), var(--damagedG), 0, 1); }
+  70% { width: var(--damagedhealth); background: rgba(var(--damagedR), var(--damagedG), 0, 1); }
+  72.5% { width: var(--initialhealth); background: rgba(var(--initialR), var(--initialG), 0, 1); }
+  100% { width: var(--initialhealth); background: rgba(var(--initialR), var(--initialG), 0, 1); }
+} */
 
 .Win{
   height: 100vh;
@@ -975,3 +1021,126 @@ animation: typing 2s steps(50),
     font-family:"fantasy";
     font-size:x-large
   }
+#friendlyPokemonHealth {
+  height: 10px;
+  width: 300px;
+  position: absolute;
+  left: -30%;
+  bottom:70%;
+  transform: rotate(-90deg);
+  background-color: transparent;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 2px solid;
+}
+
+#friendlyHealthRemained{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgb(52, 237, 9);
+  transition: 1s;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+#friendlyShadowHP{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgb(246, 95, 7);
+  transition: 1s;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+
+#enemyPokemonHealth {
+  height: 10px;
+  width: 300px;
+  position: absolute;
+  right: -30%;
+  bottom:70%;
+  transform: rotate(-90deg);
+  background-color: transparent;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  
+  /* background: rgb(52,237,9);
+background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, rgba(255,51,0,1) 93%); */
+  border: 2px solid;
+}
+
+#enemyHealthRemained{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgb(52, 237, 9);
+  transition: 1s;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+/* background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, rgba(255,51,0,1) 93%);  */
+}
+
+#enemyShadowHP{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgb(246, 95, 7);
+  transition: 1s;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.mapButtons {
+  --hover-bg: rgba(105, 213, 105, 0.6);
+  --hover-text: black;
+  color: black;
+  border: 1px solid var(--bg);
+  font-size: 0px;
+  border-radius: 4px;
+  /* padding: 0.8em 2em; */
+  background: transparent;
+  width: 50px;
+  height: 50px;
+  transition: 0.2s;
+  border-radius: 50%;
+  background-image: url("https://purepng.com/public/uploads/large/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-17015278258617bdog.png");
+  background-size: cover;
+}
+
+.mapButtons:hover {
+  color: var(--hover-text);
+  font-size: 15px;
+  width: 200px;
+  border-radius: 0;
+  transform: translate(-0.25rem,-0.25rem);
+  background: rgba(120, 220, 120, 0.8);
+  box-shadow: 0.25rem 0.25rem var(--bg);
+  border: 0px;
+  z-index: 2;
+}
+
+.mapButtons:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+
+#locationBattlePhoto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
