@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react"
 
-export default function WinnerVideo(){
+export default function WinnerVideo(props){
 
     const boxRef = useRef(null);
     const videoRef = useRef(null);
@@ -53,6 +53,7 @@ export default function WinnerVideo(){
         <div className="box" ref={boxRef}>
              <canvas className="canvaVideo" ref={canvasRef} width="700"></canvas>
         </div>
+        <div className="winOrLoseMessage">CONGRATULATIONS! YOU GAINED {props.xp} XP !!!!</div>
         </>
     )
 }

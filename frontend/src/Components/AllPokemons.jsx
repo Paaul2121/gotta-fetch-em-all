@@ -18,7 +18,7 @@ export default function AllPokemons() {
     useEffect(() => {
         let gatheringPokemons = [];
 
-        for (let i = 1; i <500; i++) {
+        for (let i = 1; i <20; i++) {
             fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
                 .then(res => res.json())
                 .then(res => gatheringPokemons.push(res))
@@ -76,6 +76,7 @@ export default function AllPokemons() {
                 <button onClick={hideEvent} id="hideBtn">Hide</button>
                 <div><label>Search for a Pokemon </label><input className="input" name="text" type="text" onInput={filterInputEvent} /></div>
                 <button onClick={showUnlokedPokemons}>SHOW UNLOKED</button>
+                <div id="showXpInPokedex" >XP : {playerExperience-40}</div>
             </div>
 
 
@@ -84,8 +85,6 @@ export default function AllPokemons() {
                 {filterInput == "" && loading && !showUnloked && [...allpokemons].map((pokemon, index) =>
                     <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} />
                 )}
-                {/* 
-                //loading pokemons by filter */}
 
                 {
                     filterInput != "" && loading && !showUnloked && allpokemons?.map((pokemon, index) => {
@@ -98,9 +97,6 @@ export default function AllPokemons() {
 
                 }
 
-                {/* //  loading screen */}
-
-                {/* {!loading && <div id="loadingScreen"><img src="../../public/images/B6F.gif" /></div>} */}
 
                 {showUnloked && [...allpokemons].map((pokemon,index) =>{
                     if(playerExperience >= pokemon.base_experience){

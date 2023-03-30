@@ -53,6 +53,7 @@ export default function FightIntro(){
         <div className="box" ref={boxRef}>
              <canvas class="canvaVideo" ref={canvasRef} width="700"></canvas>
         </div>
+        <div className="winOrLoseMessage">BETTER LUCK NEXT TIME!</div>
         </>
     )
 }

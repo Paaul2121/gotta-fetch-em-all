@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import {useAtom} from "jotai"
 import state from "./AtomStates"
-import WinOrLoseMSG from "./WinOrLoseMSG"
 import FriendlyPokemonCard from "./FriendlyPokemonCard"
 import FightIntro from "./WinLoseFight/FightIntro"
 import WinnerVideo from "./WinLoseFight/WinnerVideo"
@@ -62,7 +61,6 @@ export default function ShowLocation(props) {
                 //  document.getElementById("friendlyHealthRemained").style.width = "100%"
             document.getElementById("attack").style.visibility = "visible"
         }
-    //   testHP= JSON.parse(e.target.id).stats[0].base_stat;
     friendlyCurrentHP=100;
     fullHPfriendly= JSON.parse(e.target.id).stats[0].base_stat;
     
@@ -121,12 +119,6 @@ export default function ShowLocation(props) {
         console.log("done")
         setFriendlySelectedPokemon(friendlyP)
 
-        // setTimeout(() =>{
-        //     friendlyP.stats[0].base_stat =  friendlyP.stats[0].base_stat - Math.floor(((((2/5+2)* enemyP.stats[1].base_stat *60/ friendlyP.stats[2].base_stat )/50)+2) * Math.floor( Math.random() * (255 - 217) + 217)/255);
-        //     console.log("done")
-        //     setFriendlySelectedPokemon(friendlyP)
-        //     e.target.style.visibility = "visible"
-        // },1500)
 
         ////////DEALING THE DAMAGE
 
@@ -153,20 +145,17 @@ export default function ShowLocation(props) {
          console.log(dead_Pokemons_Number)
          if(dead_Pokemons_Number+1 == selectedPokemons.length){
             document.getElementById("backToMapButton").style.visibility = "visible";
-            setWinOrLose(false)
             setShowDefeadVideo(true)
+           
          }
         }
         
         if(enemyPokemon.stats[0].base_stat <= 0 ){
-            setWinOrLose(true);
             setDeadEnemyPokemon(true)
             document.getElementById("backToMapButton").style.visibility = "visible";
 
             setShowWinnerVideo(true);
-            setInterval(() =>{
-                setShowWinnerVideo(false)
-            },10000);
+            
 
             setPlayerExperience(playerExperience + Math.floor(enemyPokemon.base_experience/2))
             console.log(playerExperience)
@@ -230,16 +219,6 @@ export default function ShowLocation(props) {
                 <FriendlyHealthBar />
             </div>
             }
-                    {/* <div id="friendly_Pokemon_Fighter_Stats" className="battle-Pokemon-Stats">
-                    <p>HP : {friendlySelectedPokemon.stats[0].base_stat}</p>
-                        <p>ATTACK : {friendlySelectedPokemon.stats[1].base_stat}</p>
-                    </div>
-            </div>} */}
-
-            
-             {dead_Pokemons_Number == selectedPokemons.length || deadEnemyPokemon ?
-             <WinOrLoseMSG classWinOrLose={winOrLose? "Win" : "Lose"}/> : null
-             }
 
              {showFightVideo && 
                 <FightIntro/>
@@ -247,7 +226,7 @@ export default function ShowLocation(props) {
 
              {
                 showWinnerVideo &&
-                <WinnerVideo/>
+                <WinnerVideo xp={enemyPokemon.base_experience/2}/>
              }
 
              {

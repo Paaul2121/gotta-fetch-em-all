@@ -1144,3 +1144,27 @@ background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, 
   width: 100vw;
   height: 100vh;
 }
+
+#showXpInPokedex{
+  position: absolute;
+  left:3%;
+  font-family: "fantasy";
+  font-size: larger;
+  border-radius: 10px;
+  border: white 2px solid;
+  padding: 10px;
+}
+
+.winOrLoseMessage{
+  font-size: xx-large;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  letter-spacing: 3px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 10%;
+  background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(145,213,154,0.5) 53%, rgba(58,180,74,0.5) 95%);  /* backdrop-filter: blur(20px); */
+  padding: 20px;
+}
