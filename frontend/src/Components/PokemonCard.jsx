@@ -74,7 +74,7 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
       { playerExperience < pokemon.base_experience && 
       <div className="undiscoveredCardFront">
         <p>UNLOCKS AT </p>
-        <p style={{fontSize:55, fontFamily:"fantasy"}}> {pokemon.base_experience} XP</p>
+        <p style={{fontSize:55, fontFamily:"fantasy"}}> {pokemon.base_experience-40} XP</p>
       </div>
       }
 

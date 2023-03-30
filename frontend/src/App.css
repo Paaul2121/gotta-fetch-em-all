@@ -1026,7 +1026,7 @@ animation: typing 2s steps(50),
   width: 300px;
   position: absolute;
   left: -30%;
-  bottom:70%;
+  bottom:10%;
   transform: rotate(-90deg);
   background-color: transparent;
   border-top-left-radius: 5px;
@@ -1065,7 +1065,7 @@ animation: typing 2s steps(50),
   width: 300px;
   position: absolute;
   right: -30%;
-  bottom:70%;
+  bottom:10%;
   transform: rotate(-90deg);
   background-color: transparent;
   border-top-left-radius: 5px;
