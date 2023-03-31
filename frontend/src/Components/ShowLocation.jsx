@@ -100,14 +100,13 @@ export default function ShowLocation(props) {
             }, 700)
         }
 
-        document.getElementById("attack").style.visibility = "hidden"
+         document.getElementById("attack").style.visibility = "hidden"
         setTimeout(() => {
             setTimeout(() => {
                 if (friendlySelectedPokemon.stats[0].base_stat <= 0) {
                     document.getElementById("attack").style.visibility = "hidden";
-                } else {
-                    document.getElementById("attack").style.visibility = "visible";
-                }
+                }  
+
                 friendlyP.stats[0].base_stat = friendlyP.stats[0].base_stat - Math.floor(((((2 / 5 + 2) * enemyP.stats[1].base_stat * 100 / friendlyP.stats[2].base_stat) / 50) + 2) * Math.floor(Math.random() * (255 - 217) + 217) / 255);
                 if (document.getElementById("friendlyShadowHP")) {
     
@@ -116,6 +115,7 @@ export default function ShowLocation(props) {
                         // clearInterval(main);
                     }, 700)
                 }
+                document.getElementById("attack").style.visibility = "visible";
             }, 500)
         }, 1500)
         
