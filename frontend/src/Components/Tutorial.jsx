@@ -87,7 +87,7 @@ export default function Tutorial() {
                         )}
                         
                     </div>
-                    <button onClick={skipper}> SKIP</button>
+                    <button id="skipButton" onClick={skipper}> SKIP</button>
           <img className="nextEvent" src="../public/images/nextButton.png" onClick={nextPannelEvent}></img>
         </div>
       </div>}

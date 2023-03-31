@@ -67,13 +67,7 @@ export default function ShowLocation(props) {
 
         document.getElementById("friendlyHealthRemained").style.width = `${friendlyCurrentHP}%`
         document.getElementById("friendlyShadowHP").style.width = `${friendlyCurrentHP}%`
-
-
-
     }
-
-
-
 
     const attackEvent = (e) => {
 
@@ -88,14 +82,15 @@ export default function ShowLocation(props) {
         document.getElementById("enemyHealthRemained").style.width = `${enemyCurrentHP}%`
         setEnemyPokemon(enemyP);
 
-
-
         if (friendlySelectedPokemon.stats[0].base_stat <= 0) {
             document.getElementById("friendlyHealthRemained").style.width = `${0}%`
             document.getElementById("friendlyShadowHP").style.width = `${0}%`;
         } else {
-            friendlyCurrentHP -= (Math.floor(((((2 / 5 + 2) * enemyP.stats[1].base_stat * 100 / friendlyP.stats[2].base_stat) / 50) + 2) * Math.floor(Math.random() * (255 - 217) + 217) / 255) / fullHPfriendly) * 100;
-            document.getElementById("friendlyHealthRemained").style.width = `${friendlyCurrentHP}%`
+
+            setTimeout(() => {
+                friendlyCurrentHP -= (Math.floor(((((2 / 5 + 2) * enemyP.stats[1].base_stat * 100 / friendlyP.stats[2].base_stat) / 50) + 2) * Math.floor(Math.random() * (255 - 217) + 217) / 255) / fullHPfriendly) * 100;
+                document.getElementById("friendlyHealthRemained").style.width = `${friendlyCurrentHP}%`
+            }, 1500)
         }
 
         if (document.getElementById("enemyShadowHP")) {
@@ -107,20 +102,23 @@ export default function ShowLocation(props) {
 
         document.getElementById("attack").style.visibility = "hidden"
         setTimeout(() => {
-            if (friendlySelectedPokemon.stats[0].base_stat <= 0) {
-                document.getElementById("attack").style.visibility = "hidden";
-            } else {
-                document.getElementById("attack").style.visibility = "visible";
-            }
-            friendlyP.stats[0].base_stat = friendlyP.stats[0].base_stat - Math.floor(((((2 / 5 + 2) * enemyP.stats[1].base_stat * 100 / friendlyP.stats[2].base_stat) / 50) + 2) * Math.floor(Math.random() * (255 - 217) + 217) / 255);
-            if (document.getElementById("friendlyShadowHP")) {
-
-                let main = setTimeout(() => {
-                    document.getElementById("friendlyShadowHP").style.width = `${friendlyCurrentHP}%`;
-                    // clearInterval(main);
-                }, 700)
-            }
-        }, 500)
+            setTimeout(() => {
+                if (friendlySelectedPokemon.stats[0].base_stat <= 0) {
+                    document.getElementById("attack").style.visibility = "hidden";
+                } else {
+                    document.getElementById("attack").style.visibility = "visible";
+                }
+                friendlyP.stats[0].base_stat = friendlyP.stats[0].base_stat - Math.floor(((((2 / 5 + 2) * enemyP.stats[1].base_stat * 100 / friendlyP.stats[2].base_stat) / 50) + 2) * Math.floor(Math.random() * (255 - 217) + 217) / 255);
+                if (document.getElementById("friendlyShadowHP")) {
+    
+                    let main = setTimeout(() => {
+                        document.getElementById("friendlyShadowHP").style.width = `${friendlyCurrentHP}%`;
+                        // clearInterval(main);
+                    }, 700)
+                }
+            }, 500)
+        }, 1500)
+        
 
         setFriendlySelectedPokemon(friendlyP)
 
@@ -238,7 +236,7 @@ export default function ShowLocation(props) {
             }
 
             <button id="battleButton" onClick={startBattleEvt}>START BATTLE</button>
-            <div id="backToMapButton" className="center"> <button onClick={props.backToMap}>BACK</button> </div>
+            <div id="backToMapButton" className="center"> <button id="backToMapBtn" onClick={props.backToMap}>BACK</button> </div>
         </div>
     )
 }

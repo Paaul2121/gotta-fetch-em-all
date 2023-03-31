@@ -75,7 +75,7 @@ export default function AllPokemons() {
             <div id="pokedexHeader">
                 <button onClick={hideEvent} id="hideBtn">Hide</button>
                 <div><label>Search for a Pokemon </label><input className="input" name="text" type="text" onInput={filterInputEvent} /></div>
-                <button onClick={showUnlokedPokemons}>SHOW UNLOKED</button>
+                <button id="showUnlockedButton" onClick={showUnlokedPokemons}>SHOW UNLOCKED</button>
                 <div id="showXpInPokedex" >XP : {playerExperience-40}</div>
             </div>
 
