@@ -3,6 +3,7 @@ import PokemonCard from "./PokemonCard";
 import { useAtom } from "jotai"
 import state from "./AtomStates";
 
+
 let SelectedPokemons = [];
 
 export default function AllPokemons() {
@@ -10,13 +11,14 @@ export default function AllPokemons() {
     const [loading, setLoadig] = useState(false)
     const [filterInput, setFilterInput] = useState("")
     const [selectedPokemons, setSelectedPokemons] = useAtom(state.selectedPokemons)
+    const [showUnloked, setShowUnloked] = useState(false);
+    const [playerExperience, setPlayerExperience] = useAtom(state.playerExperience)
 
-    // const [selectedPokemons, setSelectPokemons] = useState([])
 
     useEffect(() => {
         let gatheringPokemons = [];
 
-        for (let i = 1; i <30; i++) {
+        for (let i = 1; i <20; i++) {
             fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
                 .then(res => res.json())
                 .then(res => gatheringPokemons.push(res))
@@ -50,17 +52,22 @@ export default function AllPokemons() {
                 SelectedPokemons.push(JSON.parse(e.target.id));
                 e.target.nextSibling.classList.add("selectedPokemon")
                 console.log(SelectedPokemons)
-                //setSelectedPokemons(prev => [...prev, JSON.parse(e.target.id)]);
             }
         } else {
             SelectedPokemons = SelectedPokemons.filter( elem => elem.id != JSON.parse(e.target.id).id)
             e.target.nextSibling.classList.remove("selectedPokemon")
             console.log(SelectedPokemons);
-
-           // setSelectedPokemons((prev) => [...prev].filter(elem => elem.id != JSON.parse(e.target.id).id))
-           
-
         }
+    }
+
+    const showUnlokedPokemons = (e) =>{
+        showUnloked? (
+            e.target.innerText = "SHOW UNLOKED",
+            setShowUnloked(false)
+            ):(
+            e.target.innerText = "SHOW ALL",
+            setShowUnloked(true)
+        )
     }
 
     return (
@@ -68,19 +75,19 @@ export default function AllPokemons() {
             <div id="pokedexHeader">
                 <button onClick={hideEvent} id="hideBtn">Hide</button>
                 <div><label>Search for a Pokemon </label><input className="input" name="text" type="text" onInput={filterInputEvent} /></div>
+                <button onClick={showUnlokedPokemons}>SHOW UNLOKED</button>
+                <div id="showXpInPokedex" >XP : {playerExperience-40}</div>
             </div>
 
 
             <div id="pokedex">
 
-                {filterInput == "" && loading && [...allpokemons].map((pokemon, index) =>
+                {filterInput == "" && loading && !showUnloked && [...allpokemons].map((pokemon, index) =>
                     <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} />
                 )}
-                {/* 
-                //loading pokemons by filter */}
 
                 {
-                    filterInput != "" && loading && allpokemons?.map((pokemon, index) => {
+                    filterInput != "" && loading && !showUnloked && allpokemons?.map((pokemon, index) => {
                         if (pokemon.name.includes(filterInput)) {
                             return (
                                 <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} />
@@ -90,9 +97,14 @@ export default function AllPokemons() {
 
                 }
 
-                {/* //  loading screen */}
 
-                {!loading && <div id="loadingScreen"><img src="../../public/images/B6F.gif" /></div>}
+                {showUnloked && [...allpokemons].map((pokemon,index) =>{
+                    if(playerExperience >= pokemon.base_experience){
+                        return (
+                            <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} />
+                        )
+                    }
+                })}
 
 
             </div>

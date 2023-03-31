@@ -4,11 +4,17 @@ import './App.css'
 import ShowLocation from './Components/ShowLocation'
 import PokemonCard from './Components/PokemonCard'
 import AllPokemons from './Components/AllPokemons'
+import Tutorial from './Components/Tutorial'
 
 function App() {
   const [locations, setLocations] = useState(null)
   const [[enterLocation, whichLocation], setWhichLocation] = useState([false,-1])
+  const [loading, setLoading] = useState(false)
 
+
+  setTimeout(() =>{
+    setLoading(true)
+  },1000)
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/location")
@@ -28,9 +34,10 @@ function App() {
   }
 
   return (
+
     <div className="App">
+
       <div id="mapLoc">
-        {" "}
         {locations &&
           !enterLocation &&
           [...locations.results].map((location, index) => (
@@ -41,9 +48,7 @@ function App() {
               locationHandler={locationHandler}
             />
           ))}
-        {/* <button className="hideMap mainButton" onClick={mapHideEvent}>
-          HIDE MAP
-        </button> */}
+        
         <button onClick={mapHideEvent} className="hideMap mainButton">
           HIDE MAP
           <div className="icon-1">
@@ -122,6 +127,7 @@ function App() {
             </svg>
           </div>
         </button>
+        
       </div>
       {locations && enterLocation && (
         <ShowLocation
@@ -130,12 +136,15 @@ function App() {
           backToMap={backToMap}
         />
       )}
+
       <>
-        {" "}
-        <AllPokemons />{" "}
+        <AllPokemons />
       </>
 
-      {/* <button className='mapBtn mainButton'>OPEN MAP</button> */}
+      {loading &&  <Tutorial />}
+       {!loading && <div style={{position:"absolute", top:'0px', width:"100vw", height:"100vh", backgroundImage:"url(../public/images/B6f.gif)", backgroundSize:"cover", backgroundPosition:"center", zIndex:"4" }}></div>
+} 
+
 
       <button className="mapBtn mainButton">
         OPEN MAP

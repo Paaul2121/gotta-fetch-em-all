@@ -1,12 +1,17 @@
 import { useState } from "react";
+import {useAtom} from "jotai"
+import state from "./AtomStates"
 
 export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons}) {
+
+  const [playerExperience,setPlayerExperience] = useAtom(state.playerExperience)
+
     return(
         <div  className="card">
 
   <div className="content">
-          <div onClick={pokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}></div>  
-    <div className={`back ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""}`} >
+         { playerExperience >= pokemon.base_experience && <div onClick={pokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}></div>  }
+    <div className={`${playerExperience >= pokemon.base_experience? "back" : "undiscoveredCardBack"} ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""}`} >
     {/* ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""} */}
 
       {/* event Taker */}
@@ -19,14 +24,18 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
         <g id="SVGRepo_iconCarrier">
         </g>
         </svg>
-        <p className="pokemonName"> {pokemon && pokemon.name[0].toUpperCase()+pokemon.name.slice(1)} </p>
-        <img className="pokemonImage" src= {pokemon && `${pokemon.sprites.other.home.front_default}` }/>
+       { playerExperience >= pokemon.base_experience && <p className="pokemonName"> {pokemon && pokemon.name[0].toUpperCase()+pokemon.name.slice(1)} </p>}
+        <img  className={`${playerExperience >= pokemon.base_experience ? "pokemonImage" : "undiscoveredPokemon"}`} src= {pokemon && `${pokemon.sprites.other.home.front_default}`}/>
       </div>
     </div>
     <div className="front">
       
- {/* event Taker */}
- {/* <div onClick={pokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}></div>   */}
+
+
+    
+
+      { playerExperience >= pokemon.base_experience && <div className="front-content">
+
 
       <div className="img">
         <div className="circle">
@@ -40,7 +49,6 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
         </div>
       </div>
 
-      <div className="front-content">
         <div className="stats">
           {pokemon.stats[0].stat.name.slice(0,1).toUpperCase() + pokemon.stats[0].stat.name.slice(1)}
           <img id="healthPhoto" src="https://cdn2.iconfinder.com/data/icons/game-1-2/512/Healing_potion_2-512.png" />
@@ -61,7 +69,16 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
           <img id="speedPhoto" src="https://cdn0.iconfinder.com/data/icons/crime-and-protection-icons/110/Lightning-512.png" />
           <div className="rightStats">{pokemon.stats[5].base_stat} p</div>
         </div>
+      </div>}
+
+      { playerExperience < pokemon.base_experience && 
+      <div className="undiscoveredCardFront">
+        <p>UNLOCKS AT </p>
+        <p style={{fontSize:55, fontFamily:"fantasy"}}> {pokemon.base_experience-40} XP</p>
       </div>
+      }
+
+
     </div>
   </div>
 </div>
