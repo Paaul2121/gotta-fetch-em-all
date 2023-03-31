@@ -171,9 +171,8 @@ export default function ShowLocation(props) {
             {enemyPokemon && startBattle && dead_Pokemons_Number != selectedPokemons.length && !deadEnemyPokemon &&
             <>
                 <div id="enemyPokemonHolder">
-                <p style={{position: "absolute",left:"50%", top:"-20%", color:"white" }} >{enemyPokemon.stats[0].base_stat}</p>
                 <img id="enemyPokemonImage" src={enemyPokemon.sprites.other.home.front_default} />
-                <EnemyHealth/>
+                <EnemyHealth enemyPokemon={enemyPokemon}/>
                 </div>
                 <button id="attack" onClick={attackEvent} >ATTACK</button>  
              </>
@@ -191,9 +190,8 @@ export default function ShowLocation(props) {
 
            {friendlySelectedPokemon && dead_Pokemons_Number != selectedPokemons.length && !deadEnemyPokemon &&
             <div className="friendly_Pokemon_Fighter">
-                <p style={{position: "absolute",left:"50%", top:"-20%", color:"white" }} >{friendlySelectedPokemon.stats[0].base_stat}</p>
                 <img id="friendly_Pokemon_Fighter_Image" src={friendlySelectedPokemon && friendlySelectedPokemon.sprites.other.home.front_default} />
-                <FriendlyHealthBar />
+                <FriendlyHealthBar friendlySelectedPokemon={friendlySelectedPokemon}/>
             </div>
             }
              
