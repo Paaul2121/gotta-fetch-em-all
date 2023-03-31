@@ -19,9 +19,9 @@ export default function Locations(props) {
     return (
         <div>
            {selectedPokemons &&  <button className="locBtn mapButton mapButtons" onClick={ selectedPokemons.length != 0 ? props.locationHandler : warningEvent} id={"loc-" + props.id}>
-            {locationFirstName + "-" + locationSecondName}
-            
+            {locationFirstName + "-" + locationSecondName}  
             </button>}
+            
            { warningVisible && <div className="warningMissingPokemon"><p>!!! SELECT A POKEMON BEFORE ENTERING A BATTLE !!!</p></div>}
         </div>
         )
