@@ -19,6 +19,7 @@ export default function ShowLocation(props) {
     const [startBattle, setStartBattle] = useState(false)
     const [selectedPokemons, setSelectedPokemons] = useAtom(state.selectedPokemons)
     const [playerExperience, setPlayerExperience] = useAtom(state.playerExperience)
+    const [playerMoney, setPlayerMoney] = useAtom(state.playerMoney)
     const [dead_Pokemons_Number, setDead_Pokemons_Number] = useState(0)
     const [friendlySelectedPokemon, setFriendlySelectedPokemon] = useState(null);
     const [winOrLose, setWinOrLose] = useState(null)
@@ -161,7 +162,7 @@ export default function ShowLocation(props) {
 
 
             setPlayerExperience(playerExperience + Math.floor(enemyPokemon.base_experience / 2))
-            console.log(playerExperience)
+            setPlayerMoney(playerMoney + Math.floor(enemyPokemon.base_experience / 2))
         }
 
 

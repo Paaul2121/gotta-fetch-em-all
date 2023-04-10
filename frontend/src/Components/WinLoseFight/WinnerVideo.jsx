@@ -53,7 +53,7 @@ export default function WinnerVideo(props){
         <div className="box" ref={boxRef}>
              <canvas className="canvaVideo" ref={canvasRef} width="700"></canvas>
         </div>
-        <div className="winOrLoseMessage">CONGRATULATIONS! YOU GAINED {props.xp} XP !!!!</div>
+        <div className="winOrLoseMessage">CONGRATULATIONS! YOU GAINED {props.xp} XP AND MONEY !!!!</div>
         </>
     )
 }

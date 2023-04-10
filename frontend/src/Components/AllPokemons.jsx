@@ -13,6 +13,7 @@ export default function AllPokemons() {
     const [selectedPokemons, setSelectedPokemons] = useAtom(state.selectedPokemons)
     const [showUnloked, setShowUnloked] = useState(false);
     const [playerExperience, setPlayerExperience] = useAtom(state.playerExperience)
+    const [playerMoney, setPlayerMoney] = useAtom(state.playerMoney)
 
 
     useEffect(() => {
@@ -34,7 +35,7 @@ export default function AllPokemons() {
 
 
     const hideEvent = (e) => {
-        document.querySelector("#pokedexMenu").style.visibility = "hidden";
+        document.querySelector(".allPkm").style.visibility = "hidden";
         console.log("working");
         setSelectedPokemons(SelectedPokemons)
     }
@@ -71,16 +72,17 @@ export default function AllPokemons() {
     }
 
     return (
-        <div id="pokedexMenu">
-            <div id="pokedexHeader">
+        <div className="pokedexMenu allPkm">
+            <div className="pokedexHeader">
                 <button onClick={hideEvent} id="hideBtn">Hide</button>
                 <div><label>Search for a Pokemon </label><input className="input" name="text" type="text" onInput={filterInputEvent} /></div>
                 <button id="showUnlockedButton" onClick={showUnlokedPokemons}>SHOW UNLOCKED</button>
-                <div id="showXpInPokedex" >XP : {playerExperience-40}</div>
+                <div id="showXpInPokedex" >XP : {playerExperience - 40}</div>
+                <div id="showMoneyInPokedex" >Money : {playerMoney}</div>
             </div>
 
 
-            <div id="pokedex">
+            <div className="pokedex">
 
                 {filterInput == "" && loading && !showUnloked && [...allpokemons].map((pokemon, index) =>
                     <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} />

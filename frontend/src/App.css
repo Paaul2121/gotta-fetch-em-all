@@ -25,7 +25,7 @@ body{
   color: white;
 
 }
-#pokedexMenu{
+.pokedexMenu{
   visibility: hidden;
 }
 .mapBtn{
@@ -47,7 +47,7 @@ body{
   visibility: hidden;
 } 
 
-#pokedex{
+.pokedex{
   position: absolute;
   top:10%;
   background-color: black;
@@ -61,7 +61,7 @@ body{
   visibility: inherit;
 }
 
-#pokedexHeader{
+.pokedexHeader{
   background-color: rgb(20,20,20);
   position: absolute;
   top:0px;
@@ -74,7 +74,7 @@ body{
   font-size: x-large;
 }
 
-#pokedex::-webkit-scrollbar{
+.pokedex::-webkit-scrollbar{
   visibility: hidden;
   background: transparent;
 }
@@ -1199,6 +1199,14 @@ background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, 
   padding: 10px;
 }
 
+#showMoneyInPokedex{
+  font-family: "fantasy";
+  font-size: larger;
+  border-radius: 10px;
+  border: white 2px solid;
+  padding: 10px;
+}
+
 .winOrLoseMessage{
   font-size: xx-large;
   font-family:Georgia, 'Times New Roman', Times, serif;
@@ -1268,3 +1276,11 @@ background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, 
     font-size: 13 px;
     border: 2px solid red;
   }
+
+.myPokemons{
+  position: absolute;
+  bottom: 10%;
+}
+.myPokemonsTable{
+  visibility: hidden ;
+}
