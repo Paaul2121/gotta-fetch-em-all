@@ -1,15 +1,13 @@
 export default function MyPokemons(){
-    return(
-        <div id="pokedexMenu">
+    return (
+      <div id="pokedexMenu">
         <div id="pokedexHeader">
-            <button>Hide</button>
+          <button onClick={hideEvent} id="hideBtn">
+            Hide
+          </button>
         </div>
 
-
-        <div id="pokedex">
-
-
-        </div>
-    </div>
-    )
+        <div id="pokedex"></div>
+      </div>
+    );
 }
