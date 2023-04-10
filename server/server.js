@@ -10,5 +10,5 @@ app.use(express.json());
 
 app.listen(PORT, () => {
     console.log("App is listening on 3001");
-    console.log("Try /api/employees route right now");
+    console.log(`http://localhost:3001/`);
 });

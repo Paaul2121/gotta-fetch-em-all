@@ -4,7 +4,8 @@ import './App.css'
 import ShowLocation from './Components/ShowLocation'
 import PokemonCard from './Components/PokemonCard'
 import AllPokemons from './Components/AllPokemons'
-import Tutorial from './Components/Tutorial'
+import Tutorial from './Components/Tutorial';
+import MyPokemons from './Components/MyPokemons'
 
 function App() {
   const [locations, setLocations] = useState(null)
