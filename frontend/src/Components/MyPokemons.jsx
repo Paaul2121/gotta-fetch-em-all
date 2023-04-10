@@ -8,8 +8,7 @@ export default function MyPokemons() {
     const [selectedPokemons, setSelectedPokemons] = useAtom(
       state.selectedPokemons
     );
-    console.log(playerPokemons);
-
+    
     const hideTableEvent = () => {
         document.querySelector(".myPokemonsTable").style.visibility = "hidden";
         setSelectedPokemons(SelectedPokemons);
@@ -39,8 +38,8 @@ export default function MyPokemons() {
           </button>
         </div>
             <div className="pokedex">
-                {playerPokemons.length===3 && [...playerPokemons.map((pokemon,index) => 
-                    <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} />
+                {playerPokemons.length >= 3 && [...playerPokemons.map((pokemon,index) => 
+                    <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} forMyPokemons={false} />
                     )]}
 
         </div>

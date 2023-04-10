@@ -1,12 +1,26 @@
-export default function ConfirmBuy({setBuyPokemon}) {
-    
+import { useAtom } from "jotai";
+import state from "./AtomStates"
+
+export default function ConfirmBuy({setBuyPokemon, allpokemons, whatPokemon}) {
+
+  const [playerPokemons, setPlayerPokemons] = useAtom(state.playerPokemons)
+
   const cancelBuy = (e) => {
     // e.target.parentElement.parentElement.style.visibility = "hidden";
       setBuyPokemon([false,-1])
     };
     
     const buyPokemon = (e) => {
-        console.log()
+      let momentan = [...playerPokemons];
+      momentan.push(JSON.parse(whatPokemon.target.id))
+      console.log(momentan)
+       setPlayerPokemons([...momentan]);
+       setBuyPokemon([false,{}])
+       whatPokemon.target.nextSibling.firstChild.remove()
+       whatPokemon.target.remove()
+
+      // console.log("Esti prost ")
+      // setPlayerPokemons((prev) => [...prev, JSON.parse(whatPokemon.target.id)])
     }
 
   return (

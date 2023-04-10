@@ -15,7 +15,7 @@ export default function AllPokemons() {
     const [showUnloked, setShowUnloked] = useState(false);
     const [playerExperience, setPlayerExperience] = useAtom(state.playerExperience)
     const [playerMoney, setPlayerMoney] = useAtom(state.playerMoney)
-    const [[wannaBuy,whatPokemon], setBuyPokemon] = useState([false,-1])
+    const [[wannaBuy,whatPokemon], setBuyPokemon] = useState([false,{}])
 
 
     useEffect(() => {
@@ -30,7 +30,6 @@ export default function AllPokemons() {
         setTimeout(() => {
             setAllPokemons(gatheringPokemons);
             setLoadig(true)
-            console.log(gatheringPokemons.length)
         }, 1000);
     }, [])
 
@@ -50,7 +49,7 @@ export default function AllPokemons() {
     const pokemonCardEvent = (e) => {
 
         console.log(JSON.parse(e.target.id).name)
-        setBuyPokemon([true,1])
+        setBuyPokemon([true,e])
         // document.querySelector(".confirmBuy").style.visibility = "visible";
         // e.target.parentElement.remove()
     }
@@ -79,14 +78,14 @@ export default function AllPokemons() {
             <div className="pokedex">
 
                 {filterInput == "" && loading && !showUnloked && [...allpokemons].map((pokemon, index) =>
-                    <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} />
+                    <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} forMyPokemons={true} />
                 )}
 
                 {
                     filterInput != "" && loading && !showUnloked && allpokemons?.map((pokemon, index) => {
                         if (pokemon.name.includes(filterInput)) {
                             return (
-                                <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} />
+                                <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} forMyPokemons={true} />
                             )
                         }
                     })
@@ -97,7 +96,7 @@ export default function AllPokemons() {
                 {showUnloked && [...allpokemons].map((pokemon,index) =>{
                     if(playerExperience >= pokemon.base_experience){
                         return (
-                            <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} />
+                            <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} forMyPokemons={true} />
                         )
                     }
                 })}
@@ -105,7 +104,7 @@ export default function AllPokemons() {
 
             </div>
 
-            {wannaBuy == true && <ConfirmBuy setBuyPokemon={ setBuyPokemon} />}
+            {wannaBuy == true && <ConfirmBuy setBuyPokemon={ setBuyPokemon} allpokemons={allpokemons} whatPokemon={whatPokemon} />}
         </div>
     )
 }

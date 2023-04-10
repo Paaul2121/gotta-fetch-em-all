@@ -1294,3 +1294,10 @@ background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, 
     border-radius: 50px;
     z-index: 5;
 }
+
+.buyer{
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+}

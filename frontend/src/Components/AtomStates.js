@@ -21,7 +21,7 @@ if (!signedUp) {
 }
 const state = {
  selectedPokemons: atom([]),
-    playerExperience: atom(400),
+    playerExperience: atom(40),
  playerMoney: atom(0),
    playerPokemons: atom(first3pokemon)
 
