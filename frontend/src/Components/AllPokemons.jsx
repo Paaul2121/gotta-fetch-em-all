@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import PokemonCard from "./PokemonCard";
 import { useAtom } from "jotai"
 import state from "./AtomStates";
+import ConfirmBuy from "./ConfirmBuy";
 
 
 let SelectedPokemons = [];
@@ -14,6 +15,7 @@ export default function AllPokemons() {
     const [showUnloked, setShowUnloked] = useState(false);
     const [playerExperience, setPlayerExperience] = useAtom(state.playerExperience)
     const [playerMoney, setPlayerMoney] = useAtom(state.playerMoney)
+    const [[wannaBuy,whatPokemon], setBuyPokemon] = useState([false,-1])
 
 
     useEffect(() => {
@@ -37,7 +39,7 @@ export default function AllPokemons() {
     const hideEvent = (e) => {
         document.querySelector(".allPkm").style.visibility = "hidden";
         console.log("working");
-        setSelectedPokemons(SelectedPokemons)
+        
     }
 
     const filterInputEvent = (e) => {
@@ -47,18 +49,10 @@ export default function AllPokemons() {
 
     const pokemonCardEvent = (e) => {
 
-        if (!e.target.nextSibling.classList.value.includes('selectedPokemon')) {
-
-            if (SelectedPokemons.length < 3) {
-                SelectedPokemons.push(JSON.parse(e.target.id));
-                e.target.nextSibling.classList.add("selectedPokemon")
-                console.log(SelectedPokemons)
-            }
-        } else {
-            SelectedPokemons = SelectedPokemons.filter( elem => elem.id != JSON.parse(e.target.id).id)
-            e.target.nextSibling.classList.remove("selectedPokemon")
-            console.log(SelectedPokemons);
-        }
+        console.log(JSON.parse(e.target.id).name)
+        setBuyPokemon([true,1])
+        // document.querySelector(".confirmBuy").style.visibility = "visible";
+        // e.target.parentElement.remove()
     }
 
     const showUnlokedPokemons = (e) =>{
@@ -76,7 +70,7 @@ export default function AllPokemons() {
             <div className="pokedexHeader">
                 <button onClick={hideEvent} id="hideBtn">Hide</button>
                 <div><label>Search for a Pokemon </label><input className="input" name="text" type="text" onInput={filterInputEvent} /></div>
-                <button id="showUnlockedButton" onClick={showUnlokedPokemons}>SHOW UNLOCKED</button>
+                {/* <button id="showUnlockedButton" onClick={showUnlokedPokemons}>SHOW UNLOCKED</button> */}
                 <div id="showXpInPokedex" >XP : {playerExperience - 40}</div>
                 <div id="showMoneyInPokedex" >Money : {playerMoney}</div>
             </div>
@@ -110,6 +104,8 @@ export default function AllPokemons() {
 
 
             </div>
+
+            {wannaBuy == true && <ConfirmBuy setBuyPokemon={ setBuyPokemon} />}
         </div>
     )
 }

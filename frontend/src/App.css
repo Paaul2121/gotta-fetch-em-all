@@ -13,7 +13,7 @@ body{
 }
 
 #hideBtn{
-  z-index: 10;
+  
   cursor: pointer;
   left:30%;
   font-family: "fantasy";
@@ -1283,4 +1283,14 @@ background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, 
 }
 .myPokemonsTable{
   visibility: hidden ;
+}
+.confirmBuy{
+ background-color: #151515;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    color: papayawhip;
+    border-radius: 50px;
+    z-index: 5;
 }

@@ -138,12 +138,12 @@ loader.load("./lobby/scene.gltf", function (gltf) {
   
   let MapCoord = () => {
     if (
-      camera.position.x < 4.3 &&
+      camera.position.x < 4.7 &&
       camera.position.x > -3.8 &&
       camera.position.y > -4.7 &&
-      camera.position.y < -3.9 &&
-      camera.position.z < 5.19 &&
-      camera.position.z > 4.4 &&
+      camera.position.y < -1.8 &&
+      camera.position.z < 6 &&
+      camera.position.z > 2.7 &&
       Map.style.visibility == "hidden"
       
     ) {

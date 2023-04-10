@@ -4,8 +4,9 @@ import state from "./AtomStates"
 
 export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons}) {
 
-  const [playerExperience,setPlayerExperience] = useAtom(state.playerExperience)
-
+  const [playerExperience, setPlayerExperience] = useAtom(state.playerExperience)
+  
+  
     return(
         <div  className="card">
 
@@ -36,7 +37,7 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
 
       { playerExperience >= pokemon.base_experience && <div className="front-content">
 
-
+      <button className="buyer" >Buy with {pokemon.base_experience} coins</button>
       <div className="img">
         <div className="circle">
           <img id="firstCircle" src="https://freepngimg.com/thumb/pokemon/20708-7-pokeball-hd.png" />
