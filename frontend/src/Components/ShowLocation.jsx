@@ -5,6 +5,12 @@ import FriendlyPokemonCard from "./FriendlyPokemonCard"
 import FightIntro from "./WinLoseFight/FightIntro"
 import WinnerVideo from "./WinLoseFight/WinnerVideo"
 import DefeadVideo from "./WinLoseFight/DefeadVideo"
+import fire from "./images/fire.png"
+import fire2 from "./images/fire2.png"
+import explosion from "./images/explosion.gif"
+import explosion2 from "./images/explosion2.gif"
+import projectile from "./images/projectile.mp3"
+import explosionAudio from "./images/explosionAudio.mp3"
 
 import FriendlyHealthBar from "./PokemonsHealthBars/FriendlyHealthBar"
 import EnemyHealth from "./PokemonsHealthBars/EnemyHealth"
@@ -71,8 +77,11 @@ export default function ShowLocation(props) {
 
     const attackEvent = (e) => {
 
-        ////////DEALING THE DAMAGE
+        document.getElementById("projectile").play();
+        document.getElementById("fire").style.animationName = "fire";
+        document.getElementById("fire").style.visibility = "visible";
 
+        ////////DEALING THE DAMAGE
         // e.target.style.visibility = "hidden"
         let enemyP = { ...enemyPokemon };
         let friendlyP = { ...friendlySelectedPokemon };
@@ -88,10 +97,47 @@ export default function ShowLocation(props) {
         } else {
 
             setTimeout(() => {
+                document.getElementById("projectile").pause();
+                document.getElementById("explosionAudio").play();
+                document.getElementById("fire").style.visibility = "hidden";
+                document.getElementById("explosion").style.visibility = "visible";
+            }, 700)
+
+            setTimeout(() => {
+                document.getElementById("explosion").style.visibility = "visible";
+            }, 1400)
+
+            setTimeout(() => {
                 friendlyCurrentHP -= (Math.floor(((((2 / 5 + 2) * enemyP.stats[1].base_stat * 100 / friendlyP.stats[2].base_stat) / 50) + 2) * Math.floor(Math.random() * (255 - 217) + 217) / 255) / fullHPfriendly) * 100;
                 document.getElementById("friendlyHealthRemained").style.width = `${friendlyCurrentHP}%`
+                document.getElementById("fire").style.animationName = "";
+                document.getElementById("fire").style.visibility = "hidden";
+                document.getElementById("fire").style.animationName = "fire2";
+                document.getElementById("fire").style.visibility = "visible";
+                document.getElementById("projectile").play();
             }, 1500)
         }
+
+        setTimeout(() => {
+                document.getElementById("explosion").style.visibility = "hidden";
+                document.getElementById("explosionAudio").pause();
+                document.getElementById("explosionAudio").currentTime = 0;
+        }, 1800)
+
+        setTimeout(() => {
+            document.getElementById("fire").style.animationName = "";
+            document.getElementById("fire").style.visibility = "hidden";
+            document.getElementById("explosion2").style.visibility = "visible";
+            document.getElementById("projectile").pause();
+            document.getElementById("explosionAudio").play();
+        }, 2200)
+
+        setTimeout(() => {
+            document.getElementById("explosion2").style.visibility = "hidden";
+            document.getElementById("explosionAudio").pause();
+            document.getElementById("explosionAudio").currentTime = 0;
+        }, 3300)
+
 
         if (document.getElementById("enemyShadowHP")) {
             let main = setTimeout(() => {
@@ -100,16 +146,16 @@ export default function ShowLocation(props) {
             }, 700)
         }
 
-         document.getElementById("attack").style.visibility = "hidden"
+        document.getElementById("attack").style.visibility = "hidden"
         setTimeout(() => {
             setTimeout(() => {
                 if (friendlySelectedPokemon.stats[0].base_stat <= 0) {
                     document.getElementById("attack").style.visibility = "hidden";
-                }  
+                }
 
                 friendlyP.stats[0].base_stat = friendlyP.stats[0].base_stat - Math.floor(((((2 / 5 + 2) * enemyP.stats[1].base_stat * 100 / friendlyP.stats[2].base_stat) / 50) + 2) * Math.floor(Math.random() * (255 - 217) + 217) / 255);
                 if (document.getElementById("friendlyShadowHP")) {
-    
+
                     let main = setTimeout(() => {
                         document.getElementById("friendlyShadowHP").style.width = `${friendlyCurrentHP}%`;
                         // clearInterval(main);
@@ -118,7 +164,7 @@ export default function ShowLocation(props) {
                 document.getElementById("attack").style.visibility = "visible";
             }, 500)
         }, 1500)
-        
+
 
         setFriendlySelectedPokemon(friendlyP)
 
@@ -201,6 +247,16 @@ export default function ShowLocation(props) {
                 <EnemyHealth enemyPokemon={enemyPokemon}/>
                 </div>
                 <button id="attack" onClick={attackEvent} >ATTACK</button>  
+                <img id="fire" src={fire} />
+                <img id="fire2" src={fire2} />
+                <img id="explosion" src={explosion} />
+                <img id="explosion2" src={explosion2} />
+                <audio id="projectile" controls hidden>
+                    <source src={projectile} type="audio/ogg" />
+                </audio>
+                <audio id="explosionAudio" controls hidden>
+                    <source src={explosionAudio} type="audio/ogg" />
+                </audio>
              </>
             }
 
