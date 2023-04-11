@@ -6,6 +6,7 @@ import PokemonCard from './Components/PokemonCard'
 import AllPokemons from './Components/AllPokemons'
 import Tutorial from './Components/Tutorial';
 import MyPokemons from './Components/MyPokemons'
+import Form from './Components/FormComponent/Form'
 
 function App() {
   const [showMyPokemons,setshowMyPokemons] = useState(false)
@@ -39,6 +40,9 @@ function App() {
   
    return (
      <div className="App">
+
+    <Form />
+
        <div id="mapLoc">
          {locations &&
            !enterLocation &&
@@ -143,7 +147,7 @@ function App() {
          <MyPokemons />
        </>
 
-       {loading && <Tutorial />}
+       {/* {loading && <Tutorial />} */}
        {!loading && (
          <div
            style={{

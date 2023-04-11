@@ -47,11 +47,7 @@ export default function AllPokemons() {
 
 
     const pokemonCardEvent = (e) => {
-
-        console.log(JSON.parse(e.target.id).name)
-        setBuyPokemon([true,e])
-        // document.querySelector(".confirmBuy").style.visibility = "visible";
-        // e.target.parentElement.remove()
+        setBuyPokemon([true,e]);
     }
 
     const showUnlokedPokemons = (e) =>{
@@ -104,7 +100,7 @@ export default function AllPokemons() {
 
             </div>
 
-            {wannaBuy == true && <ConfirmBuy setBuyPokemon={ setBuyPokemon} allpokemons={allpokemons} whatPokemon={whatPokemon} />}
+            {wannaBuy == true && <ConfirmBuy setBuyPokemon={setBuyPokemon} choosenPokemonCard={whatPokemon} />}
         </div>
     )
 }

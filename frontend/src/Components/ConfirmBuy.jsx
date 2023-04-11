@@ -1,31 +1,33 @@
 import { useAtom } from "jotai";
 import state from "./AtomStates"
 
-export default function ConfirmBuy({setBuyPokemon, allpokemons, whatPokemon}) {
+export default function ConfirmBuy({setBuyPokemon,choosenPokemonCard}) {
 
   const [playerPokemons, setPlayerPokemons] = useAtom(state.playerPokemons)
+  const [playerMoney, setPlayerMoney] = useAtom(state.playerMoney)
+  const currentPokemon = JSON.parse(choosenPokemonCard.target.id)
 
-  const cancelBuy = (e) => {
-    // e.target.parentElement.parentElement.style.visibility = "hidden";
+  const cancelBuy = () => {
       setBuyPokemon([false,-1])
     };
     
     const buyPokemon = (e) => {
-      let momentan = [...playerPokemons];
-      momentan.push(JSON.parse(whatPokemon.target.id))
-      console.log(momentan)
-       setPlayerPokemons([...momentan]);
+      if(playerMoney >= currentPokemon.base_experience){
+      setPlayerPokemons((prev) => [...prev,currentPokemon])
        setBuyPokemon([false,{}])
-       whatPokemon.target.nextSibling.firstChild.remove()
-       whatPokemon.target.remove()
+       choosenPokemonCard.target.nextSibling.firstChild.remove()
+       choosenPokemonCard.target.remove()
 
-      // console.log("Esti prost ")
-      // setPlayerPokemons((prev) => [...prev, JSON.parse(whatPokemon.target.id)])
+       setPlayerMoney(playerMoney - currentPokemon.base_experience)
+      }else{
+       e.target.parentElement.parentElement.querySelector(".notEnoughMoney").style.visibility = "visible"
+      }
     }
 
   return (
     <div className="confirmBuy">
       <h1>Are you sure you want to buy this pokemon?</h1>
+      <h1 className="notEnoughMoney" style={{visibility:"hidden"}}>You need another {currentPokemon.base_experience - playerMoney} coins</h1>
       <div
         style={{
           display: "flex",
