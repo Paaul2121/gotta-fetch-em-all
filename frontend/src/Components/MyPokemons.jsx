@@ -18,14 +18,12 @@ export default function MyPokemons() {
      if (SelectedPokemons.length < 3) {
        SelectedPokemons.push(JSON.parse(e.target.id));
        e.target.nextSibling.classList.add("selectedPokemon");
-       console.log(SelectedPokemons);
      }
    } else {
      SelectedPokemons = SelectedPokemons.filter(
        (elem) => elem.id != JSON.parse(e.target.id).id
      );
      e.target.nextSibling.classList.remove("selectedPokemon");
-     console.log(SelectedPokemons);
    }
  };
 

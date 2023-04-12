@@ -42,18 +42,14 @@ const [playerUsername, setPlayerUsername] = useAtom(state.playerUsername);
         fetch(`${props.location.results[props.locationIndex.split("-")[1]].url}`)
             .then(result => result.json())
             .then(selectedLocation => {
-                console.log("select", selectedLocation)
                 fetch(`https://pokeapi.co/api/v2/location-area/${selectedLocation.id}/`)
                     .then(result => result.json())
                     .then(area => {
-                        console.log(area);
                         let randomPokemon = area.pokemon_encounters[Math.floor(Math.random() * area.pokemon_encounters.length)];
-                        console.log(randomPokemon.pokemon.name)
 
                         fetch(`${randomPokemon.pokemon.url}`)
                             .then(result => result.json())
                             .then(pokemon => {
-                                console.log(pokemon);
                                 setEnemyPokemon(pokemon)
 
                             })
@@ -64,10 +60,8 @@ const [playerUsername, setPlayerUsername] = useAtom(state.playerUsername);
 
 
     const FriendlyPokemonCardEvent = (e) => {
-        console.log("hide pokemons")
         document.getElementById("friendlyPokemonHolder").style.visibility = "hidden";
         setFriendlySelectedPokemon(JSON.parse(e.target.id));
-        console.log(JSON.parse(e.target.id));
         if (document.getElementById("attack")) {
             document.getElementById("attack").style.visibility = "visible"
         }

@@ -32,7 +32,6 @@ app.post("/login", async (req, res) => {
     const Users = await UserM.findOne({ username: `${req.body.username}` }).exec();
     const username = req.body.username;
     const password = req.body.password;
-    console.log(Users);
 
         (username == "" || password == "") ? res.json({ response: "case1" }) :
             Users ==null ? res.json({ response: "case2" }) :
@@ -72,7 +71,6 @@ app.patch("/update", async (req, res) => {
         playerMoney: req.body.playerMoney,
         playerExperience: req.body.playerExperience
     }
-    console.log("new update",filter, update)
 
     const Updater = await UserM.findOneAndUpdate(filter, update, {
         new : true,

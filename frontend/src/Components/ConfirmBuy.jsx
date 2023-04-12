@@ -23,8 +23,8 @@ export default function ConfirmBuy({setBuyPokemon,choosenPokemonCard}) {
 
       setPlayerPokemons((prev) => [...prev,currentPokemon])
        setBuyPokemon([false,{}])
-       choosenPokemonCard.target.nextSibling.firstChild.remove()
-       choosenPokemonCard.target.remove()
+      //  choosenPokemonCard.target.nextSibling.firstChild.remove()
+      //  choosenPokemonCard.target.remove()
         setPlayerMoney(playerMoney - currentPokemon.base_experience)
 
 

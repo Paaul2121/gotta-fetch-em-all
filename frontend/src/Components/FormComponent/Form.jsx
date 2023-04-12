@@ -17,7 +17,6 @@ const [playerUsername, setPlayerUsername] = useAtom(state.playerUsername);
       acc[k] = v;
       return acc;
     }, {});
-    console.log(player);
 
     return fetch("http://localhost:3001/login", {
       method: "POST",
