@@ -136,7 +136,12 @@ loader.load("./lobby/scene.gltf", function (gltf) {
   });
   let login= document.querySelector("#loginSubmitt");
   login.addEventListener("click", () => {
-    everythinghidden = true;
+    if (
+      document.querySelector("#passwordLogin").value !== "" &&
+      document.querySelector("#passwordLogin").value !== "")
+    {
+      everythinghidden = true;
+    }
   });
   
   

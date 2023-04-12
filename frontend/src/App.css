@@ -1367,3 +1367,11 @@ background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, 
     visibility: hidden;
     z-index: 2;
   }
+
+
+  .usernameLogin::placeholder{
+    color:red;
+  }
+  .passwordLogin::placeholder{
+    color:red;
+  }

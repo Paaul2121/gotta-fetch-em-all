@@ -12,8 +12,8 @@ export default function Form({loginEvent}) {
 
 
     const onLogin = (e) => {
+        e.preventDefault()
     
-    e.preventDefault()
     const formData = new FormData(e.target)
     const entries = [...formData.entries()];
 
@@ -22,7 +22,32 @@ export default function Form({loginEvent}) {
         acc[k] = v;
         return acc;
     },{});
-    console.log(player)
+        console.log(player)
+
+        return fetch("http://localhost:3001/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(player),
+        }).then((res) => res.json())
+            .then((res) =>
+            {
+                res.response == "case1" ? alert("You need to complete both imputs.") :
+                    res.response == "case2" ? alert("Username not found.") :
+                        res.response == "case3" ? alert("Wrong password.") : null;
+                
+               
+            }
+            );
+    
+        // document.querySelector("#passwordLogin").setAttribute("placeholder", "Please enter your Password!")
+        // document.querySelector("#passwordLogin").classList.add("passwordLogin");
+        // document.querySelector("#usernameLogin").setAttribute("placeholder", "Please enter your Username!");
+        // document.querySelector("#usernameLogin").classList.add("usernameLogin");
+    
+
+    
     
 }
 
@@ -68,7 +93,8 @@ const onSubmit = (e) =>{
                     className="input"
                     type="text"
                     name="username"
-                    id="username"
+                    id="usernameLogin"
+                    
                     placeholder="Username..."
                   />
                   <label className="label" htmlFor="username">
@@ -81,14 +107,16 @@ const onSubmit = (e) =>{
                     className="input"
                     type="password"
                     name="password"
-                    id="password"
+                    id="passwordLogin"
                     placeholder="Password..."
                   />
                   <label className="label" htmlFor="password">
                     Password
                   </label>
                 </div>
-                <button type="submit" onClick={loginEvent} id="loginSubmitt">Login</button>
+                <button type="submit" id="loginSubmitt">
+                  Login
+                </button>
 
                 <span className="bottom_text">
                   Don't have an account?{" "}
