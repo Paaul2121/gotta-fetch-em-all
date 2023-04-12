@@ -152,7 +152,7 @@ function App() {
          <MyPokemons />
        </>
 
-       {/* {loading && <Tutorial />} */}
+       {loading && <Tutorial />}
        {!loading && (
          <div
            style={{

@@ -13,7 +13,7 @@ export default function MyPokemons() {
         document.querySelector(".myPokemonsTable").style.visibility = "hidden";
         setSelectedPokemons(SelectedPokemons);
     }
- const pokemonCardEvent = (e) => {
+ const myPokemonCardEvent = (e) => {
    if (!e.target.nextSibling.classList.value.includes("selectedPokemon")) {
      if (SelectedPokemons.length < 3) {
        SelectedPokemons.push(JSON.parse(e.target.id));
@@ -39,7 +39,7 @@ export default function MyPokemons() {
         </div>
             <div className="pokedex">
                 {playerPokemons.length >= 3 && [...playerPokemons.map((pokemon,index) => 
-                    <PokemonCard key={index} pokemon={pokemon} pokemonCardEvent={pokemonCardEvent} SelectedPokemons={SelectedPokemons} forMyPokemons={false} />
+                    <PokemonCard key={index} pokemon={pokemon} myPokemonCardEvent={myPokemonCardEvent} SelectedPokemons={SelectedPokemons} forMyPokemons={false} />
                     )]}
 
         </div>

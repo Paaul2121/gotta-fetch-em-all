@@ -2,7 +2,7 @@ import { useState } from "react";
 import {useAtom} from "jotai"
 import state from "./AtomStates"
 
-export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons, forMyPokemons}) {
+export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons, forMyPokemons, myPokemonCardEvent}) {
   const [playerPokemons, setPlayerPokemons] = useAtom(state.playerPokemons)
   const [playerExperience, setPlayerExperience] = useAtom(state.playerExperience)
   
@@ -11,8 +11,11 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
         <div  className="card">
 
   <div className="content">
-  {( playerExperience >= pokemon.base_experience || forMyPokemons == false) && <div onClick={pokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}> </div>  }
-       
+  {/* {( playerExperience >= pokemon.base_experience || forMyPokemons == false) && <div onClick={pokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}> </div>  } */}
+
+          {forMyPokemons===false && <div onClick={myPokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}> </div>  }
+          {(forMyPokemons===true &&playerExperience >= pokemon.base_experience && playerPokemons.reduce((acc,cur) => JSON.stringify(cur)===JSON.stringify(pokemon)? false: acc,true))  &&  <div onClick={pokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}> </div>  }
+
     <div className={`${playerExperience >= pokemon.base_experience || forMyPokemons == false? "back" : "undiscoveredCardBack"} ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""}`} >
     {/* ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""} */}
 
