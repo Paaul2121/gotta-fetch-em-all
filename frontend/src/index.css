@@ -14,9 +14,7 @@ canvas{
   position:absolute;
   z-index: 2;
 }
-.mapBtn{
+/* .mapBtn{
       position: absolute;
-    top: 905px;
-    left: 720px;
-    border-radius: 50%;
-}
+      bottom: 10%;
+} */
