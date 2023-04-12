@@ -13,6 +13,7 @@ function App() {
   const [locations, setLocations] = useState(null)
   const [[enterLocation, whichLocation], setWhichLocation] = useState([false,-1])
   const [loading, setLoading] = useState(false)
+  const [showForm, setShowForm] = useState(true);
 
  
   setTimeout(() =>{
@@ -37,11 +38,15 @@ function App() {
   }
 
 
+  const loginEvent = () => {
+      setShowForm(false);
+    }
+
   
    return (
      <div className="App">
-
-    <Form />
+{showForm &&
+       <Form loginEvent={loginEvent } />}
 
        <div id="mapLoc">
          {locations &&

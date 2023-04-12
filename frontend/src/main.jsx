@@ -59,13 +59,11 @@ loader.load("./lobby/scene.gltf", function (gltf) {
   model.position.y = -10;
   scene.add(model);
   let mapLoc = document.querySelector("#mapLoc");
-  let pokedex22 = document.querySelector(".allPkm");
-  let pokedexBTN = document.querySelector(".pokedexBtn"); 
-  let inventory = document.querySelector(".myPokemons");
+  let pokedex22 = document.querySelector("#pokedexMenu");
+  let pokedexBTN = document.querySelector(".pokedexBtn");
   let Map = document.querySelector(".mapBtn");
-
   everythinghidden = true;
-  inventory.style.visibility= "hidden";
+  
 
   function updateCameraPosition() {
     //wasd movement
@@ -116,34 +114,24 @@ loader.load("./lobby/scene.gltf", function (gltf) {
     MapCoord();
     everythinghidden = false;
   });
-  inventory.addEventListener("click", () => {
-    document.querySelector(".myPokemonsTable").style.visibility = "visible";
-    everythinghidden = false;
-    MapCoord();
-    inventory.style.visibility = "hidden";
-  })
   let hideMap = document.querySelector(".hideMap");
   let hidePokedex = document.querySelector("#hideBtn");
-  let hideMyPkm = document.querySelector(".hideMyPkm");
   hideMap.addEventListener("click", () => {
     everythinghidden = true;
   });
   hidePokedex.addEventListener("click", () => {
     everythinghidden = true;
   });
-  hideMyPkm.addEventListener("click", () => {
-    everythinghidden = true;
-  });
-  
+
   
   let MapCoord = () => {
     if (
-      camera.position.x < 4.7 &&
+      camera.position.x < 4.3 &&
       camera.position.x > -3.8 &&
       camera.position.y > -4.7 &&
-      camera.position.y < -1.8 &&
-      camera.position.z < 6 &&
-      camera.position.z > 2.7 &&
+      camera.position.y < -3.9 &&
+      camera.position.z < 5.19 &&
+      camera.position.z > 4.4 &&
       Map.style.visibility == "hidden"
       
     ) {
@@ -166,19 +154,6 @@ loader.load("./lobby/scene.gltf", function (gltf) {
       pokedexBTN.style.visibility = "hidden";
     }
     
-    if (
-      camera.position.x < 10.8 &&
-      camera.position.x > -6.7 &&
-      camera.position.y > -6 &&
-      camera.position.y < -4.8 &&
-      camera.position.z < 3.7 &&
-      camera.position.z > 1.4 &&
-      inventory.style.visibility == "hidden" 
-    ) {
-      inventory.style.visibility = "visible";
-    } else {
-      inventory.style.visibility = "hidden";
-    }
     
   };
   // Render the scene once the model has finished loading
