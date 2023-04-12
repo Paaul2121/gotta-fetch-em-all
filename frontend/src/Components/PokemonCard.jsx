@@ -20,7 +20,7 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
             {(playerExperience >= pokemon.base_experience || forMyPokemons == false) && <div>
             
          {
-          forMyPokemons == true &&  <button className="buyer" >Buy with {pokemon.base_experience} coins</button>}  
+          forMyPokemons == true && playerPokemons.reduce((acc,cur) => JSON.stringify(cur)===JSON.stringify(pokemon)? false: acc,true)  && <button className="buyer" >Buy with {pokemon.base_experience} coins</button>}  
          </div>  }
       <div className="back-content">
      

@@ -7,6 +7,7 @@ export default function ConfirmBuy({setBuyPokemon,choosenPokemonCard}) {
   const [playerMoney, setPlayerMoney] = useAtom(state.playerMoney)
   const currentPokemon = JSON.parse(choosenPokemonCard.target.id)
   const [playerUsername, setPlayerUsername] = useAtom(state.playerUsername);
+  const[playerExperience, setPlayerExperience] = useAtom(state.playerExperience)
   
 
   const cancelBuy = () => {
@@ -34,7 +35,7 @@ export default function ConfirmBuy({setBuyPokemon,choosenPokemonCard}) {
           },
           body: JSON.stringify({
             username: playerUsername,
-            playerExeperience: playerExeperience,
+            playerExeperience: playerExperience,
             playerPokemons: pokemonArrayForUpdate,
             playerMoney: moneyForUpdate
           }),

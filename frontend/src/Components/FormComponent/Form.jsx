@@ -72,14 +72,14 @@ const [playerUsername, setPlayerUsername] = useAtom(state.playerUsername);
     player.playerPokemons = playerPokemons;
 
     console.log(player);
-    window.location.reload();
     return fetch("http://localhost:3001/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(player),
-    }).then((res) => res.json());
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(player),
+    }).then((res) =>  window.location.reload());
+   
   };
 
   return (
