@@ -6,19 +6,42 @@ export default function ConfirmBuy({setBuyPokemon,choosenPokemonCard}) {
   const [playerPokemons, setPlayerPokemons] = useAtom(state.playerPokemons)
   const [playerMoney, setPlayerMoney] = useAtom(state.playerMoney)
   const currentPokemon = JSON.parse(choosenPokemonCard.target.id)
+  const [playerUsername, setPlayerUsername] = useAtom(state.playerUsername);
+  
 
   const cancelBuy = () => {
       setBuyPokemon([false,-1])
     };
     
     const buyPokemon = (e) => {
-      if(playerMoney >= currentPokemon.base_experience){
+      if (playerMoney >= currentPokemon.base_experience) {
+
+        let pokemonArrayForUpdate = [...playerPokemons];
+        pokemonArrayForUpdate.push(currentPokemon)
+        let moneyForUpdate = playerMoney - currentPokemon.base_experience
+
       setPlayerPokemons((prev) => [...prev,currentPokemon])
        setBuyPokemon([false,{}])
        choosenPokemonCard.target.nextSibling.firstChild.remove()
        choosenPokemonCard.target.remove()
+        setPlayerMoney(playerMoney - currentPokemon.base_experience)
 
-       setPlayerMoney(playerMoney - currentPokemon.base_experience)
+
+        return fetch("http://localhost:3001/update", {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: playerUsername,
+            playerExeperience: playerExeperience,
+            playerPokemons: pokemonArrayForUpdate,
+            playerMoney: moneyForUpdate
+          }),
+        })
+          .then((res) => res.json())
+        
+        
       }else{
        e.target.parentElement.parentElement.querySelector(".notEnoughMoney").style.visibility = "visible"
       }

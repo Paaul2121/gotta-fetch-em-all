@@ -38,15 +38,15 @@ function App() {
   }
 
 
-  const loginEvent = () => {
-      setShowForm(false);
-    }
+  // const loginEvent = () => {
+  //     setShowForm(false);
+  //   }
 
   
    return (
      <div className="App">
 {showForm &&
-       <Form loginEvent={loginEvent } />}
+       <Form  setShowForm={setShowForm} />}
 
        <div id="mapLoc">
          {locations &&

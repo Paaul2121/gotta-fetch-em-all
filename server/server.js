@@ -33,33 +33,10 @@ app.post("/login", async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     console.log(Users);
-    // if (Users != null) {
-    //     res.json(Users);
-    // } else {
-    //     res.json(
-    //         {
-    //             ok: false
-    //         }
-    //     )
-    
-    // }
-    // if (Users.password === req.body.password) {
-    //     res.json("go")
-    // } else {
-        
-    //     res.json("wrong password");
-    // }
-    
+
         (username == "" || password == "") ? res.json({ response: "case1" }) :
             Users ==null ? res.json({ response: "case2" }) :
-                Users.password !== password ? res.json({ response: "case3" }) : null
-    
-
-    
-
-    
-
-
+                Users.password !== password ? res.json({ response: "case3" }) : res.json(Users)
 })
  
 
@@ -85,6 +62,25 @@ app.post("/signup", (req, res) => {
     .then((user) => res.json(user))
     .catch((err) => res.status(400).json({ succes: false }));
 });
+
+app.patch("/update", async (req, res) => {
+    const filter = {
+        username: req.body.username
+    }
+    const update = {
+        playerPokemons: req.body.playerPokemons,
+        playerMoney: req.body.playerMoney,
+        playerExperience: req.body.playerExperience
+    }
+    console.log("new update",filter, update)
+
+    const Updater = await UserM.findOneAndUpdate(filter, update, {
+        new : true,
+    })
+    res.json("updated");
+
+
+ })
 
 
 

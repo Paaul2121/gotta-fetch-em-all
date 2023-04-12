@@ -33,7 +33,9 @@ export default function ShowLocation(props) {
     const [showFightVideo, setShowFightVideo] = useState(false);
     const [showWinnerVideo, setShowWinnerVideo] = useState(false);
     const [showDefeadVideo, setShowDefeadVideo] = useState(false);
+const [playerPokemons, setPlayerPokemons] = useAtom(state.playerPokemons);
 
+const [playerUsername, setPlayerUsername] = useAtom(state.playerUsername);
 
 
     useEffect(() => {
@@ -206,9 +208,24 @@ export default function ShowLocation(props) {
 
             setShowWinnerVideo(true);
 
-
             setPlayerExperience(playerExperience + Math.floor(enemyPokemon.base_experience / 2))
             setPlayerMoney(playerMoney + Math.floor(enemyPokemon.base_experience / 2))
+            
+            return fetch("http://localhost:3001/update", {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                username: playerUsername,
+                playerPokemons: playerPokemons,
+                playerMoney:
+                  playerMoney + Math.floor(enemyPokemon.base_experience / 2),
+                playerExperience:
+                  playerExperience +
+                  Math.floor(enemyPokemon.base_experience / 2),
+              }),
+            }).then((res) => res.json());
         }
 
 

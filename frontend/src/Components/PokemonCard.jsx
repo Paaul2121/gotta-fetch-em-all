@@ -3,7 +3,7 @@ import {useAtom} from "jotai"
 import state from "./AtomStates"
 
 export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons, forMyPokemons}) {
-
+  const [playerPokemons, setPlayerPokemons] = useAtom(state.playerPokemons)
   const [playerExperience, setPlayerExperience] = useAtom(state.playerExperience)
   
   
@@ -17,8 +17,10 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
     {/* ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""} */}
 
       {/* event Taker */}
-       {( playerExperience >= pokemon.base_experience || forMyPokemons == false) && <div>
-         {forMyPokemons == true &&  <button className="buyer" >Buy with {pokemon.base_experience} coins</button>}  
+            {(playerExperience >= pokemon.base_experience || forMyPokemons == false) && <div>
+            
+         {
+          forMyPokemons == true &&  <button className="buyer" >Buy with {pokemon.base_experience} coins</button>}  
          </div>  }
       <div className="back-content">
      
@@ -34,11 +36,6 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
       </div>
     </div>
     <div className="front">
-      
-
-
-    
-
       {( playerExperience >= pokemon.base_experience || forMyPokemons == false) && <div className="front-content">
 
       
