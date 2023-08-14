@@ -13,7 +13,7 @@ body{
 }
 
 #hideBtn{
-  z-index: 10;
+  
   cursor: pointer;
   left:30%;
   font-family: "fantasy";
@@ -25,7 +25,7 @@ body{
   color: white;
 
 }
-#pokedexMenu{
+.pokedexMenu{
   visibility: hidden;
 }
 .mapBtn{
@@ -47,7 +47,7 @@ body{
   visibility: hidden;
 } 
 
-#pokedex{
+.pokedex{
   position: absolute;
   top:10%;
   background-color: black;
@@ -61,7 +61,7 @@ body{
   visibility: inherit;
 }
 
-#pokedexHeader{
+.pokedexHeader{
   background-color: rgb(20,20,20);
   position: absolute;
   top:0px;
@@ -74,7 +74,7 @@ body{
   font-size: x-large;
 }
 
-#pokedex::-webkit-scrollbar{
+.pokedex::-webkit-scrollbar{
   visibility: hidden;
   background: transparent;
 }
@@ -409,7 +409,7 @@ input {
   width: 160px;
   height: 160%;
   background: linear-gradient(90deg, transparent, rgb(0, 255, 255), rgb(0, 255, 255), rgb(0, 255, 255), rgb(0, 255, 255), transparent);
-  animation: rotation_481 5000ms infinite linear
+  /* animation: rotation_481 5000ms infinite linear */
 }
 
 .back-content {
@@ -899,6 +899,7 @@ input {
   background-color: rgba(24, 15, 15, 0.7);
   position: absolute;
   top: 0;
+  z-index: -4;
 }
 .dialogueBox{
   position: absolute;
@@ -1200,6 +1201,14 @@ background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, 
   padding: 10px;
 }
 
+#showMoneyInPokedex{
+  font-family: "fantasy";
+  font-size: larger;
+  border-radius: 10px;
+  border: white 2px solid;
+  padding: 10px;
+}
+
 .winOrLoseMessage{
   font-size: xx-large;
   font-family:Georgia, 'Times New Roman', Times, serif;
@@ -1270,6 +1279,30 @@ background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, 
     border: 2px solid red;
   }
 
+.myPokemons{
+  position: absolute;
+  bottom: 10%;
+}
+.myPokemonsTable{
+  visibility: hidden ;
+}
+.confirmBuy{
+ background-color: #151515;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    color: papayawhip;
+    border-radius: 50px;
+    z-index: 5;
+}
+
+.buyer{
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+}
   #fire {
     width: 120px;
     height: 70px;
@@ -1334,4 +1367,12 @@ background: linear-gradient(90deg, rgba(52,237,9,1) 15%, rgba(253,251,0,1) 65%, 
     left: 28%;
     visibility: hidden;
     z-index: 2;
+  }
+
+
+  .usernameLogin::placeholder{
+    color:red;
+  }
+  .passwordLogin::placeholder{
+    color:red;
   }

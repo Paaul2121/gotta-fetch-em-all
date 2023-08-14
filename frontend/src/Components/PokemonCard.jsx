@@ -2,21 +2,31 @@ import { useState } from "react";
 import {useAtom} from "jotai"
 import state from "./AtomStates"
 
-export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons}) {
-
-  const [playerExperience,setPlayerExperience] = useAtom(state.playerExperience)
-
+export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons, forMyPokemons, myPokemonCardEvent}) {
+  const [playerPokemons, setPlayerPokemons] = useAtom(state.playerPokemons)
+  const [playerExperience, setPlayerExperience] = useAtom(state.playerExperience)
+  
+  
     return(
         <div  className="card">
 
   <div className="content">
-         { playerExperience >= pokemon.base_experience && <div onClick={pokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}></div>  }
-    <div className={`${playerExperience >= pokemon.base_experience? "back" : "undiscoveredCardBack"} ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""}`} >
+  {/* {( playerExperience >= pokemon.base_experience || forMyPokemons == false) && <div onClick={pokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}> </div>  } */}
+
+          {forMyPokemons===false && <div onClick={myPokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}> </div>  }
+          {(forMyPokemons===true &&playerExperience >= pokemon.base_experience && playerPokemons.reduce((acc,cur) => JSON.stringify(cur)===JSON.stringify(pokemon)? false: acc,true))  &&  <div onClick={pokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}> </div>  }
+
+    <div className={`${playerExperience >= pokemon.base_experience || forMyPokemons == false? "back" : "undiscoveredCardBack"} ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""}`} >
     {/* ${[...SelectedPokemons].reduce((acc,cur) => cur.name == pokemon.name? true: acc, false) ? "selectedPokemon": ""} */}
 
       {/* event Taker */}
+            {(playerExperience >= pokemon.base_experience || forMyPokemons == false) && <div>
+            
+         {
+          forMyPokemons == true && playerPokemons.reduce((acc,cur) => JSON.stringify(cur)===JSON.stringify(pokemon)? false: acc,true)  && <button className="buyer" >Buy with {pokemon.base_experience} coins</button>}  
+         </div>  }
       <div className="back-content">
-
+     
 
         <svg stroke="#ffffff" xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" height="50px" width="50px" fill="#ffffff">
         <g strokeWidth="0" id="SVGRepo_bgCarrier"></g>
@@ -24,19 +34,14 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
         <g id="SVGRepo_iconCarrier">
         </g>
         </svg>
-       { playerExperience >= pokemon.base_experience && <p className="pokemonName"> {pokemon && pokemon.name[0].toUpperCase()+pokemon.name.slice(1)} </p>}
-        <img  className={`${playerExperience >= pokemon.base_experience ? "pokemonImage" : "undiscoveredPokemon"}`} src= {pokemon && `${pokemon.sprites.other.home.front_default}`}/>
+       { (playerExperience >= pokemon.base_experience || forMyPokemons == false) && <p className="pokemonName"> {pokemon && pokemon.name[0].toUpperCase()+pokemon.name.slice(1)} </p>}
+        <img  className={`${playerExperience >= pokemon.base_experience || forMyPokemons == false? "pokemonImage" : "undiscoveredPokemon"}`} src= {pokemon && `${pokemon.sprites.other.home.front_default}`}/>
       </div>
     </div>
     <div className="front">
+      {( playerExperience >= pokemon.base_experience || forMyPokemons == false) && <div className="front-content">
+
       
-
-
-    
-
-      { playerExperience >= pokemon.base_experience && <div className="front-content">
-
-
       <div className="img">
         <div className="circle">
           <img id="firstCircle" src="https://freepngimg.com/thumb/pokemon/20708-7-pokeball-hd.png" />
@@ -71,7 +76,7 @@ export default function PokemonCard({pokemon, pokemonCardEvent, SelectedPokemons
         </div>
       </div>}
 
-      { playerExperience < pokemon.base_experience && 
+      { (playerExperience < pokemon.base_experience && forMyPokemons == true)  &&
       <div className="undiscoveredCardFront">
         <p>UNLOCKS AT </p>
         <p style={{fontSize:55, fontFamily:"fantasy"}}> {pokemon.base_experience-40} XP</p>

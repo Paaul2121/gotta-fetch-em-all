@@ -25,6 +25,7 @@ export default function ShowLocation(props) {
     const [startBattle, setStartBattle] = useState(false)
     const [selectedPokemons, setSelectedPokemons] = useAtom(state.selectedPokemons)
     const [playerExperience, setPlayerExperience] = useAtom(state.playerExperience)
+    const [playerMoney, setPlayerMoney] = useAtom(state.playerMoney)
     const [dead_Pokemons_Number, setDead_Pokemons_Number] = useState(0)
     const [friendlySelectedPokemon, setFriendlySelectedPokemon] = useState(null);
     const [winOrLose, setWinOrLose] = useState(null)
@@ -32,25 +33,23 @@ export default function ShowLocation(props) {
     const [showFightVideo, setShowFightVideo] = useState(false);
     const [showWinnerVideo, setShowWinnerVideo] = useState(false);
     const [showDefeadVideo, setShowDefeadVideo] = useState(false);
+const [playerPokemons, setPlayerPokemons] = useAtom(state.playerPokemons);
 
+const [playerUsername, setPlayerUsername] = useAtom(state.playerUsername);
 
 
     useEffect(() => {
         fetch(`${props.location.results[props.locationIndex.split("-")[1]].url}`)
             .then(result => result.json())
             .then(selectedLocation => {
-                console.log("select", selectedLocation)
                 fetch(`https://pokeapi.co/api/v2/location-area/${selectedLocation.id}/`)
                     .then(result => result.json())
                     .then(area => {
-                        console.log(area);
                         let randomPokemon = area.pokemon_encounters[Math.floor(Math.random() * area.pokemon_encounters.length)];
-                        console.log(randomPokemon.pokemon.name)
 
                         fetch(`${randomPokemon.pokemon.url}`)
                             .then(result => result.json())
                             .then(pokemon => {
-                                console.log(pokemon);
                                 setEnemyPokemon(pokemon)
 
                             })
@@ -61,10 +60,8 @@ export default function ShowLocation(props) {
 
 
     const FriendlyPokemonCardEvent = (e) => {
-        console.log("hide pokemons")
         document.getElementById("friendlyPokemonHolder").style.visibility = "hidden";
         setFriendlySelectedPokemon(JSON.parse(e.target.id));
-        console.log(JSON.parse(e.target.id));
         if (document.getElementById("attack")) {
             document.getElementById("attack").style.visibility = "visible"
         }
@@ -205,9 +202,24 @@ export default function ShowLocation(props) {
 
             setShowWinnerVideo(true);
 
-
             setPlayerExperience(playerExperience + Math.floor(enemyPokemon.base_experience / 2))
-            console.log(playerExperience)
+            setPlayerMoney(playerMoney + Math.floor(enemyPokemon.base_experience / 2))
+            
+            return fetch("http://localhost:3001/update", {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                username: playerUsername,
+                playerPokemons: playerPokemons,
+                playerMoney:
+                  playerMoney + Math.floor(enemyPokemon.base_experience / 2),
+                playerExperience:
+                  playerExperience +
+                  Math.floor(enemyPokemon.base_experience / 2),
+              }),
+            }).then((res) => res.json());
         }
 
 
