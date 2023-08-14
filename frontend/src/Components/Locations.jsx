@@ -3,6 +3,7 @@ import state from "./AtomStates"
 import {useState} from "react"
 
 export default function Locations(props) {
+    //asdasd
     let locationArr = props.location.name.split("-");
     let locationFirstName = locationArr[0].slice(0,1).toUpperCase() + locationArr[0].slice(1);
     let locationSecondName = locationArr[1].slice(0,1).toUpperCase() + locationArr[1].slice(1);

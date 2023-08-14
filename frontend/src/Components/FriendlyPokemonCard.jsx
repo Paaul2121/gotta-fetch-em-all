@@ -1,7 +1,6 @@
 export default function FriendlyPokemonCard({pokemon, FriendlyPokemonCardEvent}) {
     return(
         <div  className="friendlyPokemonCard">
-
   <div className="content">
           <div onClick={FriendlyPokemonCardEvent} className='cardEventTaker' id={JSON.stringify(pokemon)}></div>  
     <div className="back" >
