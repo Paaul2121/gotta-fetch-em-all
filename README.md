@@ -5,7 +5,7 @@
 
 Our project represents a Pokemon game, where you can explore a 3D sky island. By going to specific locations on the map!, different actions become available like buying pokemons, or navigating on a map full of locations and choosing your pokemons to battle. On each location on the map, you'll encounter a pokemon which you have to defeat in order to acquire experience and coins, which can be used to buy stronger pokemons.
 
-[Alt text](image3.png)
+![Alt text](readMeImages/image3.png)
 
 ### Technologies Used
 
@@ -72,16 +72,16 @@ Our plans for the future:
 
 At the start location, the table in the center of the map the OPEN INVENTORY button will appear. By clicking on it, you can see the pokemons that you own.
 
-![Alt text](image.png)
+![Alt text](readMeImages/image.png)
 
 If you go to the map, the OPEN MAP button will appear. By clicking on it, you will see the map full of locations for battle.
 
-![Alt text](image-1.png)
-![Alt text](pokemonMapImage.png)
+![Alt text](readMeImages/image-1.png)
+![Alt text](readMeImages/pokemonMapImage.png)
 
 If you go to the cabin, the OPEN POKEDEX button will appear. By clicking on it, you can see the shop for all the pokemons.
 
-![Alt text](image-2.png)
+![Alt text](readMeImages/image-2.png)
  
 ## Code Contributors
 
