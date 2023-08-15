@@ -3,7 +3,9 @@
 
 ## Project Description
 
-Our project represents a Pokemon game, where you can explore a 3D sky island. By going to specific locations on the map, different actions become available like buying pokemons, or navigating on a map full of locations and choosing your pokemons to battle. On each location on the map, you'll encounter a pokemon which you have to defeat in order to acquire experience and coins, which can be used to buy stronger pokemons.
+Our project represents a Pokemon game, where you can explore a 3D sky island. By going to specific locations on the map!, different actions become available like buying pokemons, or navigating on a map full of locations and choosing your pokemons to battle. On each location on the map, you'll encounter a pokemon which you have to defeat in order to acquire experience and coins, which can be used to buy stronger pokemons.
+
+[Alt text](image3.png)
 
 ### Technologies Used
 
