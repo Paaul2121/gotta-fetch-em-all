@@ -1,11 +1,19 @@
-# gotta-fetch-em-all
-```# Gotta fetch 'em all!
+# Gotta fetch 'em all!
 
 ## Project Description
 
-Our project represents a Pokemon game, where you can explore a 3D sky island. By going to specific locations on the map!, different actions become available like buying pokemons, or navigating on a map full of locations and choosing your pokemons to battle. On each location on the map, you'll encounter a pokemon which you have to defeat in order to acquire experience and coins, which can be used to buy stronger pokemons.
+ Our project represents a Pokemon game, where you can explore a 3D sky island. By going to specific locations on the map!, different actions become available like buying pokemons, or navigating on a map full of locations and choosing your pokemons to battle. On each location on the map, you'll encounter a pokemon which you have to defeat in order to acquire experience and coins, which can be used to buy stronger pokemons.
 
 ![Alt text](readMeImages/image3.png)
+
+ When you enter the game, you will have to create an account and then login. By doing this, you can easily save your progres.
+
+![Alt text](readMeImages/image4.png)
+
+ After you complete the form, you will be welcomed by Pikachu, who will give you a brief tutorial.
+
+ ![Alt text](readMeImages/image5.png)
+
 
 ### Technologies Used
 
@@ -88,4 +96,3 @@ If you go to the cabin, the OPEN POKEDEX button will appear. By clicking on it, 
 - Bogdan Diaconu: [GitHub Profile](https://github.com/bogdandiaconupv)
 - Paul Costea: [GitHub Profile](https://github.com/Paaul2121)
 - Iacob Oliver: [GitHub Profile](https://github.com/IacobOliver)
-```
